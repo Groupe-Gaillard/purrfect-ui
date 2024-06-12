@@ -1,0 +1,42 @@
+services:
+  traefik:
+    image: traefik
+    container_name: purrfect-ui-traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik=true"
+      - "traefik.http.routers.traefik.rule=Host(`purrfect-ui.traefik.localhost`)"
+      - "traefik.http.routers.traefik.tls=true"
+      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker/traefik/traefik.yaml:/etc/traefik/traefik.yaml
+      - ./docker/traefik/dynamic.yaml:/etc/traefik/dynamic/dynamic.yaml
+      - ./docker/traefik/certs:/certs
+    networks:
+      - traefik
+
+  storybook:
+    build:
+      context: ./
+      target: dev
+    container_name: purrfect-ui-storybook
+    volumes:
+      - ./:/srv/app
+    environment:
+      WATCHPACK_POLLING: "true"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.uni-product-https.tls=true"
+      - "traefik.http.routers.uni-product-https.rule=Host(`purrfect-ui.localhost`)"
+
+networks:
+  traefik:
+    external: true
