@@ -1,6 +1,6 @@
 # purrfect-ui
 
-React Project with Vite, Storybook, and Jest
+React/Typescript Project with Vite, Storybook, and Jest
 
 This React project is set up with the following tools:
 
@@ -13,7 +13,7 @@ Features
 
     Styled Component example component: Button
     Base configuration with ESLint, Prettier, and Storybook
-    Unit tests with Jest and Vitest
+    Unit tests with Vitest and Testing Library
     Vite integration with no Vitest configuration issues
 
 Next Steps (V2)
