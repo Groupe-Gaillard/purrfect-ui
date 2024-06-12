@@ -9,7 +9,7 @@ up: certs pull
 	@printf "💄 Please wait we take care of all...\n\n"
 	docker compose build --parallel --build-arg USER_ID=$(USER_ID)
 	docker compose up --detach --remove-orphans
-	@printf "\n\nEverything is ready, enjoy 🎉\nRun make logs if you want some 💡\n\n"
+	@printf "\n\nEverything is ready, enjoy 🎉\nRun make logs if you want some 💡\n\nYou can see the Storybook on : https://purrfect-ui.localhost/\n\n"
 .PHONY: up
 
 pull:
@@ -29,4 +29,5 @@ logs:
 certs:
 	@mkcert -install || (printf "\n 🛑 mkcert is not installed. Check https://github.com/FiloSottile/mkcert to install it.\n\n" && exit 1)
 	@mkcert -key-file ./docker/traefik/certs/key.pem -cert-file ./docker/traefik/certs/cert.pem \
-		'purrfect-ui.localhost'
+		'purrfect-ui.localhost' \
+		'purrfect-ui.traefik.localhost'
