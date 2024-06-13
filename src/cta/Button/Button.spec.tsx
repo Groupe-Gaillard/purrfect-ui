@@ -7,7 +7,7 @@ import Button from "./Button";
 describe("Button", () => {
   it("Should show a button", () => {
     render(<Button label="Meow" onClick={vi.fn} />);
-    const button = screen.getByText("Meow");
+    const button = screen.getByRole("button");
 
     expect(button).toBeInTheDocument();
   });
@@ -18,7 +18,7 @@ describe("Button", () => {
     const fn = vi.fn();
 
     render(<Button label="Meow" onClick={fn} />);
-    const button = screen.getByText("Meow");
+    const button = screen.getByRole("button");
 
     await user.click(button);
 
