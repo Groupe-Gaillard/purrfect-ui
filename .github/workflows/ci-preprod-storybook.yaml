@@ -1,0 +1,34 @@
+name: CI / Preprod / Storybook
+
+on:
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - '*'
+
+jobs:
+  deploy-storybook:
+    name: deploy storybook to preproduction
+    environment:
+      name: Storybook - preproduction
+      url: https://matou-technologies-purrfect-ui-storybook.vercel.app/
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: storybook
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to Vercel
+        uses: BetaHuhn/deploy-to-vercel-action@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.AUTH_GITHUB_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID}}
+          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
+          GITHUB_DEPLOYMENT: false
+          PRODUCTION: false
+          ALIAS_DOMAINS: |
+            matou-technologies-purrfect-ui-storybook.vercel.app

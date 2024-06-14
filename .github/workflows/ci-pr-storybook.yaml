@@ -1,0 +1,45 @@
+name: CI / Storybook
+
+on:
+  push:
+    branches:
+      - gh-readonly-queue/main/**
+  pull_request:
+
+jobs:
+  deploy-preview:
+    name: Deploy preview
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy storybook to Vercel
+        id: deploy-preview-storybook
+        uses: BetaHuhn/deploy-to-vercel-action@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.AUTH_GITHUB_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID}}
+          VERCEL_SCOPE: ${{ secrets.VERCEL_ORG_ID }}
+          GITHUB_DEPLOYMENT: false
+          PR_LABELS: false
+          CREATE_COMMENT: false
+          DELETE_EXISTING_COMMENT: false
+          PR_PREVIEW_DOMAIN: matou-technologies-purrfect-ui-storybook-{PR}.vercel.app
+      - uses: phulsechinmay/rewritable-pr-comment@v0.3.0
+        if: ${{ steps.deploy-preview-storybook.outputs.DEPLOYMENT_CREATED }}
+        with:
+          GITHUB_TOKEN: ${{ secrets.AUTH_GITHUB_TOKEN }}
+          COMMENT_IDENTIFIER: 'deploy-preview-storybook'
+          message: |
+            This pull request has been deployed to Vercel.
+            <table>
+              <tr>
+                <td><strong>✅ Preview:</strong></td>
+                <td><a href='${{ steps.deploy-preview-storybook.outputs.PREVIEW_URL }}'>${{ steps.deploy-preview-storybook.outputs.PREVIEW_URL }}</a></td>
+              </tr>
+              <tr>
+                <td><strong>🔍 Inspect:</strong></td>
+                <td><a href='${{ steps.deploy-preview-storybook.outputs.DEPLOYMENT_INSPECTOR_URL }}'>${{ steps.deploy-preview-storybook.outputs.DEPLOYMENT_INSPECTOR_URL }}</a></td>
+              </tr>
+            </table>
