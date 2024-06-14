@@ -7,10 +7,25 @@ const StyledButton = styled.button`
   &:hover {
     background-color: #e0e0e0;
   }
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
-const Button = ({ label, onClick }: { label: string; onClick: () => void }) => {
-  return <StyledButton onClick={onClick}>{label}</StyledButton>;
+const Button = ({
+  label,
+  onClick,
+  isDisabled,
+}: {
+  label: string;
+  onClick: () => void;
+  isDisabled: boolean;
+}) => {
+  return (
+    <StyledButton onClick={onClick} disabled={isDisabled}>
+      {label}
+    </StyledButton>
+  );
 };
 
 export default Button;

@@ -22,3 +22,10 @@ export const BaseLongName: Story = {
     label: "Meow it's a long button to show you I can meow",
   },
 };
+export const Disable: Story = {
+  args: {
+    label: "Meow",
+    onClick: fn(),
+    isDisabled: true,
+  },
+};
