@@ -13,6 +13,7 @@ export const Base: Story = {
   args: {
     label: "Meow",
     onClick: fn(),
+    isDisabled: false,
   },
 };
 
