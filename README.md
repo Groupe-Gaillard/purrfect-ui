@@ -1,4 +1,4 @@
-# purrfect-ui
+# Purrfect-ui
 
 React/Typescript Project with Vite, Storybook, and Jest
 
@@ -9,43 +9,39 @@ This React project is set up with the following tools:
     Jest: A testing framework for JavaScript applications.
     ESLint and Prettier: Linting and code formatting tools to maintain code quality.
 
-Features
+# Getting Started
 
-    Styled Component example component: Button
-    Base configuration with ESLint, Prettier, and Storybook
+    1- Clone the repository: git clone https://github.com/Groupe-Gaillard/purrfect-ui.git
+    2. Navigate into the project directory
+    3- Run pnpm/npm install for dependancies installation
+    4- prompt "make up" to launch the environment
+
+# Features
+
+    Styled Components and Storybook (example component: Button)
+    Base configuration with ESLint, Prettier
     Unit tests with Vitest and Testing Library
-    Vite integration with no Vitest configuration issues
 
-Next Steps (V2)
-
-    Integration of additional packages:
-        react-icons
-        aria
-        dalton
-    Add Storybook plugins for accessibility
-    Dockerize with Docker Compose and Makefile
-    Set up CI to run tests and detect regressions
-    Deploy to Vercel with automated Storybook publishing and updates
-    Adhere to the main/PR branch system
-
-To-Do
-
-    Docker creation (docker-compose/Makefile)
-    Repository configuration for Vercel build
-    List of components to create (toggle, switch, checkbox, etc.) with prop support
-
-Goal
+# Goal
 
 The goal of this project is to create a solid foundation for developing React applications with the best tools and practices. By documenting the steps and configurations, we make it easier to collaborate and maintain the project.
 Contributing
 
 If you would like to contribute to this project, please feel free to create issues or pull requests.
-Resources
 
-    Vite Documentation: https://vitejs.dev/guide/
-    Storybook Documentation: https://storybook.js.org/
-    Jest Documentation: https://jestjs.io/
-    ESLint Documentation: https://eslint.org/
-    Prettier Documentation: https://prettier.io/playground/
-    Docker Documentation: https://www.docker.com/
-    Vercel Documentation: https://vercel.com/
+# Documentation
+
+React: https://legacy.reactjs.org/
+React-dom: https://legacy.reactjs.org/
+Typescript: https://www.typescriptlang.org/
+Styled-components: https://styled-components.com/docs
+Docker: https://www.docker.com/
+Vercel: https://vercel.com/
+Vite: https://vitejs.dev/guide/
+Storybook: https://storybook.js.org/
+ESLint: https://eslint.org/
+Prettier: https://prettier.io/playground/
+Docker: https://www.docker.com/
+Vercel: https://vercel.com/
+Testing Library: https://testing-library.com/
+Vitest: https://vitest.dev/
