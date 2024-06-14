@@ -1,44 +1,30 @@
-const spacing = (value: number): string => {
+/* Size
+| px     | rem       |
+| 1px    | 0,0625rem |
+| 2px    | 0,125rem  |
+| 3px    | 0,1875rem |
+| 4px    | 0,25rem   |
+| 5px    | 0,3125rem |
+| 6px    | 0,375rem  |
+| 7px    | 0,4375rem |
+| 8px    | 0,5rem    |
+| 10px   | 0,625rem  |
+| 12px   | 0,75rem   |
+| 14px   | 0,875rem  |
+| 16px   | 1rem      |
+| 24px   | 1,5rem    |
+| 32px   | 2rem      |
+| 40px   | 2,5rem    |
+| 60px   | 3,75rem   |
+| 80px   | 5rem      |
+| 100px  | 6,25rem   |
+*/
+
+export const spacing = (value: number): string => {
   return `${value / 16}rem`;
 };
 
 const theme = {
-  fontSize: {
-    xxs: spacing(9),
-    xs: "10px",
-    sm: "12px",
-    base: "14px",
-    md: "16px",
-    lg: "18px",
-    xl: "20px",
-  },
-
-  lineHeight: {
-    xs: "1",
-    sm: "1.25",
-    base: "1.375",
-    md: "1.5",
-    lg: "2",
-  },
-
-  heading: {
-    h1: "24px",
-    h2: "",
-    h3: "",
-    h4: "",
-  },
-
-  fontWeight: {
-    light: 300,
-    normal: 400,
-    medium: 500,
-    bold: 700,
-  },
-
-  fontFamily: {
-    // TODO
-  },
-
   transitions: {
     //? Framer ?
   },
