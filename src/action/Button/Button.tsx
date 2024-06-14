@@ -7,6 +7,9 @@ const StyledButton = styled.button`
   &:hover {
     background-color: #e0e0e0;
   }
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 const Button = ({
