@@ -21,6 +21,8 @@ const Rectangle = styled.div<{
   width: 250px;
   padding: ${theme.spacing(16)};
   color: ${({ textColor }) => textColor};
+  font-family: sans-serif;
+  font-size: 0%.875rem;
   background-color: ${({ bgColor }) => bgColor};
 `;
 
@@ -48,81 +50,135 @@ export const Colors: Story = {
           }}
         >
           <Title style={{ width: "100%" }}>Colors</Title>
-          <div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {Object.entries(theme.color)
               .filter(([key]) => key.startsWith("primary"))
-              .map(([key, value]) => (
+              .map(([key, value], index: number) => (
                 <>
                   {console.log(value, key, getContrastYIQ(value))}
                   <Rectangle
                     bgColor={theme.color[key]}
                     textColor={theme.color.text[getContrastYIQ(value)]}
+                    style={{
+                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                    }}
                   >
-                    <div>{key}</div>
+                    <div
+                      style={{
+                        fontWeight: index === 0 ? "bold" : "normal",
+                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                        textDecoration: index === 0 ? "underline" : "none",
+                      }}
+                    >
+                      {key}
+                    </div>
                     <div style={{ marginLeft: "auto" }}>{value}</div>
                   </Rectangle>
                 </>
               ))}
           </div>
-          <div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {Object.entries(theme.color)
               .filter(([key]) => key.startsWith("success"))
-              .map(([key, value]) => (
+              .map(([key, value], index: number) => (
                 <>
-                  {console.log(value, key, getContrastYIQ(value))}
                   <Rectangle
                     bgColor={theme.color[key]}
                     textColor={theme.color.text[getContrastYIQ(value)]}
+                    style={{
+                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                    }}
                   >
-                    <div>{key}</div>
+                    <div
+                      style={{
+                        fontWeight: index === 0 ? "bold" : "normal",
+                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                        textDecoration: index === 0 ? "underline" : "none",
+                      }}
+                    >
+                      {key}
+                    </div>
                     <div style={{ marginLeft: "auto" }}>{value}</div>
                   </Rectangle>
                 </>
               ))}
           </div>
-          <div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {Object.entries(theme.color)
               .filter(([key]) => key.startsWith("danger"))
-              .map(([key, value]) => (
+              .map(([key, value], index: number) => (
                 <>
                   {console.log(value, key, getContrastYIQ(value))}
                   <Rectangle
                     bgColor={theme.color[key]}
                     textColor={theme.color.text[getContrastYIQ(value)]}
+                    style={{
+                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                    }}
                   >
-                    <div>{key}</div>
+                    <div
+                      style={{
+                        fontWeight: index === 0 ? "bold" : "normal",
+                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                        textDecoration: index === 0 ? "underline" : "none",
+                      }}
+                    >
+                      {key}
+                    </div>
                     <div style={{ marginLeft: "auto" }}>{value}</div>
                   </Rectangle>
                 </>
               ))}
           </div>
-          <div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {Object.entries(theme.color)
               .filter(([key]) => key.startsWith("warning"))
-              .map(([key, value]) => (
+              .map(([key, value], index: number) => (
                 <>
                   {console.log(value, key, getContrastYIQ(value))}
                   <Rectangle
                     bgColor={theme.color[key]}
                     textColor={theme.color.text[getContrastYIQ(value)]}
+                    style={{
+                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                    }}
                   >
-                    <div>{key}</div>
+                    <div
+                      style={{
+                        fontWeight: index === 0 ? "bold" : "normal",
+                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                        textDecoration: index === 0 ? "underline" : "none",
+                      }}
+                    >
+                      {key}
+                    </div>
                     <div style={{ marginLeft: "auto" }}>{value}</div>
                   </Rectangle>
                 </>
               ))}
           </div>
-          <div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {Object.entries(theme.color)
               .filter(([key]) => key.startsWith("gray"))
-              .map(([key, value]) => (
+              .map(([key, value], index: number) => (
                 <>
                   {console.log(value, key, getContrastYIQ(value))}
                   <Rectangle
                     bgColor={theme.color[key]}
                     textColor={theme.color.text[getContrastYIQ(value)]}
+                    style={{
+                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                    }}
                   >
-                    <div>{key}</div>
+                    <div
+                      style={{
+                        fontWeight: index === 0 ? "bold" : "normal",
+                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                        textDecoration: index === 0 ? "underline" : "none",
+                      }}
+                    >
+                      {key}
+                    </div>
                     <div style={{ marginLeft: "auto" }}>{value}</div>
                   </Rectangle>
                 </>
