@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  background-color: pink;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  &:hover {
+    background-color: #e0e0e0;
+  }
 `;
 
 const Button = ({ label, onClick }: { label: string; onClick: () => void }) => {
