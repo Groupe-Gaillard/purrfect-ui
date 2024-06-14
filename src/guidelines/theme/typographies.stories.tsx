@@ -11,7 +11,7 @@ import {
   heading5,
   heading6,
   narrow,
-} from ".";
+} from "./index.ts";
 
 const meta: Meta = {};
 

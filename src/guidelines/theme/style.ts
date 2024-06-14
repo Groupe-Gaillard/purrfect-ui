@@ -110,10 +110,11 @@ const theme = {
   },
 
   borderRadius: {
-    light: "0.75rem",
-    default: "0.375rem",
-    large: "0.5rem",
-    big: "1rem",
+    light: spacing(3),
+    default: spacing(6),
+    large: spacing(8),
+    big: spacing(16),
+    round: "50%",
   },
 
   spacing: spacing,

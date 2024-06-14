@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { heading1, theme } from ".";
+import { heading1, theme } from "./index";
 
 const meta: Meta = {};
 
@@ -30,6 +30,7 @@ const getContrastYIQ = (hexcolor: string): "dark" | "light" => {
   const g = parseInt(hexcolor.substring(3, 5), 16);
   const b = parseInt(hexcolor.substring(5, 7), 16);
   const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+
   return yiq >= 128 ? "dark" : "light";
 };
 
