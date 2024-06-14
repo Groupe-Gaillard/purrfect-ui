@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { theme } from "./style";
-import { heading1 } from "./typographies";
+import { heading1, theme } from ".";
 
 const meta: Meta = {};
 
@@ -51,7 +50,7 @@ export const Colors: Story = {
           <Title style={{ width: "100%" }}>Colors</Title>
           <div>
             {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("primary")) // Filter primary shades
+              .filter(([key]) => key.startsWith("primary"))
               .map(([key, value]) => (
                 <>
                   {console.log(value, key, getContrastYIQ(value))}
@@ -67,7 +66,7 @@ export const Colors: Story = {
           </div>
           <div>
             {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("success")) // Filter primary shades
+              .filter(([key]) => key.startsWith("success"))
               .map(([key, value]) => (
                 <>
                   {console.log(value, key, getContrastYIQ(value))}
@@ -83,7 +82,7 @@ export const Colors: Story = {
           </div>
           <div>
             {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("danger")) // Filter primary shades
+              .filter(([key]) => key.startsWith("danger"))
               .map(([key, value]) => (
                 <>
                   {console.log(value, key, getContrastYIQ(value))}
@@ -99,7 +98,7 @@ export const Colors: Story = {
           </div>
           <div>
             {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("warning")) // Filter primary shades
+              .filter(([key]) => key.startsWith("warning"))
               .map(([key, value]) => (
                 <>
                   {console.log(value, key, getContrastYIQ(value))}
@@ -115,7 +114,7 @@ export const Colors: Story = {
           </div>
           <div>
             {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("gray")) // Filter primary shades
+              .filter(([key]) => key.startsWith("gray"))
               .map(([key, value]) => (
                 <>
                   {console.log(value, key, getContrastYIQ(value))}
