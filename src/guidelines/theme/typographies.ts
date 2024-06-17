@@ -19,15 +19,15 @@ export const typographies = {
   },
 
   fontSize: {
-    xxs: spacing(9),
-    xs: spacing(10),
-    sm: spacing(12),
-    base: spacing(14),
-    md: spacing(16),
-    lg: spacing(18),
-    xl: spacing(20),
-    xxl: spacing(24),
-    xxxl: spacing(36),
+    xxs: sizing(9),
+    xs: sizing(10),
+    sm: sizing(12),
+    base: sizing(14),
+    md: sizing(16),
+    lg: sizing(18),
+    xl: sizing(20),
+    xxl: sizing(24),
+    xxxl: sizing(36),
   },
 };
 
