@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { heading1, theme } from "./index.ts";
+import { getContrastYIQ, spacing } from "./index";
+import { theme } from "./index";
+import { heading1 } from "./typographies";
 
 const meta: Meta = {};
 
@@ -14,9 +16,8 @@ const Title = styled.h1`
 `;
 
 const Square = styled.div<{
-  bgColor: string;
+  bgColor: string | undefined;
   textColor: string;
-  size?: "small" | "big";
 }>`
   display: flex;
   align-items: center;
@@ -24,36 +25,13 @@ const Square = styled.div<{
   height: 150px;
   width: 150px;
   text-transform: uppercase;
-  padding: ${theme.spacing(16)};
+  padding: ${spacing(16)};
   color: ${({ textColor }) => textColor};
   font-family: sans-serif;
-  font-size: 0%.875rem;
+  font-size: 0.875rem;
   background-color: ${({ bgColor }) => bgColor};
   font-weight: bold;
 `;
-
-function getContrastYIQ(
-  hexcolor: string | { light: string; dark: string; white: string },
-): string {
-  let colorString: string;
-  if (typeof hexcolor === "string") {
-    colorString = hexcolor;
-  } else {
-    colorString = hexcolor.light || hexcolor.dark || hexcolor.white;
-
-    if (!colorString) {
-      console.error("getContrastYIQ: No valid color property found in object.");
-    }
-  }
-
-  const r = parseInt(colorString.substring(1, 3), 16);
-  const g = parseInt(colorString.substring(3, 5), 16);
-  const b = parseInt(colorString.substring(5, 7), 16);
-
-  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-
-  return yiq >= 128 ? "dark" : "light";
-}
 
 export const Borders: Story = {
   render: () => {
