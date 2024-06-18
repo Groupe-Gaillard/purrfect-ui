@@ -117,7 +117,6 @@ export const Colors: Story = {
           <div style={{ display: "flex", flexDirection: "column" }}>
             {dangerColors.map(([key, value], index: number) => (
               <>
-                {console.log(value, key, getContrastYIQ(value))}
                 <Rectangle
                   bgColor={value}
                   textColor={theme.color.text[getContrastYIQ(value)]}
@@ -142,7 +141,6 @@ export const Colors: Story = {
           <div style={{ display: "flex", flexDirection: "column" }}>
             {warningColors.map(([key, value], index: number) => (
               <>
-                {console.log(value, key, getContrastYIQ(value))}
                 <Rectangle
                   bgColor={value}
                   textColor={theme.color.text[getContrastYIQ(value)]}
@@ -167,7 +165,6 @@ export const Colors: Story = {
           <div style={{ display: "flex", flexDirection: "column" }}>
             {grayColors.map(([key, value], index: number) => (
               <>
-                {console.log(value, key, getContrastYIQ(value))}
                 <Rectangle
                   bgColor={value}
                   textColor={theme.color.text[getContrastYIQ(value)]}
