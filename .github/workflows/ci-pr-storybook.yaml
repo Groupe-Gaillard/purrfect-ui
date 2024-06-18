@@ -7,6 +7,29 @@ on:
   pull_request:
 
 jobs:
+  qa-ts-check:
+    name: Quality
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescript]
+      - name: Check coding standards
+        run: pnpm format:check
+      - name: Make static analysis (eslint)
+        run: pnpm lint:check
+      - name: Make static analysis (typescript)
+        run: pnpm typescript:check
+
   deploy-preview:
     name: Deploy preview
     runs-on: ubuntu-latest

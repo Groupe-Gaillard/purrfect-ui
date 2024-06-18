@@ -15,11 +15,11 @@ const StyledButton = styled.button`
 const Button = ({
   label,
   onClick,
-  isDisabled,
+  isDisabled = false,
 }: {
   label: string;
   onClick: () => void;
-  isDisabled: boolean;
+  isDisabled?: boolean;
 }) => {
   return (
     <StyledButton onClick={onClick} disabled={isDisabled}>

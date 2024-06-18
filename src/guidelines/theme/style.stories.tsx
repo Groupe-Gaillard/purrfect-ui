@@ -12,7 +12,6 @@ type Story = StoryObj;
 const Rectangle = styled.div<{
   bgColor: string;
   textColor: string;
-  size?: "small" | "big";
 }>`
   display: flex;
   align-items: center;
@@ -26,13 +25,13 @@ const Rectangle = styled.div<{
   background-color: ${({ bgColor }) => bgColor};
 `;
 
-function getContrastYIQ(hexcolor: string): string {
+const getContrastYIQ = (hexcolor: string): "dark" | "light" => {
   const r = parseInt(hexcolor.substring(1, 3), 16);
   const g = parseInt(hexcolor.substring(3, 5), 16);
   const b = parseInt(hexcolor.substring(5, 7), 16);
   const yiq = (r * 299 + g * 587 + b * 114) / 1000;
   return yiq >= 128 ? "dark" : "light";
-}
+};
 
 const Title = styled.h1`
   ${heading1};
@@ -40,6 +39,23 @@ const Title = styled.h1`
 
 export const Colors: Story = {
   render: () => {
+    const themeColors = Object.entries(theme.color);
+    const primaryColors = themeColors.filter(([key]) =>
+      key.startsWith("primary"),
+    ) as unknown as Array<string>;
+    const successColors = themeColors.filter(([key]) =>
+      key.startsWith("success"),
+    ) as unknown as Array<string>;
+    const dangerColors = themeColors.filter(([key]) =>
+      key.startsWith("danger"),
+    ) as unknown as Array<string>;
+    const warningColors = themeColors.filter(([key]) =>
+      key.startsWith("warning"),
+    ) as unknown as Array<string>;
+    const grayColors = themeColors.filter(([key]) =>
+      key.startsWith("gray"),
+    ) as unknown as Array<string>;
+
     return (
       <>
         <div
@@ -51,138 +67,127 @@ export const Colors: Story = {
         >
           <Title style={{ width: "100%" }}>Colors</Title>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("primary"))
-              .map(([key, value], index: number) => (
-                <>
-                  {console.log(value, key, getContrastYIQ(value))}
-                  <Rectangle
-                    bgColor={theme.color[key]}
-                    textColor={theme.color.text[getContrastYIQ(value)]}
+            {primaryColors.map(([key, value], index: number) => (
+              <>
+                <Rectangle
+                  bgColor={value}
+                  textColor={theme.color.text[getContrastYIQ(value)]}
+                  style={{
+                    order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                  }}
+                >
+                  <div
                     style={{
-                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                      fontWeight: index === 0 ? "bold" : "normal",
+                      fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                      textDecoration: index === 0 ? "underline" : "none",
                     }}
                   >
-                    <div
-                      style={{
-                        fontWeight: index === 0 ? "bold" : "normal",
-                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
-                        textDecoration: index === 0 ? "underline" : "none",
-                      }}
-                    >
-                      {key}
-                    </div>
-                    <div style={{ marginLeft: "auto" }}>{value}</div>
-                  </Rectangle>
-                </>
-              ))}
+                    {key}
+                  </div>
+                  <div style={{ marginLeft: "auto" }}>{value}</div>
+                </Rectangle>
+              </>
+            ))}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("success"))
-              .map(([key, value], index: number) => (
-                <>
-                  <Rectangle
-                    bgColor={theme.color[key]}
-                    textColor={theme.color.text[getContrastYIQ(value)]}
+            {successColors.map(([key, value], index: number) => (
+              <>
+                <Rectangle
+                  bgColor={value}
+                  textColor={theme.color.text[getContrastYIQ(value)]}
+                  style={{
+                    order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                  }}
+                >
+                  <div
                     style={{
-                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                      fontWeight: index === 0 ? "bold" : "normal",
+                      fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                      textDecoration: index === 0 ? "underline" : "none",
                     }}
                   >
-                    <div
-                      style={{
-                        fontWeight: index === 0 ? "bold" : "normal",
-                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
-                        textDecoration: index === 0 ? "underline" : "none",
-                      }}
-                    >
-                      {key}
-                    </div>
-                    <div style={{ marginLeft: "auto" }}>{value}</div>
-                  </Rectangle>
-                </>
-              ))}
+                    {key}
+                  </div>
+                  <div style={{ marginLeft: "auto" }}>{value}</div>
+                </Rectangle>
+              </>
+            ))}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("danger"))
-              .map(([key, value], index: number) => (
-                <>
-                  {console.log(value, key, getContrastYIQ(value))}
-                  <Rectangle
-                    bgColor={theme.color[key]}
-                    textColor={theme.color.text[getContrastYIQ(value)]}
+            {dangerColors.map(([key, value], index: number) => (
+              <>
+                {console.log(value, key, getContrastYIQ(value))}
+                <Rectangle
+                  bgColor={value}
+                  textColor={theme.color.text[getContrastYIQ(value)]}
+                  style={{
+                    order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                  }}
+                >
+                  <div
                     style={{
-                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                      fontWeight: index === 0 ? "bold" : "normal",
+                      fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                      textDecoration: index === 0 ? "underline" : "none",
                     }}
                   >
-                    <div
-                      style={{
-                        fontWeight: index === 0 ? "bold" : "normal",
-                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
-                        textDecoration: index === 0 ? "underline" : "none",
-                      }}
-                    >
-                      {key}
-                    </div>
-                    <div style={{ marginLeft: "auto" }}>{value}</div>
-                  </Rectangle>
-                </>
-              ))}
+                    {key}
+                  </div>
+                  <div style={{ marginLeft: "auto" }}>{value}</div>
+                </Rectangle>
+              </>
+            ))}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("warning"))
-              .map(([key, value], index: number) => (
-                <>
-                  {console.log(value, key, getContrastYIQ(value))}
-                  <Rectangle
-                    bgColor={theme.color[key]}
-                    textColor={theme.color.text[getContrastYIQ(value)]}
+            {warningColors.map(([key, value], index: number) => (
+              <>
+                {console.log(value, key, getContrastYIQ(value))}
+                <Rectangle
+                  bgColor={value}
+                  textColor={theme.color.text[getContrastYIQ(value)]}
+                  style={{
+                    order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                  }}
+                >
+                  <div
                     style={{
-                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                      fontWeight: index === 0 ? "bold" : "normal",
+                      fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                      textDecoration: index === 0 ? "underline" : "none",
                     }}
                   >
-                    <div
-                      style={{
-                        fontWeight: index === 0 ? "bold" : "normal",
-                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
-                        textDecoration: index === 0 ? "underline" : "none",
-                      }}
-                    >
-                      {key}
-                    </div>
-                    <div style={{ marginLeft: "auto" }}>{value}</div>
-                  </Rectangle>
-                </>
-              ))}
+                    {key}
+                  </div>
+                  <div style={{ marginLeft: "auto" }}>{value}</div>
+                </Rectangle>
+              </>
+            ))}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {Object.entries(theme.color)
-              .filter(([key]) => key.startsWith("gray"))
-              .map(([key, value], index: number) => (
-                <>
-                  {console.log(value, key, getContrastYIQ(value))}
-                  <Rectangle
-                    bgColor={theme.color[key]}
-                    textColor={theme.color.text[getContrastYIQ(value)]}
+            {grayColors.map(([key, value], index: number) => (
+              <>
+                {console.log(value, key, getContrastYIQ(value))}
+                <Rectangle
+                  bgColor={value}
+                  textColor={theme.color.text[getContrastYIQ(value)]}
+                  style={{
+                    order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                  }}
+                >
+                  <div
                     style={{
-                      order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                      fontWeight: index === 0 ? "bold" : "normal",
+                      fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                      textDecoration: index === 0 ? "underline" : "none",
                     }}
                   >
-                    <div
-                      style={{
-                        fontWeight: index === 0 ? "bold" : "normal",
-                        fontSize: index === 0 ? "1.125rem" : "0.825rem",
-                        textDecoration: index === 0 ? "underline" : "none",
-                      }}
-                    >
-                      {key}
-                    </div>
-                    <div style={{ marginLeft: "auto" }}>{value}</div>
-                  </Rectangle>
-                </>
-              ))}
+                    {key}
+                  </div>
+                  <div style={{ marginLeft: "auto" }}>{value}</div>
+                </Rectangle>
+              </>
+            ))}
           </div>
         </div>
       </>
