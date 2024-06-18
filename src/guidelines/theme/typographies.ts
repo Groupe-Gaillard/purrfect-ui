@@ -121,7 +121,7 @@ export const narrow = css`
   font-weight: ${typographies.fontWeight.light};
   font-size: ${typographies.fontSize.sm};
   line-height: ${typographies.lineHeight.sm};
-  letter-spacing: -4%;
+  letter-sizing: -4%;
   font-family: sans-serif;
   color: ${theme.color.text.dark};
 `;
