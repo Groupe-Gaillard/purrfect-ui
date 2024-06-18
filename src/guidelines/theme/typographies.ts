@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { spacing } from "./index";
+import { sizing } from "./index";
 import { theme } from "./style";
 
 export const typographies = {
@@ -19,15 +19,15 @@ export const typographies = {
   },
 
   fontSize: {
-    xxs: spacing(9),
-    xs: spacing(10),
-    sm: spacing(12),
-    base: spacing(14),
-    md: spacing(16),
-    lg: spacing(18),
-    xl: spacing(20),
-    xxl: spacing(24),
-    xxxl: spacing(36),
+    xxs: sizing(9),
+    xs: sizing(10),
+    sm: sizing(12),
+    base: sizing(14),
+    md: sizing(16),
+    lg: sizing(18),
+    xl: sizing(20),
+    xxl: sizing(24),
+    xxxl: sizing(36),
   },
 };
 
@@ -36,7 +36,7 @@ export const typographies = {
 // },
 
 export const heading1 = css`
-  margin: ${spacing(24)} 0 ${spacing(16)};
+  margin: 0;
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.xxxl};
@@ -46,7 +46,7 @@ export const heading1 = css`
 `;
 
 export const heading2 = css`
-  margin: ${spacing(24)} 0 ${spacing(16)};
+  margin: 0;
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.xxl};
@@ -56,7 +56,7 @@ export const heading2 = css`
 `;
 
 export const heading3 = css`
-  margin: ${spacing(24)} 0 ${spacing(16)};
+  margin: 0;
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.xl};
@@ -66,7 +66,7 @@ export const heading3 = css`
 `;
 
 export const heading4 = css`
-  margin: ${spacing(16)} 0 ${spacing(12)};
+  margin: 0;
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.lg};
@@ -76,7 +76,7 @@ export const heading4 = css`
 `;
 
 export const heading5 = css`
-  margin: ${spacing(12)} 0 ${spacing(8)};
+  margin: 0;
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.md};
@@ -86,7 +86,7 @@ export const heading5 = css`
 `;
 
 export const heading6 = css`
-  margin: ${spacing(12)} 0 ${spacing(8)};
+  margin: 0;
   font-style: italic;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.base};
@@ -96,6 +96,7 @@ export const heading6 = css`
 `;
 
 export const body1 = css`
+  margin: 0;
   font-style: normal;
   font-weight: ${typographies.fontWeight.normal};
   font-size: ${typographies.fontSize.base};
@@ -105,6 +106,7 @@ export const body1 = css`
 `;
 
 export const body2 = css`
+  margin: 0;
   font-style: normal;
   font-weight: ${typographies.fontWeight.normal};
   font-size: ${typographies.fontSize.md};
@@ -114,6 +116,7 @@ export const body2 = css`
 `;
 
 export const narrow = css`
+  margin: 0;
   font-style: normal;
   font-weight: ${typographies.fontWeight.light};
   font-size: ${typographies.fontSize.sm};

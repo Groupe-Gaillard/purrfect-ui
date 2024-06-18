@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { getContrastYIQ, spacing, theme } from "./index";
+import { getContrastYIQ, sizing, theme } from "./index";
 import { heading1 } from "./typographies";
 
 const meta: Meta = {};
@@ -12,6 +12,7 @@ type Story = StoryObj;
 
 const Title = styled.h1`
   ${heading1};
+  margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 
 const Square = styled.div<{
@@ -24,7 +25,7 @@ const Square = styled.div<{
   height: 150px;
   width: 150px;
   text-transform: uppercase;
-  padding: ${spacing(16)};
+  padding: ${sizing(16)};
   color: ${({ textColor }) => textColor};
   font-family: sans-serif;
   font-size: 0.875rem;

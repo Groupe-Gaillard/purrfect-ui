@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { getContrastYIQ, heading1, spacing, theme } from "./index";
+import { getContrastYIQ, heading1, sizing, theme } from "./index";
 
 const meta: Meta = {};
 
@@ -18,7 +18,7 @@ const Rectangle = styled.div<{
   justify-content: flex-start;
   height: 30px;
   width: 250px;
-  padding: ${spacing(16)};
+  padding: ${sizing(16)};
   color: ${({ textColor }) => textColor};
   font-family: sans-serif;
   font-size: 0%.875rem;
@@ -27,6 +27,7 @@ const Rectangle = styled.div<{
 
 const Title = styled.h1`
   ${heading1};
+  margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 
 export const Colors: Story = {

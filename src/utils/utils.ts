@@ -32,6 +32,6 @@ export const getContrastYIQ = (hexColor: string | HexColor) => {
 /**
  * Function to convert a pixel value to a rem value.
  * */
-export const spacing = (value: number): string => {
+export const sizing = (value: number): string => {
   return `${value / 16}rem`;
 };
