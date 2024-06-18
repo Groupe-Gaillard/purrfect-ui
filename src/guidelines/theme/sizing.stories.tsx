@@ -47,15 +47,15 @@ export const Sizing: Story = {
         <div>
           <Title style={{ width: "100%" }}>Sizing</Title>
           <Body1 style={{ width: "100%" }}>
-            La fonction sizing est faite pour transformer la mesure en pixel en
-            rem. Par défaut, 1rem = 16px
+            The sizing function is designed to convert pixel measurements to
+            rem. By default, 1rem = 16px.
             <br />
-            Le rem permet d&apos;avoir des tailles qui s&apos;adaptent par
-            rapport à la taille de police définit dans le navigateur.
+            Rem allows for font sizes that scale relative to the font size
+            defined in the browser.
             <br />
-            C&apos;est un plus pour l&apos;accessibilité de la bibliothèque.
+            This is a plus for the accessibility of the library.
           </Body1>
-          <Title2>Utilisation sur des padding</Title2>
+          <Title2>Padding usage</Title2>
           <div
             style={{
               display: "flex",

@@ -62,14 +62,14 @@ export const Typographies: Story = {
     return (
       <>
         <div>
-          <Title1>Titre 1 : Title1</Title1>
-          <Title2>Titre 2 : Title2</Title2>
-          <Title3>Titre 3 : Title3</Title3>
-          <Title4>Titre 4 : Title4</Title4>
-          <Title5>Titre 5 : Title5</Title5>
-          <Title6>Titre 6 : Title6</Title6>
+          <Title1>Title 1 : Title1</Title1>
+          <Title2>Title 2 : Title2</Title2>
+          <Title3>Title 3 : Title3</Title3>
+          <Title4>Title 4 : Title4</Title4>
+          <Title5>Title 5 : Title5</Title5>
+          <Title6>Title 6 : Title6</Title6>
           <Body2>
-            Text gros : Body2.
+            Text big : Body2.
             <br /> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Nulla eu maximus urna, non auctor ante. Praesent ultrices felis non
             elit volutpat, vitae blandit dolor placerat. Ut venenatis sed justo
@@ -95,7 +95,7 @@ export const Typographies: Story = {
             venenatis risus nec, viverra lacus.
           </Body1>
           <Narrow>
-            Text étroit : Narrow.
+            Text narrow : Narrow.
             <br /> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Nulla eu maximus urna, non auctor ante. Praesent ultrices felis non
             elit volutpat, vitae blandit dolor placerat. Ut venenatis sed justo
