@@ -23,7 +23,7 @@ const Button = ({
 }) => {
   return (
     <StyledButton onClick={onClick} disabled={isDisabled}>
-      {label}
+      {label}test
     </StyledButton>
   );
 };
