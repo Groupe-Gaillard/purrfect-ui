@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { getContrastYIQ, spacing } from "./index";
-import { theme } from "./index";
+import { getContrastYIQ, sizing, theme } from "./index";
 import { heading1 } from "./typographies";
 
 const meta: Meta = {};
@@ -13,6 +12,7 @@ type Story = StoryObj;
 
 const Title = styled.h1`
   ${heading1};
+  margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 
 const Wrapper = styled.div`
@@ -21,10 +21,10 @@ const Wrapper = styled.div`
   border-radius: ${theme.borderRadius.large};
   display: flex;
   flex-wrap: wrap;
-  gap: ${spacing(16)};
+  gap: ${sizing(16)};
   height: 300px;
   justify-content: center;
-  padding: ${spacing(16)};
+  padding: ${sizing(16)};
 `;
 
 const Square = styled.div<{
@@ -40,7 +40,7 @@ const Square = styled.div<{
   font-weight: bold;
   height: 150px;
   justify-content: center;
-  padding: ${spacing(16)};
+  padding: ${sizing(16)};
   text-transform: uppercase;
   width: 150px;
 `;
