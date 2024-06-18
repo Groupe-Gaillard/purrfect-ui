@@ -1,4 +1,4 @@
-import { spacing } from "./index";
+import { sizing } from "./index";
 
 /* Size
 | px     | rem       |
@@ -187,10 +187,10 @@ const theme: Theme = {
   },
 
   borderRadius: {
-    default: spacing(6),
-    small: spacing(3),
-    large: spacing(8),
-    big: spacing(16),
+    default: sizing(6),
+    small: sizing(3),
+    large: sizing(8),
+    big: sizing(16),
     round: "50%",
   },
 };

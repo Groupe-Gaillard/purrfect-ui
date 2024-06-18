@@ -14,10 +14,10 @@ const RectangleInside = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 250px;
-  padding: ${theme.sizing(16)};
+  padding: ${sizing(16)};
   color: ${theme.color.text.white};
   font-family: sans-serif;
-  font-size: 0%.875rem;
+  font-size: 0.875rem;
   background-color: ${theme.color.primary};
 `;
 
@@ -29,12 +29,15 @@ const RectangleOutside = styled.div<{ paddingSize: number }>`
 const numbersSizing: number[] = [1, 2, 4, 8, 16];
 const Title = styled.h1`
   ${heading1};
+  margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 const Title2 = styled.h2`
   ${heading2};
+  margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 const Body1 = styled.p`
   ${body1};
+  margin: ${sizing(16)} 0 ${sizing(16)};
 `;
 
 export const Sizing: Story = {

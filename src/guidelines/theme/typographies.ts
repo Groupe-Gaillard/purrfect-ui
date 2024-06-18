@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { spacing } from "./index";
+import { sizing } from "./index";
 import { theme } from "./style";
 
 export const typographies = {
@@ -121,7 +121,7 @@ export const narrow = css`
   font-weight: ${typographies.fontWeight.light};
   font-size: ${typographies.fontSize.sm};
   line-height: ${typographies.lineHeight.sm};
-  letter-spacing: -4%;
+  letter-sizing: -4%;
   font-family: sans-serif;
   color: ${theme.color.text.dark};
 `;

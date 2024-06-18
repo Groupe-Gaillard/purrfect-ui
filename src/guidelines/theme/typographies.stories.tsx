@@ -11,6 +11,7 @@ import {
   heading5,
   heading6,
   narrow,
+  sizing,
 } from "./index";
 
 const meta: Meta = {};
@@ -21,39 +22,39 @@ type Story = StoryObj;
 
 const Title1 = styled.h1`
   ${heading1};
-  margin: ${theme.sizing(24)} 0 ${theme.sizing(16)};
+  margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 const Title2 = styled.h2`
   ${heading2};
-  margin: ${theme.sizing(24)} 0 ${theme.sizing(16)};
+  margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 const Title3 = styled.h3`
   ${heading3};
-  margin: ${theme.sizing(24)} 0 ${theme.sizing(16)};
+  margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 const Title4 = styled.h4`
   ${heading4};
-  margin: ${theme.sizing(16)} 0 ${theme.sizing(12)};
+  margin: ${sizing(16)} 0 ${sizing(12)};
 `;
 const Title5 = styled.h5`
   ${heading5};
-  margin: ${theme.sizing(12)} 0 ${theme.sizing(8)};
+  margin: ${sizing(12)} 0 ${sizing(8)};
 `;
 const Title6 = styled.h6`
   ${heading6};
-  margin: ${theme.sizing(12)} 0 ${theme.sizing(8)};
+  margin: ${sizing(12)} 0 ${sizing(8)};
 `;
 const Body1 = styled.p`
   ${body1};
-  margin: ${theme.sizing(16)} 0 ${theme.sizing(16)};
+  margin: ${sizing(16)} 0 ${sizing(16)};
 `;
 const Body2 = styled.p`
   ${body2};
-  margin: ${theme.sizing(16)} 0 ${theme.sizing(16)};
+  margin: ${sizing(16)} 0 ${sizing(16)};
 `;
 const Narrow = styled.p`
   ${narrow};
-  margin: ${theme.sizing(16)} 0 ${theme.sizing(16)};
+  margin: ${sizing(16)} 0 ${sizing(16)};
 `;
 
 export const Typographies: Story = {
