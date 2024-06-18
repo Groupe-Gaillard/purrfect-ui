@@ -6,7 +6,10 @@
   "scripts": {
     "test": "vitest --environment jsdom",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint:check": "eslint src/",
+    "format:check": "prettier --check '**/*.{js,jsx,ts,tsx,json,html,css,md}'",
+    "typescript:check": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
