@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { heading1, theme } from ".";
+import { getContrastYIQ, heading1, spacing, theme } from "./index";
 
 const meta: Meta = {};
 
@@ -18,20 +18,12 @@ const Rectangle = styled.div<{
   justify-content: flex-start;
   height: 30px;
   width: 250px;
-  padding: ${theme.spacing(16)};
+  padding: ${spacing(16)};
   color: ${({ textColor }) => textColor};
   font-family: sans-serif;
   font-size: 0%.875rem;
   background-color: ${({ bgColor }) => bgColor};
 `;
-
-const getContrastYIQ = (hexcolor: string): "dark" | "light" => {
-  const r = parseInt(hexcolor.substring(1, 3), 16);
-  const g = parseInt(hexcolor.substring(3, 5), 16);
-  const b = parseInt(hexcolor.substring(5, 7), 16);
-  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-  return yiq >= 128 ? "dark" : "light";
-};
 
 const Title = styled.h1`
   ${heading1};

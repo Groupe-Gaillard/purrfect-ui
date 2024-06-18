@@ -1,3 +1,5 @@
+import { spacing } from "./index";
+
 /* Size
 | px     | rem       |
 | 1px    | 0,0625rem |
@@ -20,11 +22,86 @@
 | 100px  | 6,25rem   |
 */
 
-export const spacing = (value: number): string => {
-  return `${value / 16}rem`;
-};
+interface Color {
+  [key: string]: string | { [key: string]: string };
+  primary: string;
+  success: string;
+  danger: string;
+  warning: string;
+  info: string;
+  gray: string;
+  text: {
+    [key: string]: string;
+    light: string;
+    dark: string;
+    white: string;
+  };
+  primary100: string;
+  primary200: string;
+  primary300: string;
+  primary400: string;
+  primary600: string;
+  primary700: string;
+  primary800: string;
+  primary900: string;
+  success100: string;
+  success200: string;
+  success300: string;
+  success400: string;
+  success600: string;
+  success700: string;
+  success800: string;
+  success900: string;
+  danger100: string;
+  danger200: string;
+  danger300: string;
+  danger400: string;
+  danger600: string;
+  danger700: string;
+  danger800: string;
+  danger900: string;
+  warning100: string;
+  warning200: string;
+  warning300: string;
+  warning400: string;
+  warning600: string;
+  warning700: string;
+  warning800: string;
+  warning900: string;
+  gray100: string;
+  gray200: string;
+  gray300: string;
+  gray400: string;
+  gray600: string;
+  gray700: string;
+  gray800: string;
+  gray900: string;
+}
 
-const theme = {
+interface Transition {}
+
+interface Breakpoints {}
+
+interface Shadow {}
+
+interface BorderRadius {
+  default: string;
+  small: string;
+  large: string;
+  big: string;
+  round: string;
+  [key: string]: string;
+}
+
+interface Theme {
+  color: Color;
+  transitions: Transition;
+  breakpoints: Breakpoints;
+  shadow: Shadow;
+  borderRadius: BorderRadius;
+}
+
+const theme: Theme = {
   transitions: {
     //? Framer ?
   },
@@ -110,13 +187,12 @@ const theme = {
   },
 
   borderRadius: {
-    light: "0.75rem",
-    default: "0.375rem",
-    large: "0.5rem",
-    big: "1rem",
+    default: spacing(6),
+    small: spacing(3),
+    large: spacing(8),
+    big: spacing(16),
+    round: "50%",
   },
-
-  spacing: spacing,
 };
 
 export { theme };

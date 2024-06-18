@@ -1,5 +1,6 @@
 import { css } from "styled-components";
-import { spacing, theme } from "./style";
+import { spacing } from "./index";
+import { theme } from "./style";
 
 export const typographies = {
   lineHeight: {
@@ -35,7 +36,7 @@ export const typographies = {
 // },
 
 export const heading1 = css`
-  margin: ${theme.spacing(24)} 0 ${theme.spacing(16)};
+  margin: ${spacing(24)} 0 ${spacing(16)};
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.xxxl};
@@ -45,7 +46,7 @@ export const heading1 = css`
 `;
 
 export const heading2 = css`
-  margin: ${theme.spacing(24)} 0 ${theme.spacing(16)};
+  margin: ${spacing(24)} 0 ${spacing(16)};
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.xxl};
@@ -55,7 +56,7 @@ export const heading2 = css`
 `;
 
 export const heading3 = css`
-  margin: ${theme.spacing(24)} 0 ${theme.spacing(16)};
+  margin: ${spacing(24)} 0 ${spacing(16)};
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.xl};
@@ -65,7 +66,7 @@ export const heading3 = css`
 `;
 
 export const heading4 = css`
-  margin: ${theme.spacing(16)} 0 ${theme.spacing(12)};
+  margin: ${spacing(16)} 0 ${spacing(12)};
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.lg};
@@ -75,7 +76,7 @@ export const heading4 = css`
 `;
 
 export const heading5 = css`
-  margin: ${theme.spacing(12)} 0 ${theme.spacing(8)};
+  margin: ${spacing(12)} 0 ${spacing(8)};
   font-style: normal;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.md};
@@ -85,7 +86,7 @@ export const heading5 = css`
 `;
 
 export const heading6 = css`
-  margin: ${theme.spacing(12)} 0 ${theme.spacing(8)};
+  margin: ${spacing(12)} 0 ${spacing(8)};
   font-style: italic;
   font-weight: ${typographies.fontWeight.bold};
   font-size: ${typographies.fontSize.base};
