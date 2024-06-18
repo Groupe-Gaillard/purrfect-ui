@@ -1,18 +1,20 @@
-name: CI / Preprod / Storybook
+name: CI / Production
 
 on:
-  push:
-    branches:
-      - main
-    tags-ignore:
-      - '*'
+  workflow_dispatch:
+  release:
+    types:
+      - published
+
+env:
+  RELEASE_TAG: ${{ github.ref_name }}
 
 jobs:
   deploy-storybook:
-    name: deploy storybook to preproduction
+    name: deploy storybook to production
     environment:
-      name: Storybook - preproduction
-      url: https://matou-technologies-purrfect-ui-storybook.vercel.app/
+      name: Storybook - production
+      url: https://purrfect-ui-prod.vercel.app/
     runs-on: ubuntu-latest
     timeout-minutes: 10
     defaults:
@@ -31,4 +33,4 @@ jobs:
           GITHUB_DEPLOYMENT: false
           PRODUCTION: false
           ALIAS_DOMAINS: |
-            matou-technologies-purrfect-ui-storybook.vercel.app
+            purrfect-ui-prod.vercel.app
