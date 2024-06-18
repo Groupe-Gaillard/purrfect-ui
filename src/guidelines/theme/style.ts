@@ -82,7 +82,12 @@ interface Transition {}
 
 interface Breakpoints {}
 
-interface Shadow {}
+interface Shadows {
+  [key: string]: string;
+  paper: string;
+  base: string;
+  navigation: string;
+}
 
 interface BorderRadius {
   default: string;
@@ -97,7 +102,7 @@ interface Theme {
   color: Color;
   transitions: Transition;
   breakpoints: Breakpoints;
-  shadow: Shadow;
+  shadows: Shadows;
   borderRadius: BorderRadius;
 }
 
@@ -178,7 +183,7 @@ const theme: Theme = {
     gray900: "#111111",
   },
 
-  shadow: {
+  shadows: {
     paper:
       "0px 0px 0.25rem rgba(0, 0, 0, 0.07), 0px 0.25rem 2.5rem 1.875rem rgba(0, 0, 0, 0.04)",
     base: "0px 2.125rem 3.75rem -1.25rem rgba(0, 0, 0, 0.1)",
