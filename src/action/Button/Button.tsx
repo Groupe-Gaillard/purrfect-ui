@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { sizing, theme } from "../../guidelines/theme";
+import { getContrastYIQ, sizing, theme } from "../../guidelines/theme";
 
 const StyledButton = styled.button`
   padding: ${sizing(6)} ${sizing(12)};
@@ -17,49 +17,55 @@ const StyledButton = styled.button`
 `;
 
 const PrimaryButton = styled(StyledButton)`
-  color: ${theme.color.text.white};
+  color: ${theme.color.text[getContrastYIQ(theme.color.primary)]};
   background-color: ${theme.color.primary};
   &:hover:enabled {
+    color: ${theme.color.text[getContrastYIQ(theme.color.primary600)]};
     background-color: ${theme.color.primary600};
   }
 `;
 
 const SuccessButton = styled(StyledButton)`
-  color: ${theme.color.text.white};
+  color: ${theme.color.text[getContrastYIQ(theme.color.success)]};
   background-color: ${theme.color.success};
   &:hover:enabled {
+    color: ${theme.color.text[getContrastYIQ(theme.color.success600)]};
     background-color: ${theme.color.success600};
   }
 `;
 
 const DangerButton = styled(StyledButton)`
-  color: ${theme.color.text.white};
+  color: ${theme.color.text[getContrastYIQ(theme.color.danger)]};
   background-color: ${theme.color.danger};
   &:hover:enabled {
+    color: ${theme.color.text[getContrastYIQ(theme.color.danger600)]};
     background-color: ${theme.color.danger600};
   }
 `;
 
 const WarningButton = styled(StyledButton)`
-  color: ${theme.color.text.white};
+  color: ${theme.color.text[getContrastYIQ(theme.color.warning)]};
   background-color: ${theme.color.warning};
   &:hover:enabled {
+    color: ${theme.color.text[getContrastYIQ(theme.color.warning600)]};
     background-color: ${theme.color.warning600};
   }
 `;
 
 const InfoButton = styled(StyledButton)`
-  color: ${theme.color.text.white};
+  color: ${theme.color.text[getContrastYIQ(theme.color.info)]};
   background-color: ${theme.color.info};
   &:hover:enabled {
+    color: ${theme.color.text[getContrastYIQ(theme.color.info)]};
     background-color: ${theme.color.info};
   }
 `;
 
 const GrayButton = styled(StyledButton)`
-  color: ${theme.color.text.white};
+  color: ${theme.color.text[getContrastYIQ(theme.color.gray)]};
   background-color: ${theme.color.gray};
   &:hover:enabled {
+    color: ${theme.color.text[getContrastYIQ(theme.color.gray600)]};
     background-color: ${theme.color.gray600};
   }
 `;
@@ -68,7 +74,7 @@ const DefaultButton = styled(StyledButton)`
   color: ${theme.color.text.dark};
   background-color: ${theme.color.gray100};
   &:hover:enabled {
-    background-color: ${theme.color.primary600};
+    background-color: ${theme.color.gray200};
   }
 `;
 
