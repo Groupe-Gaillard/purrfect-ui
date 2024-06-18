@@ -1,4 +1,4 @@
-export type { HexColor } from "../..//utils/utils";
+export type { HexColor } from "../../utils/utils";
 export { getContrastYIQ, spacing } from "../../utils/utils";
 export { theme } from "./style";
 export {
