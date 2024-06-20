@@ -7,13 +7,7 @@ import Checkbox from "./Checkbox";
 describe("Checkbox", () => {
   it("Should render the checkbox", () => {
     render(
-      <Checkbox
-        label="Meow"
-        isDisabled={false}
-        value=""
-        className=""
-        defaultSelected={false}
-      />,
+      <Checkbox label="Meow" isDisabled={false} defaultSelected={false} />,
     );
     const checkbox = screen.getByText("Meow");
 

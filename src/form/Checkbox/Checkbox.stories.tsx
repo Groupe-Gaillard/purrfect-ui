@@ -21,7 +21,6 @@ export const checkbox: Story = {
     label: "Meow",
     isDisabled: false,
     value: "meow",
-    className: "",
   },
   render: (args) => (
     <>
@@ -41,7 +40,6 @@ export const checkboxDefaultSelected: Story = {
     label: "Meow",
     isDisabled: false,
     value: "default",
-    className: "",
     defaultSelected: true,
     isSelected: true,
   },
@@ -63,7 +61,6 @@ export const checkboxDisabled: Story = {
     label: "Meow",
     isDisabled: true,
     value: "disabled",
-    className: "",
   },
   render: (args) => (
     <>
