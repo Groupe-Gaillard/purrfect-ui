@@ -23,6 +23,7 @@ type SliderProps = {
   | "isDisabled"
   | "minValue"
   | "maxValue"
+  | "onChange"
   | "onChangeEnd"
   | "step"
   | "value"
