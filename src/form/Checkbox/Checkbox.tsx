@@ -2,8 +2,10 @@ import React from "react";
 import {
   Checkbox as AriaCheckbox,
   CheckboxProps as AriaCheckboxProps,
+  Label,
 } from "react-aria-components";
 import styled from "styled-components";
+import { theme } from "../../guidelines/theme";
 
 const StyledCheckbox = styled(AriaCheckbox)`
   display: flex;
@@ -69,6 +71,10 @@ const StyledCheckbox = styled(AriaCheckbox)`
   }
 `;
 
+const StyledLabel = styled(Label)`
+  color: ${theme.color.text.dark};
+`;
+
 type CheckboxProps = {
   className?: string;
   label?: string;
@@ -85,7 +91,7 @@ const Checkbox = (props: CheckboxProps) => {
           <polyline points="1 9 7 14 15 4" />
         </svg>
       </div>
-      {props.label}
+      <StyledLabel>{props.label}</StyledLabel>
     </StyledCheckbox>
   );
 };
