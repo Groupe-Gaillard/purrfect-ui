@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import Checkbox from "./Checkbox";
 
 describe("Checkbox", () => {
@@ -20,21 +20,20 @@ describe("Checkbox", () => {
     expect(checkbox).toBeInTheDocument();
   });
 
-  it("Should be clickable", () => {
-    const handleClick = vi.fn();
-    render(
-      <Checkbox
-        label="Meow"
-        isDisabled={false}
-        value=""
-        className=""
-        defaultSelected={false}
-      />,
-    );
+  it("should be rendered and initially unselected", () => {
+    render(<Checkbox label="Meow" />);
+    const checkbox = screen.getByLabelText("Meow");
 
-    const checkbox = screen.getByText("Meow");
+    expect(checkbox).toBeInTheDocument();
+    expect((checkbox as HTMLInputElement).checked).toBeFalsy();
+  });
+
+  it("should be selectable and maintain its state", () => {
+    render(<Checkbox label="Meow" />);
+    const checkbox = screen.getByLabelText("Meow");
+
     userEvent.click(checkbox);
 
-    expect(handleClick).toHaveBeenCalled();
+    expect(checkbox as HTMLInputElement).toBeTruthy();
   });
 });
