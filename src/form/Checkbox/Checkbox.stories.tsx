@@ -25,7 +25,7 @@ export const checkbox: Story = {
   },
   render: (args) => (
     <>
-      <Title style={{ width: "100%" }}>Checkbox</Title>
+      <Title>Checkbox</Title>
       <div
         style={{
           display: "flex",
