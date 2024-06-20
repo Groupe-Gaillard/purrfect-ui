@@ -47,7 +47,7 @@ export const checkboxDefaultSelected: Story = {
   },
   render: (args) => (
     <>
-      <Title style={{ width: "100%" }}>Checkbox</Title>
+      <Title>Checkbox</Title>
       <div
         style={{
           display: "flex",
@@ -67,7 +67,7 @@ export const checkboxDisabled: Story = {
   },
   render: (args) => (
     <>
-      <Title style={{ width: "100%" }}>Checkbox</Title>
+      <Title>Checkbox</Title>
       <div
         style={{
           display: "flex",
