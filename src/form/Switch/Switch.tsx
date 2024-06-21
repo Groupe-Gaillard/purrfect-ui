@@ -8,12 +8,10 @@ import styled from "styled-components";
 import { body1, sizing, theme } from "../../guidelines/theme";
 
 const StyledSwitch = styled(AriaSwitch)<{ isDisabled?: boolean }>`
-  ${({ isDisabled }) =>
-    isDisabled &&
-    `
+  &[data-disabled="true"] {
     opacity: 0.5;
     pointer-events: none;
-  `}
+  }
 
   display: flex;
   align-items: center;
