@@ -9,7 +9,7 @@ import {
   SliderTrack,
 } from "react-aria-components";
 import styled from "styled-components";
-import { theme } from "../../guidelines/theme";
+import { body1, theme } from "../../guidelines/theme";
 
 type SliderProps = {
   label: string;
@@ -46,12 +46,14 @@ const Slider = (props: SliderProps) => {
   const StyledLabel = styled(Label)`
     grid-area: label;
     [data-disabled] & {
+      ${body1};
       color: ${theme.color.text.light};
     }
   `;
   const StyledSliderOutput = styled(SliderOutput)`
     grid-area: output;
     [data-disabled] & {
+      ${body1};
       color: ${theme.color.text.light};
     }
   `;

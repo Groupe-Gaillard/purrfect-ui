@@ -5,13 +5,7 @@ import {
   Label,
 } from "react-aria-components";
 import styled from "styled-components";
-import { theme } from "../../guidelines/theme";
-
-const backgroundColor = "#DADADA";
-const indicatorColor = "#5B51D1";
-const selectedBackgroundColor = "#5B51D1";
-const selectedIndicatorColor = "#DADADA";
-const borderColor = "#979797";
+import { body1, sizing, theme } from "../../guidelines/theme";
 
 const StyledSwitch = styled(AriaSwitch)<{ isDisabled?: boolean }>`
   ${({ isDisabled }) =>
@@ -21,74 +15,67 @@ const StyledSwitch = styled(AriaSwitch)<{ isDisabled?: boolean }>`
     pointer-events: none;
   `}
 
-  --background-color: ${backgroundColor};
-  --indicator-color: ${indicatorColor};
-  --selected-background-color: ${selectedBackgroundColor};
-  --selected-indicator-color: ${selectedIndicatorColor};
-  --border-color: ${borderColor};
-
   display: flex;
   align-items: center;
-  gap: 0.571rem;
-  font-size: 1.143rem;
-  color: var(--text-color);
+  gap: ${sizing(10)};
+  ${body1}
   forced-color-adjust: none;
 
   .indicator {
-    width: 2rem;
-    height: 1.143rem;
-    border: 2px solid var(--border-color);
-    background: var(--background-color);
-    border-radius: 1.143rem;
+    width: ${sizing(32)};
+    height: ${sizing(18)};
+    border: 2px solid ${theme.color.gray};
+    background: ${theme.color.primary100};
+    border-radius: ${sizing(18)};
     transition: all 200ms;
 
     &:before {
       content: "";
       display: block;
-      margin: 0.143rem;
-      width: 0.857rem;
-      height: 0.857rem;
-      background: var(--indicator-color);
-      border-radius: 16px;
+      margin: ${sizing(2)};
+      width: ${sizing(14)};
+      height: ${sizing(14)};
+      background: ${theme.color.primary};
+      border-radius: ${sizing(16)};
       transition: all 200ms;
     }
   }
 
   &[data-pressed] .indicator {
-    border-color: var(--border-color);
+    border-color: ${theme.color.gray};
 
     &:before {
-      background: var(--selected-indicator-color);
+      background: ${theme.color.primary100};
     }
   }
 
   &[data-selected] {
     .indicator {
-      border-color: var(--selected-indicator-color);
-      background: var(--selected-background-color);
+      border-color: ${theme.color.primary100};
+      background: ${theme.color.primary};
 
       &:before {
-        background: var(--background-color);
+        background: ${theme.color.primary100};
         transform: translateX(100%);
       }
     }
 
     &[data-pressed] {
       .indicator {
-        border-color: var(--selected-indicator-color);
-        background: var(--selected-background-color);
+        border-color: ${theme.color.gray200};
+        background: ${theme.color.primary};
       }
     }
   }
 
   &[data-focus-visible] .indicator {
-    outline: 2px solid var(--focus-ring-color);
-    outline-offset: 2px;
+    outline: 2px solid ${theme.color.primary};
+    outline-offset: ${sizing(2)};
   }
 `;
 
 const StyledLabel = styled(Label)`
-  color: ${theme.color.text.dark};
+  ${body1};
 `;
 
 type SwitchProps = {
