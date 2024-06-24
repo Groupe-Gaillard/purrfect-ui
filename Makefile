@@ -20,6 +20,10 @@ down:
 	docker compose down --remove-orphans
 .PHONY: down
 
+pnpm: $(c)
+	docker compose exec storybook pnpm $(c)
+.PHONY: down
+
 logs: SERVICE?=
 logs: OPTS?=--follow --timestamps --tail=0
 logs:

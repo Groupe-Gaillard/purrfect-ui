@@ -30,6 +30,8 @@ interface Color {
   warning: string;
   info: string;
   gray: string;
+  white: string;
+  black: string;
   text: {
     [key: string]: string;
     light: string;
@@ -126,6 +128,8 @@ const theme: Theme = {
     warning: "#ffb000",
     info: "#17a2b8",
     gray: "#888888",
+    white: "#ffffff",
+    black: "#000000",
     text: {
       light: "#DADADA",
       dark: "#2F2F2F",
