@@ -3,6 +3,7 @@ import { fn } from "@storybook/test";
 import React from "react";
 import styled from "styled-components";
 import { heading1, sizing } from "../../guidelines/theme/index";
+import Radio from "../Radio/Radio";
 import RadioGroup from "./RadioGroup";
 
 const meta: Meta<typeof RadioGroup> = {
@@ -35,10 +36,35 @@ const radiosButton = [
   },
 ];
 
+const radiosButtonDisabled = [
+  {
+    label: "Meow",
+    value: "meow",
+    id: "idMeow",
+  },
+  {
+    label: "Miaou",
+    value: "miaou",
+    id: "idMiaou",
+  },
+  {
+    label: "Maullar",
+    value: "maullar",
+    id: "idMaullar",
+    isDisabled: true,
+  },
+];
+const radioSolo = [
+  {
+    label: "RadioGroup solo button",
+    value: "meow",
+    id: "idMeow",
+  },
+];
+
 export const radioGroupBase: Story = {
   args: {
     label: "Boutons radio",
-    radio: radiosButton,
     className: "",
     helperText: "Helper text or description",
     id: "idRadioGroup",
@@ -52,7 +78,11 @@ export const radioGroupBase: Story = {
   render: (args) => (
     <>
       <Title>RadioGroup</Title>
-      <RadioGroup {...args} />
+      <RadioGroup {...args}>
+        {radiosButton.map((oneRadio, index) => (
+          <Radio key={index} {...oneRadio} />
+        ))}
+      </RadioGroup>
     </>
   ),
 };
@@ -60,14 +90,17 @@ export const radioGroupBase: Story = {
 export const radioGroupDisabled: Story = {
   args: {
     label: "RadioButton isDisabled",
-    radio: radiosButton,
     isDisabled: true,
     onChange: fn(),
   },
   render: (args) => (
     <>
       <Title>RadioGroup is disabled</Title>
-      <RadioGroup {...args} />
+      <RadioGroup {...args}>
+        {radiosButton.map((oneRadio, index) => (
+          <Radio key={index} {...oneRadio} />
+        ))}
+      </RadioGroup>
     </>
   ),
 };
@@ -75,30 +108,17 @@ export const radioGroupDisabled: Story = {
 export const radioGroupOneRadioDisabled: Story = {
   args: {
     label: "Radio isDisabled",
-    radio: [
-      {
-        label: "Meow",
-        value: "meow",
-        id: "idMeow",
-      },
-      {
-        label: "Miaou",
-        value: "miaou",
-        id: "idMiaou",
-      },
-      {
-        label: "Maullar",
-        value: "maullar",
-        id: "idMaullar",
-        isDisabled: true,
-      },
-    ],
+
     onChange: fn(),
   },
   render: (args) => (
     <>
       <Title>RadioGroup one radio is disabled</Title>
-      <RadioGroup {...args} />
+      <RadioGroup {...args}>
+        {radiosButtonDisabled.map((oneRadio, index) => (
+          <Radio key={index} {...oneRadio} />
+        ))}
+      </RadioGroup>
     </>
   ),
 };
@@ -106,7 +126,6 @@ export const radioGroupOneRadioDisabled: Story = {
 export const radioGroupReadOnly: Story = {
   args: {
     label: "RadioGroup isReadOnly",
-    radio: radiosButton,
     isReadOnly: true,
     onChange: fn(),
     defaultValue: "miaou",
@@ -114,7 +133,11 @@ export const radioGroupReadOnly: Story = {
   render: (args) => (
     <>
       <Title>RadioGroup is read only</Title>
-      <RadioGroup {...args} />
+      <RadioGroup {...args}>
+        {radiosButton.map((oneRadio, index) => (
+          <Radio key={index} {...oneRadio} />
+        ))}
+      </RadioGroup>
     </>
   ),
 };
@@ -122,7 +145,6 @@ export const radioGroupReadOnly: Story = {
 export const radioGroupIsRequired: Story = {
   args: {
     label: "RadioGroup isRequired",
-    radio: radiosButton,
     helperText:
       "You can press the submit button to see the error message when the field is required",
     isRequired: true,
@@ -132,7 +154,11 @@ export const radioGroupIsRequired: Story = {
     <>
       <Title>RadioGroup is required</Title>
       <form>
-        <RadioGroup {...args} />
+        <RadioGroup {...args}>
+          {radiosButton.map((oneRadio, index) => (
+            <Radio key={index} {...oneRadio} />
+          ))}
+        </RadioGroup>
         <button type="submit">Submit</button>
       </form>
     </>
@@ -141,19 +167,16 @@ export const radioGroupIsRequired: Story = {
 
 export const radioGroupSoloRadio: Story = {
   args: {
-    radio: [
-      {
-        label: "RadioGroup solo button",
-        value: "meow",
-        id: "idMeow",
-      },
-    ],
     onChange: fn(),
   },
   render: (args) => (
     <>
       <Title>RadioGroup juste one radio button</Title>
-      <RadioGroup {...args} />
+      <RadioGroup {...args}>
+        {radioSolo.map((oneRadio, index) => (
+          <Radio key={index} {...oneRadio} />
+        ))}
+      </RadioGroup>
     </>
   ),
 };
@@ -161,14 +184,17 @@ export const radioGroupSoloRadio: Story = {
 export const radioGroupHorizontal: Story = {
   args: {
     label: "RadioGroup horizontal",
-    radio: radiosButton,
     onChange: fn(),
     orientation: "horizontal",
   },
   render: (args) => (
     <>
       <Title>RadioGroup orientation is horizontal</Title>
-      <RadioGroup {...args} />
+      <RadioGroup {...args}>
+        {radiosButton.map((oneRadio, index) => (
+          <Radio key={index} {...oneRadio} />
+        ))}
+      </RadioGroup>
     </>
   ),
 };

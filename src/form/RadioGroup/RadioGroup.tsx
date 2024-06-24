@@ -9,8 +9,6 @@ import {
 import styled from "styled-components";
 import { body1, sizing, theme } from "../../guidelines/theme";
 import { typographies } from "../../guidelines/theme/typographies";
-import Radio from "../Radio/Radio";
-import type { RadioProps } from "../Radio/Radio";
 
 const StyledLabel = styled(Label)`
   ${body1}
@@ -33,7 +31,7 @@ const StyledFieldError = styled(FieldError)`
 type RadioGroupProps = {
   helperText?: string;
   label?: string;
-  radio: RadioProps[];
+  children: React.ReactNode;
 } & Pick<
   AriaRadioGroupProps,
   | "className"
@@ -66,9 +64,7 @@ const RadioGroup = (props: RadioGroupProps) => {
         {props.label}
         {props.isRequired && <StyledIsRequired> *</StyledIsRequired>}
       </StyledLabel>
-      {props.radio.map((oneRadio, index) => (
-        <Radio key={index} {...oneRadio} />
-      ))}
+      {props.children}
       <StyledText slot="description">{props.helperText}</StyledText>
       <StyledFieldError />
     </StyledRadioGroup>
