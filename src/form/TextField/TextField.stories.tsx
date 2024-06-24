@@ -34,6 +34,7 @@ export const textFieldBase: Story = {
   args: {
     autoFocus: true,
     helperText: "Helper text or description",
+    id: "myID",
     inputMode: "text",
     isDisabled: false,
     isInvalid: false,

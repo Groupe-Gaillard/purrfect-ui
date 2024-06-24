@@ -64,6 +64,7 @@ type TextFieldProps = { label?: string; helperText?: string } & Pick<
   | "autoFocus"
   | "className"
   | "defaultValue"
+  | "id"
   | "inputMode"
   | "isDisabled"
   | "isInvalid"
