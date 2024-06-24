@@ -14,6 +14,9 @@ const StyledCheckboxContainer = styled(AriaCheckbox)`
   font-size: 1.143rem;
   color: ${theme.color.text.dark};
   forced-color-adjust: none;
+  &[data-disabled] {
+    opacity: 0.5;
+  }
 `;
 
 const StyledCheckbox = styled.div`
