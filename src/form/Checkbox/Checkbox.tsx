@@ -69,10 +69,18 @@ const StyledSvg = styled.svg`
     stroke: none;
     fill: ${theme.color.gray100};
   }
+
+  [data-hovered] & {
+    cursor: pointer;
+  }
 `;
 
 const StyledLabel = styled(Label)`
   color: ${theme.color.text.dark};
+
+  [data-hovered] & {
+    cursor: pointer;
+  }
 `;
 
 type CheckboxProps = {

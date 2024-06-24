@@ -79,6 +79,9 @@ const Slider = (props: SliderProps) => {
       top: 50%;
       transform: translateY(-50%);
     }
+    &[data-hovered] {
+      cursor: pointer;
+    }
   `;
   const StyledSliderThumb = styled(SliderThumb)`
     width: 1.429rem;
