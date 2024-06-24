@@ -2,30 +2,30 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { describe, expect, it } from "vitest";
-import TextField from "./TextArea";
+import TextArea from "./TextArea";
 
-describe("TextField", () => {
-  it("Should show a textField", () => {
-    render(<TextField label="My textfield" />);
-    const textField = screen.getByLabelText("My textfield");
+describe("textArea", () => {
+  it("Should show a textArea", () => {
+    render(<TextArea label="My textarea" />);
+    const textArea = screen.getByLabelText("My textarea");
 
-    expect(textField).toBeInTheDocument();
+    expect(textArea).toBeInTheDocument();
   });
 
   it("Input value should change when user is typing", async () => {
-    render(<TextField label="My textfield" name="my-textfield" />);
+    render(<TextArea label="My textarea" name="my-textarea" />);
     const user = userEvent.setup();
-    const textField = screen.getByRole("textbox");
+    const textArea = screen.getByRole("textbox");
 
-    await user.type(textField, "test texfield");
+    await user.type(textArea, "test texfield");
 
-    expect(textField).toHaveValue("test texfield");
+    expect(textArea).toHaveValue("test texfield");
   });
 
   it("Input value should be on error", async () => {
     render(
       <form>
-        <TextField label="My textfield" name="my-textfield" isRequired={true} />
+        <TextArea label="My textarea" name="my-textarea" isRequired={true} />
         <button type="submit">Submit</button>
       </form>,
     );
