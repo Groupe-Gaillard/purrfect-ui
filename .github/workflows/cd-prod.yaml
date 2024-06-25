@@ -24,10 +24,9 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
             - args: [--global, gulp, prettier, typescript]
-      - name: Install dependencies 📦️
-        run: pnpm install --frozen-lockfile
-      - name: Build 🔨
-        run: pnpm build
-      - uses: simenandre/publish-with-pnpm@v1
-        with:
-          npm-auth-token: ${{ secrets.NPM_TOKEN }}
+      - name: Install dependencies and build 🔧
+        run: pnpm install --frozen-lockfile && pnpm build
+      - name: Publish package on NPM 📦
+        run: pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
