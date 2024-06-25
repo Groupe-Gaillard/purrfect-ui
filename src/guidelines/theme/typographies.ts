@@ -125,3 +125,23 @@ export const narrow = css`
   font-family: sans-serif;
   color: ${theme.color.text.dark};
 `;
+
+export const buttonNormal = css`
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: ${typographies.fontWeight.bold};
+  font-size: ${typographies.fontSize.base};
+  line-height: ${typographies.lineHeight.base};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+`;
+
+export const buttonLarge = css`
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: ${typographies.fontWeight.bold};
+  font-size: ${typographies.fontSize.md};
+  line-height: ${typographies.lineHeight.md};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+`;
