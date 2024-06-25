@@ -189,10 +189,10 @@ const theme: Theme = {
 
   shadows: {
     paper:
-      "0px 0px 0.25rem rgba(0, 0, 0, 0.07), 0px 0.25rem 2.5rem 1.875rem rgba(0, 0, 0, 0.04)",
-    base: "0px 2.125rem 3.75rem -1.25rem rgba(0, 0, 0, 0.1)",
+      "0px 0px 4px rgba(0, 0, 0, 0.07), 0px 4px 40px 30px rgba(0, 0, 0, 0.04)",
+    base: "0px 34px 60px -20px rgba(0, 0, 0, 0.1)",
     navigation:
-      "0px 0px 0.1875rem rgba(0, 0, 0, 0.1), 0px 0.4375rem 1rem rgba(82, 62, 56, 0.07)",
+      "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 7px 16px rgba(82, 62, 56, 0.07)",
   },
 
   borderRadius: {

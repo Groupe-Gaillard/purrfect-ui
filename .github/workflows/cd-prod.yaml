@@ -1,0 +1,33 @@
+name: CD / Production
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['CI / Production']
+    types: [completed]
+
+jobs:
+  deploy-npm:
+    name: Deploy the package on NPM
+    if: github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == null
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescript]
+      - name: Install dependencies 📦️
+        run: pnpm install --frozen-lockfile
+      - name: Build 🔨
+        run: pnpm build
+      - uses: simenandre/publish-with-pnpm@v1
+        with:
+          npm-auth-token: ${{ secrets.NPM_TOKEN }}

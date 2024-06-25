@@ -16,24 +16,16 @@ const Title = styled.h1`
 `;
 
 const Wrapper = styled.div`
-  align-items: center;
-  background-color: ${theme.color.gray100};
-  border-radius: ${theme.borderRadius.large};
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: ${sizing(16)};
-  height: 300px;
-  justify-content: center;
-  padding: ${sizing(16)};
 `;
 
 const Square = styled.div<{
-  bgColor: string | undefined;
   textColor: string;
+  shadow: string;
 }>`
   align-items: center;
-  background-color: ${({ bgColor }) => bgColor};
-  color: ${({ textColor }) => textColor};
   display: flex;
   font-family: sans-serif;
   font-size: 0.875rem;
@@ -43,6 +35,8 @@ const Square = styled.div<{
   padding: ${sizing(16)};
   text-transform: uppercase;
   width: 150px;
+  box-shadow: ${({ shadow }) => shadow ?? theme.shadows.base};
+  border: 1px solid ${theme.color.gray100};
 `;
 
 export const Shadows: Story = {
@@ -61,11 +55,8 @@ export const Shadows: Story = {
             {Object.entries(theme.shadows).map(([key, value]) => (
               <Square
                 key={key}
-                bgColor={theme.color.success600}
                 textColor={theme.color.text[getContrastYIQ(value)]}
-                style={{
-                  boxShadow: theme.shadows[key] ?? theme.shadows.default,
-                }}
+                shadow={value}
               >
                 {key}
               </Square>

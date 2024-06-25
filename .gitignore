@@ -4,3 +4,4 @@ key.pem
 certs/*
 storybook-static/*
 tsconfig.tsbuildinfo
+dist/*
