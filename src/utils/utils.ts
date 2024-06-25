@@ -32,10 +32,35 @@ export const getContrastYIQ = (hexColor: string | HexColor) => {
 };
 
 /**
+ * Sizing
  * Function to convert a pixel value to a rem value.
- * */
-export const sizing = (value: number): string => {
-  return `${value / 16}rem`;
+ * |   PX   |    Rem    |
+ * |--------|-----------|
+ * | 1px    | 0,0625rem |
+ * | 2px    | 0,125rem  |
+ * | 3px    | 0,1875rem |
+ * | 4px    | 0,25rem   |
+ * | 5px    | 0,3125rem |
+ * | 6px    | 0,375rem  |
+ * | 7px    | 0,4375rem |
+ * | 8px    | 0,5rem    |
+ * | 10px   | 0,625rem  |
+ * | 12px   | 0,75rem   |
+ * | 14px   | 0,875rem  |
+ * | 16px   | 1rem      |
+ * | 24px   | 1,5rem    |
+ * | 32px   | 2rem      |
+ * | 40px   | 2,5rem    |
+ * | 60px   | 3,75rem   |
+ * | 80px   | 5rem      |
+ * | 100px  | 6,25rem   |
+ */
+export const sizing = (...values: Array<number>): string => {
+  const valuesInREM = values.map((oneValue) => {
+    return `${oneValue / 16}rem`;
+  });
+
+  return valuesInREM.join(" ");
 };
 
 /**

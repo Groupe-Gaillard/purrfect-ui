@@ -3,7 +3,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import Divider from "src/display/Divider/Divider";
 import { body1, heading1, sizing } from "src/guidelines/theme";
-import { typographies } from "src/guidelines/theme/typographies";
+import { theme } from "src/guidelines/theme";
 
 const meta: Meta<typeof Divider> = {
   component: Divider,
@@ -20,7 +20,7 @@ const Title = styled.h1`
 
 const StyleText = styled.p`
   ${body1};
-  font-size: ${typographies.fontSize.sm};
+  font-size: ${theme.typographies.fontSize.sm};
 `;
 
 type Orientation = "horizontal" | "vertical";

@@ -17,6 +17,7 @@ const StyledLabel = styled(Label)`
 const StyledText = styled(Text)`
   ${narrow};
   width: 100%;
+  font-size: ${theme.typographies.fontSize.sm};
 `;
 
 const StyledIsRequired = styled.span`

@@ -19,7 +19,6 @@ import {
 import styled from "styled-components";
 import Button from "src/action/Button/Button";
 import { body1, sizing, theme } from "src/guidelines/theme";
-import { typographies } from "src/guidelines/theme/typographies";
 import Close from "src/icons/Close";
 
 const StyledDatePicker = styled(AriaDatePicker)`
@@ -130,7 +129,7 @@ const StyledHeading = styled(Heading)`
   flex: 1;
   margin: 0;
   text-align: center;
-  font-size: ${typographies.fontSize.lg};
+  font-size: ${theme.typographies.fontSize.lg};
 `;
 
 const StyledButtonCalendar = styled(Button)`
@@ -199,7 +198,7 @@ const StyledButtonClose = styled(Button)`
 
 const StyledText = styled(Text)`
   ${body1};
-  font-size: ${typographies.fontSize.sm};
+  font-size: ${theme.typographies.fontSize.sm};
 `;
 
 const StyledIsRequired = styled.span`
