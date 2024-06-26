@@ -62,6 +62,8 @@ const radioSolo = [
   },
 ];
 
+const orientationArray = ["horizontal", "vertical"];
+
 export const radioGroupBase: Story = {
   args: {
     label: "Boutons radio",
@@ -73,7 +75,16 @@ export const radioGroupBase: Story = {
     isReadOnly: false,
     isRequired: false,
     onChange: fn(),
+    orientation: "vertical",
     defaultValue: "miaou",
+  },
+  argTypes: {
+    orientation: {
+      options: orientationArray,
+      mapping: { orientationArray },
+      control: { type: "select" },
+      description: "Display horizontaly or verticaly",
+    },
   },
   render: (args) => (
     <>
@@ -186,6 +197,14 @@ export const radioGroupHorizontal: Story = {
     label: "RadioGroup horizontal",
     onChange: fn(),
     orientation: "horizontal",
+  },
+  argTypes: {
+    orientation: {
+      options: orientationArray,
+      mapping: { orientationArray },
+      control: { type: "select" },
+      description: "Display horizontaly or verticaly",
+    },
   },
   render: (args) => (
     <>

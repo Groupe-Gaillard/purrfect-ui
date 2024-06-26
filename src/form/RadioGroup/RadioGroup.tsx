@@ -6,7 +6,7 @@ import {
   Label,
   Text,
 } from "react-aria-components";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { body1, sizing, theme } from "src/guidelines/theme";
 import { typographies } from "src/guidelines/theme/typographies";
 
@@ -16,6 +16,7 @@ const StyledLabel = styled(Label)`
 
 const StyledText = styled(Text)`
   ${body1};
+  width: 100%;
   font-size: ${typographies.fontSize.sm};
 `;
 
@@ -25,7 +26,22 @@ const StyledIsRequired = styled.span`
 
 const StyledFieldError = styled(FieldError)`
   ${body1};
+  width: 100%;
   color: ${theme.color.danger};
+`;
+
+type Orientation = "horizontal" | "vertical";
+const StyledRadioGroup = styled(AriaRadioGroup)<{ orientation?: Orientation }>`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${sizing(8)};
+  color: ${theme.color.text.dark};
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+  ${({ orientation }) => css`
+    flex-direction: ${orientation === "horizontal" ? "row" : "column"};
+  `}
 `;
 
 type RadioGroupProps = {
@@ -47,17 +63,6 @@ type RadioGroupProps = {
 >;
 
 const RadioGroup = (props: RadioGroupProps) => {
-  const StyledRadioGroup = styled(AriaRadioGroup)`
-    display: flex;
-    flex-direction: ${props.orientation === "horizontal" ? "row" : "column"};
-    flex-wrap: wrap;
-    gap: ${sizing(8)};
-    color: ${theme.color.text.dark};
-    &[data-disabled] {
-      opacity: 0.5;
-    }
-  `;
-
   return (
     <StyledRadioGroup {...props}>
       <StyledLabel>
