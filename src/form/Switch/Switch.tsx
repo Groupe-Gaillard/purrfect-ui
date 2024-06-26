@@ -70,10 +70,18 @@ const StyledSwitch = styled(AriaSwitch)<{ isDisabled?: boolean }>`
     outline: 2px solid ${theme.color.primary};
     outline-offset: ${sizing(2)};
   }
+
+  &[data-hovered] {
+    cursor: pointer;
+  }
 `;
 
 const StyledLabel = styled(Label)`
   ${body1};
+
+  [data-hovered] & {
+    cursor: pointer;
+  }
 `;
 
 type SwitchProps = {
