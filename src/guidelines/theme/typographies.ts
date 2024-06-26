@@ -126,6 +126,16 @@ export const narrow = css`
   color: ${theme.color.text.dark};
 `;
 
+export const buttonSmall = css`
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: ${typographies.fontWeight.bold};
+  font-size: ${typographies.fontSize.sm};
+  line-height: ${typographies.lineHeight.base};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+`;
+
 export const buttonNormal = css`
   font-family: sans-serif;
   font-style: normal;

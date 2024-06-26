@@ -5,7 +5,11 @@ import {
 } from "react-aria-components";
 import styled, { css } from "styled-components";
 import { getContrastYIQ, sizing, theme } from "src/guidelines/theme";
-import { buttonLarge, buttonNormal } from "src/guidelines/theme/typographies";
+import {
+  buttonLarge,
+  buttonNormal,
+  buttonSmall,
+} from "src/guidelines/theme/typographies";
 
 export type Variant =
   | "primary"
@@ -36,7 +40,7 @@ const buttonSize = (size: Size = "normal") => {
         height: ${sizing(24)};
         padding: 0px ${sizing(16)};
         border-radius: ${theme.borderRadius.default};
-        ${buttonNormal};
+        ${buttonSmall};
 
         & > svg {
           height: ${sizing(16)};
@@ -116,7 +120,7 @@ const StyledButton = styled(AriaButton)<{
   `};
 
   &:disabled {
-    opacity: 0.7;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 `;
