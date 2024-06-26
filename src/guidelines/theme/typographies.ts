@@ -1,6 +1,6 @@
 import { css } from "styled-components";
-import { sizing } from "./index";
-import { theme } from "./style";
+import { sizing } from "src/guidelines/theme/index";
+import { theme } from "src/guidelines/theme/style";
 
 export const typographies = {
   lineHeight: {

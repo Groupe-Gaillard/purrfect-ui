@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { describe, expect, it } from "vitest";
-import TextArea from "./TextArea";
+import TextArea from "src/form/TextArea/TextArea";
 
 describe("textArea", () => {
   it("Should show a textArea", () => {

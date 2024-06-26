@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import React from "react";
 import styled from "styled-components";
-import { heading1, sizing } from "../../guidelines/theme";
-import TextArea from "./TextArea";
+import TextArea from "src/form/TextArea/TextArea";
+import { heading1, sizing } from "src/guidelines/theme";
 
 const meta: Meta<typeof TextArea> = {
   component: TextArea,

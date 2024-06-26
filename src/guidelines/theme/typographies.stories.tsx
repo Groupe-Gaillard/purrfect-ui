@@ -12,7 +12,7 @@ import {
   heading6,
   narrow,
   sizing,
-} from "./index";
+} from "src/guidelines/theme/index";
 
 const meta: Meta = {};
 

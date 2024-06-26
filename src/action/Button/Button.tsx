@@ -32,24 +32,42 @@ const buttonSize = (size: Size = "normal") => {
   switch (size) {
     case "small":
       return css`
+        gap: ${sizing(8)};
         height: ${sizing(24)};
         padding: 0px ${sizing(16)};
         border-radius: ${theme.borderRadius.default};
         ${buttonNormal};
+
+        & > svg {
+          height: ${sizing(16)};
+          width: ${sizing(16)};
+        }
       `;
     case "normal":
       return css`
+        gap: ${sizing(12)};
         height: ${sizing(36)};
         padding: 0px ${sizing(24)};
         border-radius: ${theme.borderRadius.default};
         ${buttonNormal};
+
+        & > svg {
+          height: ${sizing(24)};
+          width: ${sizing(24)};
+        }
       `;
     case "large":
       return css`
+        gap: ${sizing(16)};
         height: ${sizing(48)};
         padding: 0px ${sizing(32)};
         border-radius: ${theme.borderRadius.large};
         ${buttonLarge};
+
+        & > svg {
+          height: ${sizing(32)};
+          width: ${sizing(32)};
+        }
       `;
   }
 };
@@ -109,11 +127,16 @@ const Button = ({
   kind,
   variant,
   size,
+  leadingIcon,
+  trailingIcon,
   ...other
 }: AriaButtonProps & {
   kind?: Kind;
   variant?: Variant;
   size?: Size;
+  leadingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
+  children?: React.ReactNode;
 }) => {
   return (
     <StyledButton
@@ -123,7 +146,9 @@ const Button = ({
       variant={variant}
       size={size}
     >
+      {leadingIcon}
       {children}
+      {trailingIcon}
     </StyledButton>
   );
 };

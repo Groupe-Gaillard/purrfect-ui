@@ -5,7 +5,7 @@ import {
   Label,
 } from "react-aria-components";
 import styled from "styled-components";
-import { sizing, theme } from "../../guidelines/theme";
+import { sizing, theme } from "src/guidelines/theme";
 
 const StyledCheckboxContainer = styled(AriaCheckbox)`
   display: flex;

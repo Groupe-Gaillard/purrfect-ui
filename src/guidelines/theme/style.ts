@@ -1,4 +1,4 @@
-import { sizing } from "./index";
+import { sizing } from "src/guidelines/theme/index";
 
 /* Size
 | px     | rem       |

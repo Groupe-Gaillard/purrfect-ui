@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { getContrastYIQ, sizing, theme } from "./index";
-import { heading1 } from "./typographies";
+import { getContrastYIQ, sizing, theme } from "src/guidelines/theme/index";
+import { heading1 } from "src/guidelines/theme/typographies";
 
 const meta: Meta = {};
 

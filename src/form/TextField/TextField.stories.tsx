@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import React from "react";
 import styled from "styled-components";
-import { heading1, sizing } from "../../guidelines/theme";
-import TextField from "./TextField";
+import TextField from "src/form/TextField/TextField";
+import { heading1, sizing } from "src/guidelines/theme";
 
 const meta: Meta<typeof TextField> = {
   component: TextField,

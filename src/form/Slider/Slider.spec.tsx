@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { describe, expect, it } from "vitest";
-import Slider from "./Slider";
+import Slider from "src/form/Slider/Slider";
 
 describe("Slider", () => {
   it("Should show a slider", () => {

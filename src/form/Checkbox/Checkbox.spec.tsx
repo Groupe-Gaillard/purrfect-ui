@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { describe, expect, it } from "vitest";
-import Checkbox from "./Checkbox";
+import Checkbox from "src/form/Checkbox/Checkbox";
 
 describe("Checkbox", () => {
   it("Should render the checkbox", () => {
