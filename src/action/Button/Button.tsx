@@ -129,7 +129,7 @@ const Button = ({
   size,
   leadingIcon,
   trailingIcon,
-  ...other
+  ...others
 }: AriaButtonProps & {
   kind?: Kind;
   variant?: Variant;
@@ -140,7 +140,7 @@ const Button = ({
 }) => {
   return (
     <StyledButton
-      {...other}
+      {...others}
       onPress={onPress}
       kind={kind}
       variant={variant}
