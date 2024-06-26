@@ -5,3 +5,4 @@ certs/*
 storybook-static/*
 tsconfig.tsbuildinfo
 dist/*
+.cache/
