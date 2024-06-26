@@ -26,7 +26,7 @@ export const getContrastYIQ = (hexColor: string | HexColor) => {
 
   const yiq = (r * 299 + g * 587 + b * 114) / 1000;
 
-  return yiq >= 128 ? "dark" : "light";
+  return yiq >= 128 ? "dark" : "white";
 };
 
 /**

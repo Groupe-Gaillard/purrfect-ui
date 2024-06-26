@@ -5,7 +5,7 @@ import {
   Label,
 } from "react-aria-components";
 import styled from "styled-components";
-import { body1, sizing, theme } from "../../guidelines/theme";
+import { body1, sizing, theme } from "src/guidelines/theme";
 
 const StyledSwitch = styled(AriaSwitch)<{ isDisabled?: boolean }>`
   &[data-disabled="true"] {

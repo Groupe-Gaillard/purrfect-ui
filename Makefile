@@ -20,9 +20,14 @@ down:
 	docker compose down --remove-orphans
 .PHONY: down
 
-pnpm: $(c)
+pnpm: ## Run pnpm, pass the parameter "c=" to run a given command, example: make pnpm c='create playwright'
+	@$(eval c ?=)
 	docker compose exec storybook pnpm $(c)
-.PHONY: down
+.PHONY: pnpm
+
+ci:
+	docker compose exec storybook pnpm lint:check && docker compose exec storybook pnpm typescript:check
+.PHONY: ci
 
 logs: SERVICE?=
 logs: OPTS?=--follow --timestamps --tail=0

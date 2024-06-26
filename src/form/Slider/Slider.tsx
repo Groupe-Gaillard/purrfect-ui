@@ -9,7 +9,7 @@ import {
   SliderTrack,
 } from "react-aria-components";
 import styled from "styled-components";
-import { body1, theme } from "../../guidelines/theme";
+import { body1, theme } from "src/guidelines/theme";
 
 type SliderProps = {
   label: string;

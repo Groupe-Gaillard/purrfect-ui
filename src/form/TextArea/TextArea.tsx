@@ -9,8 +9,8 @@ import {
   TextFieldProps,
 } from "react-aria-components";
 import styled from "styled-components";
-import { sizing, theme } from "../../guidelines/theme";
-import { body1, typographies } from "../../guidelines/theme/typographies";
+import { sizing, theme } from "src/guidelines/theme";
+import { body1, typographies } from "src/guidelines/theme/typographies";
 
 const StyledTextField = styled(TextField)`
   display: flex;

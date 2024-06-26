@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { heading1, sizing } from "../../guidelines/theme/index";
-import Slider from "./Slider";
+import Slider from "src/form/Slider/Slider";
+import { heading1, sizing } from "src/guidelines/theme/index";
 
 const meta: Meta<typeof Slider> = {
   component: Slider,

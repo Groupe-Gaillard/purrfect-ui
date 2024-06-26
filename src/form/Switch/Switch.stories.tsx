@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { heading1, sizing } from "../../guidelines/theme/index";
-import Switch from "./Switch";
+import Switch from "src/form/Switch/Switch";
+import { heading1, sizing } from "src/guidelines/theme/index";
 
 const meta: Meta<typeof Switch> = {
   component: Switch,

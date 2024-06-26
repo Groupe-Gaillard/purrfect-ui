@@ -1,6 +1,6 @@
-export type { HexColor } from "../../utils/utils";
-export { getContrastYIQ, sizing } from "../../utils/utils";
-export { theme } from "./style";
+export type { HexColor } from "src/utils/utils";
+export { getContrastYIQ, sizing } from "src/utils/utils";
+export { theme } from "src/guidelines/theme/style";
 
 export {
   body1,
@@ -12,4 +12,4 @@ export {
   heading5,
   heading6,
   narrow,
-} from "./typographies";
+} from "src/guidelines/theme/typographies";

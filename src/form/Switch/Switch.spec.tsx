@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { describe, expect, it } from "vitest";
-import Switch from "./Switch";
+import Switch from "src/form/Switch/Switch";
 
 describe("Switch", () => {
   it("Should render the switch", () => {

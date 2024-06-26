@@ -1,6 +1,6 @@
 import { css } from "styled-components";
-import { sizing } from "./index";
-import { theme } from "./style";
+import { sizing } from "src/guidelines/theme/index";
+import { theme } from "src/guidelines/theme/style";
 
 export const typographies = {
   lineHeight: {
@@ -124,4 +124,34 @@ export const narrow = css`
   letter-spacing: -4%;
   font-family: sans-serif;
   color: ${theme.color.text.dark};
+`;
+
+export const buttonSmall = css`
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: ${typographies.fontWeight.bold};
+  font-size: ${typographies.fontSize.sm};
+  line-height: ${typographies.lineHeight.base};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+`;
+
+export const buttonNormal = css`
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: ${typographies.fontWeight.bold};
+  font-size: ${typographies.fontSize.base};
+  line-height: ${typographies.lineHeight.base};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+`;
+
+export const buttonLarge = css`
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: ${typographies.fontWeight.bold};
+  font-size: ${typographies.fontSize.md};
+  line-height: ${typographies.lineHeight.md};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 `;

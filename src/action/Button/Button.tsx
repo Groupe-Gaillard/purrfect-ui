@@ -1,144 +1,160 @@
 import React from "react";
-import styled from "styled-components";
-import { getContrastYIQ, sizing, theme } from "../../guidelines/theme";
+import {
+  Button as AriaButton,
+  ButtonProps as AriaButtonProps,
+} from "react-aria-components";
+import styled, { css } from "styled-components";
+import { getContrastYIQ, sizing, theme } from "src/guidelines/theme";
+import {
+  buttonLarge,
+  buttonNormal,
+  buttonSmall,
+} from "src/guidelines/theme/typographies";
 
-const StyledButton = styled.button`
-  padding: ${sizing(6)} ${sizing(12)};
-  border: none;
-  border-radius: ${theme.borderRadius.default};
-  cursor: pointer;
-  &:hover:enabled {
-    background-color: ${theme.color.gray200};
+export type Variant =
+  | "primary"
+  | "success"
+  | "danger"
+  | "warning"
+  | "info"
+  | "gray";
+const buttonVariant = (variant: Variant = "primary") => {
+  const color = theme.color[variant];
+
+  return css`
+    color: ${theme.color.text[getContrastYIQ(color)]};
+    background-color: ${color};
+
+    &:hover:enabled {
+      opacity: 0.9;
+    }
+  `;
+};
+
+export type Size = "small" | "normal" | "large";
+const buttonSize = (size: Size = "normal") => {
+  switch (size) {
+    case "small":
+      return css`
+        gap: ${sizing(8)};
+        height: ${sizing(24)};
+        padding: 0px ${sizing(16)};
+        border-radius: ${theme.borderRadius.default};
+        ${buttonSmall};
+
+        & > svg {
+          height: ${sizing(16)};
+          width: ${sizing(16)};
+        }
+      `;
+    case "normal":
+      return css`
+        gap: ${sizing(12)};
+        height: ${sizing(36)};
+        padding: 0px ${sizing(24)};
+        border-radius: ${theme.borderRadius.default};
+        ${buttonNormal};
+
+        & > svg {
+          height: ${sizing(24)};
+          width: ${sizing(24)};
+        }
+      `;
+    case "large":
+      return css`
+        gap: ${sizing(16)};
+        height: ${sizing(48)};
+        padding: 0px ${sizing(32)};
+        border-radius: ${theme.borderRadius.large};
+        ${buttonLarge};
+
+        & > svg {
+          height: ${sizing(32)};
+          width: ${sizing(32)};
+        }
+      `;
   }
+};
+
+export type Kind = "normal" | "outlined";
+const buttonKind = (kind: Kind = "normal", variant: Variant = "primary") => {
+  const color = theme.color[variant];
+
+  switch (kind) {
+    case "normal":
+      return css`
+        background-color: ${color};
+        color: ${theme.color.text[getContrastYIQ(color)]};
+        border: 2px solid ${color};
+      `;
+    case "outlined":
+      return css`
+        background-color: ${theme.color.white};
+        color: ${color};
+        border: 2px solid ${color};
+
+        &:hover:enabled {
+          background-color: ${theme.color.gray100};
+        }
+      `;
+  }
+};
+
+const StyledButton = styled(AriaButton)<{
+  kind?: Kind;
+  variant?: Variant;
+  size?: Size;
+}>`
+  cursor: pointer;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: ${sizing(8)};
+
+  ${({ variant, size, kind }) => css`
+    ${buttonVariant(variant)};
+    ${buttonSize(size)};
+    ${buttonKind(kind, variant)};
+  `};
+
   &:disabled {
-    opacity: 0.7;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 `;
 
-const PrimaryButton = styled(StyledButton)`
-  color: ${theme.color.text[getContrastYIQ(theme.color.primary)]};
-  background-color: ${theme.color.primary};
-  &:hover:enabled {
-    color: ${theme.color.text[getContrastYIQ(theme.color.primary600)]};
-    background-color: ${theme.color.primary600};
-  }
-`;
-
-const SuccessButton = styled(StyledButton)`
-  color: ${theme.color.text[getContrastYIQ(theme.color.success)]};
-  background-color: ${theme.color.success};
-  &:hover:enabled {
-    color: ${theme.color.text[getContrastYIQ(theme.color.success600)]};
-    background-color: ${theme.color.success600};
-  }
-`;
-
-const DangerButton = styled(StyledButton)`
-  color: ${theme.color.text[getContrastYIQ(theme.color.danger)]};
-  background-color: ${theme.color.danger};
-  &:hover:enabled {
-    color: ${theme.color.text[getContrastYIQ(theme.color.danger600)]};
-    background-color: ${theme.color.danger600};
-  }
-`;
-
-const WarningButton = styled(StyledButton)`
-  color: ${theme.color.text[getContrastYIQ(theme.color.warning)]};
-  background-color: ${theme.color.warning};
-  &:hover:enabled {
-    color: ${theme.color.text[getContrastYIQ(theme.color.warning600)]};
-    background-color: ${theme.color.warning600};
-  }
-`;
-
-const InfoButton = styled(StyledButton)`
-  color: ${theme.color.text[getContrastYIQ(theme.color.info)]};
-  background-color: ${theme.color.info};
-  &:hover:enabled {
-    color: ${theme.color.text[getContrastYIQ(theme.color.info)]};
-    background-color: ${theme.color.info};
-  }
-`;
-
-const GrayButton = styled(StyledButton)`
-  color: ${theme.color.text[getContrastYIQ(theme.color.gray)]};
-  background-color: ${theme.color.gray};
-  &:hover:enabled {
-    color: ${theme.color.text[getContrastYIQ(theme.color.gray600)]};
-    background-color: ${theme.color.gray600};
-  }
-`;
-
-const DefaultButton = styled(StyledButton)`
-  color: ${theme.color.text.dark};
-  background-color: ${theme.color.gray100};
-  &:hover:enabled {
-    background-color: ${theme.color.gray200};
-  }
-`;
-
 const Button = ({
-  label,
-  onClick,
-  isDisabled = false,
-  bgColor,
-}: {
-  label: string;
-  onClick: () => void;
-  isDisabled?: boolean;
-  bgColor?: string;
+  children,
+  onPress,
+  kind,
+  variant,
+  size,
+  leadingIcon,
+  trailingIcon,
+  ...others
+}: AriaButtonProps & {
+  kind?: Kind;
+  variant?: Variant;
+  size?: Size;
+  leadingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
+  children?: React.ReactNode;
 }) => {
-  switch (bgColor) {
-    case "primary":
-      return (
-        <PrimaryButton onClick={onClick} disabled={isDisabled}>
-          {label}
-        </PrimaryButton>
-      );
-      break;
-    case "success":
-      return (
-        <SuccessButton onClick={onClick} disabled={isDisabled}>
-          {label}
-        </SuccessButton>
-      );
-      break;
-    case "danger":
-      return (
-        <DangerButton onClick={onClick} disabled={isDisabled}>
-          {label}
-        </DangerButton>
-      );
-      break;
-    case "warning":
-      return (
-        <WarningButton onClick={onClick} disabled={isDisabled}>
-          {label}
-        </WarningButton>
-      );
-      break;
-    case "info":
-      return (
-        <InfoButton onClick={onClick} disabled={isDisabled}>
-          {label}
-        </InfoButton>
-      );
-      break;
-    case "gray":
-      return (
-        <GrayButton onClick={onClick} disabled={isDisabled}>
-          {label}
-        </GrayButton>
-      );
-      break;
-    default:
-      return (
-        <DefaultButton onClick={onClick} disabled={isDisabled}>
-          {label}
-        </DefaultButton>
-      );
-  }
+  return (
+    <StyledButton
+      {...others}
+      onPress={onPress}
+      kind={kind}
+      variant={variant}
+      size={size}
+    >
+      {leadingIcon}
+      {children}
+      {trailingIcon}
+    </StyledButton>
+  );
 };
 
 export default Button;
