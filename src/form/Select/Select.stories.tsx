@@ -117,3 +117,21 @@ export const SelectRequired: Story = {
     </>
   ),
 };
+
+export const SelectSelectionMode: Story = {
+  args: {
+    label: "Select selectionMode",
+    placeholder: "Select several options",
+    name: "myName",
+    onSelectionChange: fn(),
+    options: options,
+    selectionMode: "multiple",
+    defaultSelectedKey: "dog",
+  },
+  render: (args) => (
+    <>
+      <Title>Select disabled one option</Title>
+      <Select {...args} />
+    </>
+  ),
+};

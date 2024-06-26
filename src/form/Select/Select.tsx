@@ -8,6 +8,7 @@ import {
   ListBox,
   ListBoxItem,
   ListBoxItemProps,
+  ListBoxProps,
   Popover,
   SelectValue,
   Text,
@@ -164,6 +165,8 @@ type SelectProps = {
   label?: string;
   helperText?: string;
   options: OptionProps[];
+  selected?: string;
+  setSelected?: ((keys: Selection) => void) | undefined;
 } & Pick<
   AriaSelectProps<{ key: string }>,
   | "autoFocus"
@@ -177,7 +180,11 @@ type SelectProps = {
   | "onSelectionChange"
   | "placeholder"
   | "selectedKey"
->;
+> &
+  Pick<
+    ListBoxProps<HTMLElement>,
+    "selectionMode" | "selectedKeys" | "onSelectionChange"
+  >;
 
 const Select = (props: SelectProps) => {
   return (
@@ -193,7 +200,11 @@ const Select = (props: SelectProps) => {
       <StyledText slot="description">{props.helperText}</StyledText>
       <StyledFieldError />
       <StyledPopover>
-        <StyledListBox>
+        <StyledListBox
+          selectionMode={props.selectionMode}
+          selectedKeys={props.selected}
+          onSelectionChange={props.setSelected}
+        >
           {props.options.map((oneOption, index) => (
             <StyledListBoxItem
               key={index}
