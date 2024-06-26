@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled, { css } from "styled-components";
-import { body1, heading1, sizing } from "../../guidelines/theme";
-import { typographies } from "../../guidelines/theme/typographies";
-import Divider from "./Divider";
+import Divider from "src/display/Divider/Divider";
+import { body1, heading1, sizing } from "src/guidelines/theme";
+import { typographies } from "src/guidelines/theme/typographies";
 
 const meta: Meta<typeof Divider> = {
   component: Divider,
@@ -72,7 +72,7 @@ export const dividerBase: Story = {
       <StyledDivContainer orientation={args.orientation}>
         <StyleText>A little text before</StyleText>
         <Divider {...args} />
-        <StyleText>A little text before</StyleText>
+        <StyleText>A little text after</StyleText>
       </StyledDivContainer>
     </>
   ),
