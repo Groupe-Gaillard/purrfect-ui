@@ -4,7 +4,7 @@ import {
   RadioProps as AriaRadioProps,
 } from "react-aria-components";
 import styled from "styled-components";
-import { body1, sizing, theme } from "../../guidelines/theme";
+import { body1, sizing, theme } from "src/guidelines/theme";
 
 const StyledRadio = styled(AriaRadio)`
   ${body1}

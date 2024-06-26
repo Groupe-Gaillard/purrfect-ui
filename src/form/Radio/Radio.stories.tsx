@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Label, RadioGroup } from "react-aria-components";
 import styled from "styled-components";
-import { body1, heading1, sizing } from "../../guidelines/theme";
-import Radio from "./Radio";
+import Radio from "src/form/Radio/Radio";
+import { body1, heading1, sizing } from "src/guidelines/theme";
 
 const meta: Meta<typeof Radio> = {
   component: Radio,

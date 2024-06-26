@@ -7,8 +7,8 @@ import {
   Text,
 } from "react-aria-components";
 import styled from "styled-components";
-import { body1, sizing, theme } from "../../guidelines/theme";
-import { typographies } from "../../guidelines/theme/typographies";
+import { body1, sizing, theme } from "src/guidelines/theme";
+import { typographies } from "src/guidelines/theme/typographies";
 
 const StyledLabel = styled(Label)`
   ${body1}

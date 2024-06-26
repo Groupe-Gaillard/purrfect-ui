@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import React from "react";
 import styled from "styled-components";
-import { heading1, sizing } from "../../guidelines/theme/index";
-import Radio from "../Radio/Radio";
-import RadioGroup from "./RadioGroup";
+import Radio from "src/form/Radio/Radio";
+import RadioGroup from "src/form/RadioGroup/RadioGroup";
+import { heading1, sizing } from "src/guidelines/theme/index";
 
 const meta: Meta<typeof RadioGroup> = {
   component: RadioGroup,

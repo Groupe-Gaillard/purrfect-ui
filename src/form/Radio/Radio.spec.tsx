@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { describe, expect, it } from "vitest";
-import Radio from "../Radio/Radio";
-import RadioGroup from "../RadioGroup/RadioGroup";
+import Radio from "src/form/Radio/Radio";
+import RadioGroup from "src/form/RadioGroup/RadioGroup";
 
 const RadioButtonArray = [
   {
