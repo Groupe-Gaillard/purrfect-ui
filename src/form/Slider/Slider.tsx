@@ -11,24 +11,11 @@ import {
 import styled, { css } from "styled-components";
 import { body1, theme } from "../../guidelines/theme";
 
-type SliderProps = {
-  label: string;
-  sliderMaxWidth?: string;
-} & Pick<
-  AriaSliderProps,
-  | "className"
-  | "defaultValue"
-  | "formatOptions"
-  | "id"
-  | "isDisabled"
-  | "minValue"
-  | "maxValue"
-  | "onChange"
-  | "onChangeEnd"
-  | "step"
-  | "value"
-> &
-  Pick<SliderThumbProps, "autoFocus" | "name">;
+type SliderProps = AriaSliderProps &
+  SliderThumbProps & {
+    label: string;
+    sliderMaxWidth?: string;
+  };
 
 const StyledSlider = styled(AriaSlider)<{ sliderMaxWidth?: string }>`
   display: grid;
@@ -118,3 +105,4 @@ const Slider = (props: SliderProps) => {
 };
 
 export default Slider;
+export type { SliderProps };

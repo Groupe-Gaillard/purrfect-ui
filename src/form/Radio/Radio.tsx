@@ -64,12 +64,13 @@ const StyledRadio = styled(AriaRadio)`
   }
 `;
 
-export type RadioProps = {
+type RadioProps = AriaRadioProps & {
   label: string;
-} & Pick<AriaRadioProps, "id" | "value" | "isDisabled" | "className">;
+};
 
 const Radio = (props: RadioProps) => {
   return <StyledRadio {...props}>{props.label}</StyledRadio>;
 };
 
 export default Radio;
+export type { RadioProps };

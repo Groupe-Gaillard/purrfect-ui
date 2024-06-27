@@ -44,23 +44,11 @@ const StyledRadioGroup = styled(AriaRadioGroup)<{ orientation?: Orientation }>`
   `}
 `;
 
-type RadioGroupProps = {
+type RadioGroupProps = AriaRadioGroupProps & {
   helperText?: string;
   label?: string;
   children: React.ReactNode;
-} & Pick<
-  AriaRadioGroupProps,
-  | "className"
-  | "defaultValue"
-  | "id"
-  | "isDisabled"
-  | "isInvalid"
-  | "isReadOnly"
-  | "isRequired"
-  | "onChange"
-  | "orientation"
-  | "value"
->;
+};
 
 const RadioGroup = (props: RadioGroupProps) => {
   return (
@@ -77,3 +65,4 @@ const RadioGroup = (props: RadioGroupProps) => {
 };
 
 export default RadioGroup;
+export type { RadioGroupProps };

@@ -97,3 +97,4 @@ const TextField = (props: TextFieldProps) => {
 };
 
 export default TextField;
+export type { TextFieldProps };

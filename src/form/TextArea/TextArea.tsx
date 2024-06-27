@@ -97,3 +97,4 @@ const TextArea = (props: TextAreaProps) => {
 };
 
 export default TextArea;
+export type { TextAreaProps };

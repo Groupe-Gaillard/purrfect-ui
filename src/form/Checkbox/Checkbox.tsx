@@ -83,13 +83,10 @@ const StyledLabel = styled(Label)`
   }
 `;
 
-type CheckboxProps = {
+type CheckboxProps = AriaCheckboxProps & {
   className?: string;
   label?: string;
-} & Pick<
-  AriaCheckboxProps,
-  "isDisabled" | "value" | "defaultSelected" | "onChange" | "isSelected"
->;
+};
 
 const Checkbox = (props: CheckboxProps) => {
   return (
@@ -105,3 +102,4 @@ const Checkbox = (props: CheckboxProps) => {
 };
 
 export default Checkbox;
+export type { CheckboxProps };
