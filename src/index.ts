@@ -6,6 +6,8 @@ export type { DividerProps } from "src/display/Divider/Divider";
 
 export { default as Checkbox } from "src/form/Checkbox/Checkbox";
 export type { CheckboxProps } from "src/form/Checkbox/Checkbox";
+export { default as DatePicker } from "src/form/DatePicker/DatePicker";
+export type { DatePickerProps } from "src/form/DatePicker/DatePicker";
 export { default as Radio } from "src/form/Radio/Radio";
 export type { RadioProps } from "src/form/Radio/Radio";
 export { default as RadioGroup } from "src/form/RadioGroup/RadioGroup";
