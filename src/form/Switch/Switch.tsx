@@ -84,19 +84,9 @@ const StyledLabel = styled(Label)`
   }
 `;
 
-type SwitchProps = {
+type SwitchProps = AriaSwitchProps & {
   label?: string;
-} & Pick<
-  AriaSwitchProps,
-  | "inputRef"
-  | "defaultSelected"
-  | "isSelected"
-  | "value"
-  | "isDisabled"
-  | "name"
-  | "className"
-  | "autoFocus"
->;
+};
 
 const Switch = (props: SwitchProps) => {
   return (
@@ -108,3 +98,4 @@ const Switch = (props: SwitchProps) => {
 };
 
 export default Switch;
+export type { SwitchProps };

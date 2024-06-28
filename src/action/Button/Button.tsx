@@ -125,6 +125,15 @@ const StyledButton = styled(AriaButton)<{
   }
 `;
 
+type ButtonProps = AriaButtonProps & {
+  kind?: Kind;
+  variant?: Variant;
+  size?: Size;
+  leadingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
+  children?: React.ReactNode;
+};
+
 const Button = ({
   children,
   onPress,
@@ -134,14 +143,7 @@ const Button = ({
   leadingIcon,
   trailingIcon,
   ...others
-}: AriaButtonProps & {
-  kind?: Kind;
-  variant?: Variant;
-  size?: Size;
-  leadingIcon?: React.ReactNode;
-  trailingIcon?: React.ReactNode;
-  children?: React.ReactNode;
-}) => {
+}: ButtonProps) => {
   return (
     <StyledButton
       {...others}
@@ -158,3 +160,4 @@ const Button = ({
 };
 
 export default Button;
+export type { ButtonProps };
