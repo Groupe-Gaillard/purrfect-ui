@@ -82,7 +82,14 @@ interface Color {
 
 interface Transition {}
 
-interface Breakpoints {}
+interface Size {
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  xxl: string;
+}
 
 interface Shadows {
   [key: string]: string;
@@ -103,9 +110,20 @@ interface BorderRadius {
 interface Theme {
   color: Color;
   transitions: Transition;
-  breakpoints: Breakpoints;
+  size: Size;
   shadows: Shadows;
   borderRadius: BorderRadius;
+}
+
+interface Breakpoints {
+  minWidth: {
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    xxl: string;
+  };
 }
 
 const theme: Theme = {
@@ -113,12 +131,13 @@ const theme: Theme = {
     //? Framer ?
   },
 
-  breakpoints: {
-    xxs: "",
-    xs: "",
-    m: "",
-    md: "",
-    lg: "",
+  size: {
+    xs: "480px",
+    sm: "576px",
+    md: "768px",
+    lg: "992px",
+    xl: "1200px",
+    xxl: "1600px",
   },
 
   color: {
@@ -204,4 +223,15 @@ const theme: Theme = {
   },
 };
 
-export { theme };
+const breakpoints: Breakpoints = {
+  minWidth: {
+    xs: `(min-width: ${theme.size.xs})`,
+    sm: `(min-width: ${theme.size.sm})`,
+    md: `(min-width: ${theme.size.md})`,
+    lg: `(min-width: ${theme.size.lg})`,
+    xl: `(min-width: ${theme.size.xl})`,
+    xxl: `(min-width: ${theme.size.xxl})`,
+  },
+};
+
+export { theme, breakpoints };

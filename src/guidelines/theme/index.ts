@@ -1,6 +1,6 @@
 export type { HexColor } from "src/utils/utils";
 export { getContrastYIQ, sizing } from "src/utils/utils";
-export { theme } from "src/guidelines/theme/style";
+export { theme, breakpoints } from "src/guidelines/theme/style";
 
 export {
   body1,

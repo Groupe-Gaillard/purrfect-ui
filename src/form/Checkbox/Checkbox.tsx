@@ -5,23 +5,26 @@ import {
   Label,
 } from "react-aria-components";
 import styled from "styled-components";
-import { sizing, theme } from "src/guidelines/theme";
+import { body1, breakpoints, sizing, theme } from "src/guidelines/theme";
 
 const StyledCheckboxContainer = styled(AriaCheckbox)`
   display: flex;
   align-items: center;
-  gap: ${sizing(9)};
-  font-size: 1.143rem;
-  color: ${theme.color.text.dark};
+  gap: ${sizing(6)};
+  ${body1}
   forced-color-adjust: none;
   &[data-disabled] {
     opacity: 0.5;
   }
+
+  @media ${breakpoints.minWidth.md} {
+    gap: ${sizing(8)};
+  }
 `;
 
 const StyledCheckbox = styled.div`
-  width: ${sizing(18)};
-  height: ${sizing(18)};
+  width: ${sizing(14)};
+  height: ${sizing(14)};
   border: 2px solid ${theme.color.gray600};
   border-radius: ${sizing(4)};
   transition: all 200ms;
@@ -48,11 +51,16 @@ const StyledCheckbox = styled.div`
       background: ${theme.color.primary};
     }
   }
+
+  @media ${breakpoints.minWidth.md} {
+    width: ${sizing(16)};
+    height: ${sizing(16)};
+  }
 `;
 
 const StyledSvg = styled.svg`
-  width: 1rem;
-  height: 1rem;
+  width: ${sizing(14)};
+  height: ${sizing(14)};
   fill: none;
   stroke: ${theme.color.gray100};
   stroke-width: 3px;
@@ -73,10 +81,15 @@ const StyledSvg = styled.svg`
   [data-hovered] & {
     cursor: pointer;
   }
+
+  @media ${breakpoints.minWidth.md} {
+    width: ${sizing(16)};
+    height: ${sizing(16)};
+  }
 `;
 
 const StyledLabel = styled(Label)`
-  color: ${theme.color.text.dark};
+  ${body1}
 
   [data-hovered] & {
     cursor: pointer;
