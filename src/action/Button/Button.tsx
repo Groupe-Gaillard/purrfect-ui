@@ -76,7 +76,7 @@ const buttonSize = (size: Size = "normal") => {
   }
 };
 
-export type Kind = "normal" | "outlined";
+export type Kind = "normal" | "outlined" | "link";
 const buttonKind = (kind: Kind = "normal", variant: Variant = "primary") => {
   const color = theme.color[variant];
 
@@ -95,6 +95,16 @@ const buttonKind = (kind: Kind = "normal", variant: Variant = "primary") => {
 
         &:hover:enabled {
           background-color: ${theme.color.gray100};
+        }
+      `;
+    case "link":
+      return css`
+        background-color: transparent;
+        color: ${color};
+        border: 0;
+
+        &:hover:enabled {
+          opacity: 0.8;
         }
       `;
   }
