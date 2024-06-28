@@ -4,20 +4,20 @@ import {
   RadioProps as AriaRadioProps,
 } from "react-aria-components";
 import styled from "styled-components";
-import { body1, sizing, theme } from "src/guidelines/theme";
+import { body1, breakpoints, sizing, theme } from "src/guidelines/theme";
 
 const StyledRadio = styled(AriaRadio)`
   ${body1}
   display: flex;
   align-items: center;
-  gap: ${sizing(8)};
+  gap: ${sizing(6)};
   forced-color-adjust: none;
 
   &:before {
     content: "";
     display: block;
-    width: ${sizing(18)};
-    height: ${sizing(18)};
+    width: ${sizing(14)};
+    height: ${sizing(14)};
     box-sizing: border-box;
     border: ${sizing(2)} solid ${theme.color.gray600};
     background: ${theme.color.white};
@@ -36,7 +36,7 @@ const StyledRadio = styled(AriaRadio)`
   &[data-selected] {
     &:before {
       border-color: ${theme.color.primary};
-      border-width: ${sizing(7)};
+      border-width: ${sizing(5)};
     }
 
     &[data-pressed]:before {
@@ -61,6 +61,21 @@ const StyledRadio = styled(AriaRadio)`
 
   &[data-disabled] {
     opacity: 0.5;
+  }
+
+  @media ${breakpoints.minWidth.md} {
+    gap: ${sizing(8)};
+
+    &:before {
+      width: ${sizing(16)};
+      height: ${sizing(16)};
+    }
+
+    &[data-selected] {
+      &:before {
+        border-width: ${sizing(7)};
+      }
+    }
   }
 `;
 

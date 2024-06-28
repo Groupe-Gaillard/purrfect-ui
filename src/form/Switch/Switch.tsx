@@ -5,7 +5,7 @@ import {
   Label,
 } from "react-aria-components";
 import styled from "styled-components";
-import { body1, sizing, theme } from "src/guidelines/theme";
+import { body1, breakpoints, sizing, theme } from "src/guidelines/theme";
 
 const StyledSwitch = styled(AriaSwitch)<{ isDisabled?: boolean }>`
   &[data-disabled="true"] {
@@ -15,13 +15,13 @@ const StyledSwitch = styled(AriaSwitch)<{ isDisabled?: boolean }>`
 
   display: flex;
   align-items: center;
-  gap: ${sizing(10)};
+  gap: ${sizing(6)};
   ${body1}
   forced-color-adjust: none;
 
   .indicator {
-    width: ${sizing(32)};
-    height: ${sizing(18)};
+    width: ${sizing(26)};
+    height: ${sizing(16)};
     border: 2px solid ${theme.color.gray};
     background: ${theme.color.primary100};
     border-radius: ${sizing(18)};
@@ -31,8 +31,8 @@ const StyledSwitch = styled(AriaSwitch)<{ isDisabled?: boolean }>`
       content: "";
       display: block;
       margin: ${sizing(2)};
-      width: ${sizing(14)};
-      height: ${sizing(14)};
+      width: ${sizing(12)};
+      height: ${sizing(12)};
       background: ${theme.color.primary};
       border-radius: ${sizing(16)};
       transition: all 200ms;
@@ -73,6 +73,20 @@ const StyledSwitch = styled(AriaSwitch)<{ isDisabled?: boolean }>`
 
   &[data-hovered] {
     cursor: pointer;
+  }
+
+  @media ${breakpoints.minWidth.md} {
+    gap: ${sizing(8)};
+
+    .indicator {
+      width: ${sizing(32)};
+      height: ${sizing(18)};
+
+      &:before {
+        width: ${sizing(14)};
+        height: ${sizing(14)};
+      }
+    }
   }
 `;
 

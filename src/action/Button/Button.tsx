@@ -4,7 +4,12 @@ import {
   ButtonProps as AriaButtonProps,
 } from "react-aria-components";
 import styled, { css } from "styled-components";
-import { getContrastYIQ, sizing, theme } from "src/guidelines/theme";
+import {
+  breakpoints,
+  getContrastYIQ,
+  sizing,
+  theme,
+} from "src/guidelines/theme";
 import {
   buttonLarge,
   buttonNormal,
@@ -36,41 +41,74 @@ const buttonSize = (size: Size = "normal") => {
   switch (size) {
     case "small":
       return css`
-        gap: ${sizing(8)};
-        height: ${sizing(24)};
-        padding: 0px ${sizing(16)};
+        gap: ${sizing(6)};
+        height: ${sizing(20)};
+        padding: 0px ${sizing(14)};
         border-radius: ${theme.borderRadius.default};
         ${buttonSmall};
 
         & > svg {
-          height: ${sizing(16)};
-          width: ${sizing(16)};
+          height: ${sizing(14)};
+          width: ${sizing(14)};
+        }
+
+        @media ${breakpoints.minWidth.md} {
+          gap: ${sizing(8)};
+          height: ${sizing(24)};
+          padding: 0px ${sizing(16)};
+
+          & > svg {
+            height: ${sizing(16)};
+            width: ${sizing(16)};
+          }
         }
       `;
     case "normal":
       return css`
-        gap: ${sizing(12)};
-        height: ${sizing(36)};
-        padding: 0px ${sizing(24)};
+        gap: ${sizing(10)};
+        height: ${sizing(30)};
+        padding: 0px ${sizing(20)};
         border-radius: ${theme.borderRadius.default};
         ${buttonNormal};
 
         & > svg {
-          height: ${sizing(24)};
-          width: ${sizing(24)};
+          height: ${sizing(20)};
+          width: ${sizing(20)};
+        }
+
+        @media ${breakpoints.minWidth.md} {
+          gap: ${sizing(12)};
+          height: ${sizing(36)};
+          padding: 0px ${sizing(24)};
+
+          & > svg {
+            height: ${sizing(24)};
+            width: ${sizing(24)};
+          }
         }
       `;
     case "large":
       return css`
-        gap: ${sizing(16)};
-        height: ${sizing(48)};
-        padding: 0px ${sizing(32)};
+        gap: ${sizing(13)};
+        height: ${sizing(40)};
+        padding: 0px ${sizing(28)};
         border-radius: ${theme.borderRadius.large};
         ${buttonLarge};
 
         & > svg {
-          height: ${sizing(32)};
-          width: ${sizing(32)};
+          height: ${sizing(28)};
+          width: ${sizing(28)};
+        }
+
+        @media ${breakpoints.minWidth.md} {
+          gap: ${sizing(16)};
+          height: ${sizing(48)};
+          padding: 0px ${sizing(32)};
+
+          & > svg {
+            height: ${sizing(32)};
+            width: ${sizing(32)};
+          }
         }
       `;
   }
