@@ -100,6 +100,16 @@ const buttonKind = (kind: Kind = "normal", variant: Variant = "primary") => {
   }
 };
 
+type ButtonProps = AriaButtonProps & {
+  kind?: Kind;
+  variant?: Variant;
+  size?: Size;
+  leadingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
+  children?: React.ReactNode;
+  isPressed?: boolean;
+};
+
 const StyledButton = styled(AriaButton)<{
   kind?: Kind;
   variant?: Variant;
@@ -159,5 +169,6 @@ const Button = ({
   );
 };
 
+export type { ButtonProps };
 export default Button;
 export type { ButtonProps };
