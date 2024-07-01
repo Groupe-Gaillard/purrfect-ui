@@ -2,25 +2,26 @@
 
 ![Matou logo](/src/assets/Matou_logo.png "Titre de l'image")
 
-<h2>React/Typescript Project with Vite, Storybook, and Vitest.</h2>
+<h2>React/Typescript Project with Vite, Storybook, Vitest, and React-icons.</h2>
 
 This React project is set up with the following tools:
 
 **Vite:** A performant bundler for React applications.
 **Storybook:** A tool for creating and documenting user interfaces.
 **Vitest:** A testing framework for JavaScript applications.
+**React-icons:** Provides a vast library of icons from popular icon packs.
 **ESLint** and **Prettier:** Linting and code formatting tools to maintain code quality.
 
 <h3>Getting Started</h3>
 
 - Clone the repository.
 - Navigate into the project directory.
-- Make sure Docker is operationnal.
-- prompt `make up` to launch the environment.
+- Make sure Docker is operational.
+- Prompt `make up` to launch the environment.
 
 <h3>Features</h3>
 
-Styled Components and Storybook (example component: Button).
+Styled Components, Storybook (example component: Button), and React-icons for easily incorporating icons.
 Base configuration with ESLint, Prettier.
 Unit tests with Vitest and Testing Library.
 
@@ -37,6 +38,7 @@ If you would like to contribute to this project, please feel free to create issu
   - React DOM https://www.npmjs.com/package/react-dom
   - TypeScript https://www.typescriptlang.org/
   - Styled-components https://styled-components.com/
+  - React-icons https://react-icons.github.io/react-icons/
 - **Development Tools:** \* Docker https://www.docker.com/
   - Vercel https://vercel.com/
   - Vite https://vitejs.dev/guide/
