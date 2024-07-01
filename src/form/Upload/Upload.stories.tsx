@@ -19,7 +19,7 @@ const Title = styled.h1`
 
 export const upload: Story = {
   args: {
-    label: "Upload File",
+    label: "Upload",
     trailingIcon: <UploadIcon />,
   },
   render: (args) => (
@@ -82,7 +82,7 @@ export const uploadTypeRestriction: Story = {
   },
   render: (args) => (
     <>
-      <Title>Upload image [".txt"] file limitation</Title>
+      <Title>Upload image .txt file limitation</Title>
       <Upload {...args} />
     </>
   ),
