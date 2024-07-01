@@ -11,6 +11,7 @@ const UploadIcon = () => {
       height="25px"
       width="25px"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid="upload-icon"
     >
       <path
         strokeLinecap="round"

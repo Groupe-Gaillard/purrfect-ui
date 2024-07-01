@@ -148,7 +148,7 @@ const Upload: React.FC<UploadProps> = ({
           {showPreview && filePreviews.length > 0 ? (
             filePreviews.map((file) => (
               <PreviewContainer key={file.name}>
-                <PreviewImage src={file.previewUrl} alt="Preview image" />
+                <PreviewImage src={file.previewUrl} alt="File preview" />
                 <TextContainer>
                   <FileName>{file.name}</FileName>
                   <DeleteIcon onClick={() => handleDelete(file)} />
