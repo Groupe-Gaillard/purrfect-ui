@@ -7,26 +7,38 @@ import styled from "styled-components";
 import { ButtonProps } from "src/action/Button/Button";
 import Button from "src/action/Button/Button";
 import { body1, sizing, theme } from "src/guidelines/theme";
+import DeleteIcon from "src/icons/delete";
 import FilesIcon from "src/icons/files";
 
 const StyledUpload = styled(AriaUpload)``;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ direction: string }>`
   display: flex;
+  flex-direction: ${(props) => props.direction};
+  align-items: ${(props) =>
+    props.direction === "column" ? "flex-start" : "center"};
   gap: ${sizing(16)};
 `;
 
 const UploadButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: ${sizing(16)};
+  margin: ${sizing(16)} 0;
   justify-content: flex-start;
+  width: ${sizing(200)};
+`;
+
+const StyledButton = styled(Button)`
+  width: 100%;
+`;
+
+const StyledIconContainer = styled.span`
+  margin-top: 2px;
 `;
 
 const PreviewContainer = styled.div`
-  margin-top: ${sizing(10)};
-  width: 100px;
-  height: 100px;
+  width: ${sizing(200)};
+  height: ${sizing(200)};
   border-radius: ${theme.borderRadius.default};
   display: flex;
   flex-direction: column;
@@ -34,7 +46,6 @@ const PreviewContainer = styled.div`
   padding: ${sizing(16)};
   align-items: center;
   background-color: ${theme.color.gray100};
-  position: relative;
   border: 1px solid ${theme.color.gray100};
   overflow: hidden;
 `;
@@ -52,6 +63,14 @@ const FileName = styled.span`
   display: block;
 `;
 
+const TextContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: ${sizing(10)};
+`;
+
 type FilePreview = {
   name: string;
   previewUrl: string;
@@ -62,21 +81,21 @@ type UploadProps = AriaUploadProps & {
   buttonProps: ButtonProps;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
-  showPreview?: boolean;
   maxFiles?: number;
+  showPreview?: boolean;
 };
 
 const Upload: React.FC<UploadProps> = ({
   showPreview = true,
-  maxFiles = 3,
+  maxFiles = 5,
   ...props
 }) => {
   const [filePreviews, setFilePreviews] = useState<FilePreview[]>([]);
+  const flexDirection = showPreview ? "row" : "column";
 
   useEffect(() => {
     return () => {
       filePreviews.forEach((file) => {
-        console.log("file", file);
         URL.revokeObjectURL(file.previewUrl);
       });
     };
@@ -100,15 +119,40 @@ const Upload: React.FC<UploadProps> = ({
     }
   };
 
+  const handleDelete = (fileToDelete: FilePreview) => {
+    const updatedFilePreviews = filePreviews.filter(
+      (file) => file.name !== fileToDelete.name,
+    );
+    setFilePreviews(updatedFilePreviews);
+
+    if (fileToDelete.previewUrl) {
+      URL.revokeObjectURL(fileToDelete.previewUrl);
+    }
+  };
+
   return (
     <>
       <StyledUpload {...props} onSelect={handleSelect}>
-        <Wrapper>
+        <UploadButtonContainer>
+          <StyledButton {...props.buttonProps}>
+            {props.leadingIcon && (
+              <StyledIconContainer>{props.leadingIcon}</StyledIconContainer>
+            )}
+            {props.label}
+            {props.trailingIcon && (
+              <StyledIconContainer>{props.trailingIcon}</StyledIconContainer>
+            )}
+          </StyledButton>
+        </UploadButtonContainer>
+        <Wrapper direction={flexDirection}>
           {showPreview && filePreviews.length > 0 ? (
-            filePreviews.map((file, index) => (
-              <PreviewContainer key={index}>
+            filePreviews.map((file) => (
+              <PreviewContainer key={file.name}>
                 <PreviewImage src={file.previewUrl} alt="Preview image" />
-                <FileName>{file.name}</FileName>
+                <TextContainer>
+                  <FileName>{file.name}</FileName>
+                  <DeleteIcon onClick={() => handleDelete(file)} />
+                </TextContainer>
               </PreviewContainer>
             ))
           ) : showPreview ? (
@@ -118,17 +162,15 @@ const Upload: React.FC<UploadProps> = ({
           ) : null}
           {!showPreview &&
             filePreviews.length > 0 &&
-            filePreviews.map((file, index) => (
-              <FileName key={index}>{file.name}</FileName>
+            filePreviews.map((file) => (
+              <React.Fragment key={file.name}>
+                <TextContainer>
+                  <FileName>{file.name}</FileName>
+                  <DeleteIcon onClick={() => handleDelete(file)} />
+                </TextContainer>
+              </React.Fragment>
             ))}
         </Wrapper>
-        <UploadButtonContainer>
-          <Button {...props.buttonProps}>
-            {props.leadingIcon && <span>{props.leadingIcon}</span>}
-            {props.label}
-            {props.trailingIcon && <span>{props.trailingIcon}</span>}
-          </Button>
-        </UploadButtonContainer>
       </StyledUpload>
     </>
   );
