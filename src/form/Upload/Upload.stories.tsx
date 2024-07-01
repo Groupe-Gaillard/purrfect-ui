@@ -77,12 +77,12 @@ export const uploadTypeRestriction: Story = {
   args: {
     label: "Upload",
     showPreview: false,
-    acceptedFileTypes: ["txt", "pdf", "docx", "png"],
+    acceptedFileTypes: [".txt"],
     trailingIcon: <UploadIcon />,
   },
   render: (args) => (
     <>
-      <Title>Upload image/png file limitation</Title>
+      <Title>Upload image [".txt"] file limitation</Title>
       <Upload {...args} />
     </>
   ),
