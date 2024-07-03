@@ -56,23 +56,3 @@ export const standardLink: Story = {
     </>
   ),
 };
-
-export const buttonLink: Story = {
-  args: {
-    href: "",
-  },
-
-  render: (args) => (
-    <>
-      <Title>Link</Title>
-
-      <Link
-        {...args}
-        leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
-        trailingIcon={args.trailingIcon ? <PlusIcon /> : undefined}
-      >
-        {args.children}
-      </Link>
-    </>
-  ),
-};

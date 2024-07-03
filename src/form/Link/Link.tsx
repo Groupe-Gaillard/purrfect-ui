@@ -4,7 +4,6 @@ import {
   LinkProps as AriaLinkProps,
 } from "react-aria-components";
 import styled, { css } from "styled-components";
-import Button from "src/action/Button/Button";
 import { body1, theme } from "src/guidelines/theme";
 
 const disabledStyle = css<{ isDisabled?: boolean }>`
@@ -40,23 +39,7 @@ const StyledLink = styled(AriaLink)<{
   }
   ${disabledStyle}
 `;
-
-const baseStyle = css`
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  cursor: pointer;
-`;
-
-const StyledButton = styled(Button)<{
-  isDisabled?: boolean;
-  onPress?: React.MouseEventHandler<HTMLButtonElement>;
-}>`
-  ${baseStyle}
-  ${disabledStyle}
-`;
-
-export type LinkProps = AriaLinkProps & {
+type LinkProps = AriaLinkProps & {
   isUnderlined?: boolean;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
@@ -79,51 +62,30 @@ const Link = ({
   isUnderlined = true,
   hrefLang = "fr",
 }: LinkProps) => {
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-    if (isDisabled) {
-      return;
-    }
-    if (!href) {
-      //? trigger modal ?
-      //? window.location.href redirect ?
-    }
-  };
-
-  if (href) {
-    return (
-      <StyledLink
-        href={href}
-        target={target}
-        className={className}
-        hrefLang={hrefLang}
-        isDisabled={isDisabled}
-        isUnderlined={isUnderlined}
-        rel={target === "_blank" ? "noopener noreferrer" : undefined}
-      >
-        {/* N'arrive pas à appliquer le text decoration sur le svg malgré
-        l'encapsulation dans un span */}
-        {leadingIcon && (
-          <StyledIconContainer isUnderlined={isUnderlined}>
-            {leadingIcon}
-          </StyledIconContainer>
-        )}
-        {children}
-        {trailingIcon && (
-          <StyledIconContainer isUnderlined={isUnderlined}>
-            {trailingIcon}
-          </StyledIconContainer>
-        )}
-      </StyledLink>
-    );
-  } else {
-    return (
-      <StyledButton onPress={handleClick} isDisabled={isDisabled}>
-        {leadingIcon}
-        {children}
-        {trailingIcon}
-      </StyledButton>
-    );
-  }
+  return (
+    <StyledLink
+      href={href}
+      target={target}
+      className={className}
+      hrefLang={hrefLang}
+      isDisabled={isDisabled}
+      isUnderlined={isUnderlined}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
+    >
+      {leadingIcon && (
+        <StyledIconContainer isUnderlined={isUnderlined}>
+          {leadingIcon}
+        </StyledIconContainer>
+      )}
+      {children}
+      {trailingIcon && (
+        <StyledIconContainer isUnderlined={isUnderlined}>
+          {trailingIcon}
+        </StyledIconContainer>
+      )}
+    </StyledLink>
+  );
 };
 
 export default Link;
+export type { LinkProps };

@@ -1,7 +1,7 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import React from "react";
 // Add this line to import React
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import Link from "./Link";
 
 const MockIcon = () => <svg data-testid="icon-svg"></svg>;
@@ -79,12 +79,6 @@ describe("<Link />", () => {
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  it("should render a button if href is not provided", () => {
-    const { getByRole } = render(<Link>Missing Href Link</Link>);
-    const button = getByRole("button");
-    expect(button).toBeInTheDocument();
-  });
-
   it("should render children as its content", () => {
     const { getByText } = render(
       <Link href="https://example.com">
@@ -95,24 +89,12 @@ describe("<Link />", () => {
     expect(link).toBeInTheDocument();
   });
 
-  it("should apply disabled styles on Default Link when isDisabled is true", () => {
+  it("should apply disabled styles when isDisabled is true", () => {
     render(
       <Link href="https://example.com" isDisabled={true}>
         Disabled Link
       </Link>,
     );
-
-    const linkElement = screen.getByText("Disabled Link");
-
-    expect(linkElement).toHaveStyle({
-      opacity: 0.5,
-      cursor: "not-allowed",
-      pointerEvents: "none",
-    });
-  });
-
-  it("should apply disabled styles on Button Link when isDisabled is true", () => {
-    render(<Link isDisabled={true}>Disabled Link</Link>);
 
     const linkElement = screen.getByText("Disabled Link");
 
@@ -132,18 +114,5 @@ describe("<Link />", () => {
 
     const linkElement = screen.getByText("Disabled Link");
     expect(linkElement).toHaveAttribute("aria-disabled", "true");
-  });
-
-  it("shouldn't trigger onPress on Button Link when isDisabled is true", () => {
-    const handleClick = vi.fn();
-    render(
-      <Link isDisabled={true} onPress={handleClick}>
-        Disabled Link
-      </Link>,
-    );
-
-    const linkElement = screen.getByText("Disabled Link");
-    fireEvent.click(linkElement);
-    expect(handleClick).not.toHaveBeenCalled();
   });
 });
