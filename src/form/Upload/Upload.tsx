@@ -146,8 +146,8 @@ const Upload = ({
         </UploadButtonContainer>
         <Wrapper direction={flexDirection}>
           {showPreview && filePreviews.length > 0 ? (
-            filePreviews.map((file) => (
-              <PreviewContainer key={file.name}>
+            filePreviews.map((file, index) => (
+              <PreviewContainer key={`${file.name}-${index}`}>
                 <PreviewImage src={file.previewUrl} alt="File preview" />
                 <TextContainer>
                   <FileName>{file.name}</FileName>
@@ -162,8 +162,8 @@ const Upload = ({
           ) : null}
           {!showPreview &&
             filePreviews.length > 0 &&
-            filePreviews.map((file) => (
-              <React.Fragment key={file.name}>
+            filePreviews.map((file, index) => (
+              <React.Fragment key={`${file.name}-${index}`}>
                 <TextContainer>
                   <FileName>{file.name}</FileName>
                   <DeleteIcon onClick={() => handleDelete(file)} />
