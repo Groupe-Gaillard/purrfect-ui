@@ -8,7 +8,10 @@ import Button, { ButtonProps } from "src/action/Button/Button";
 import { body1, sizing, theme } from "src/guidelines/theme";
 import DeleteIcon from "src/icons/delete";
 import FilesIcon from "src/icons/files";
-import { truncateFileNameWithExtension } from "src/utils/utils";
+import {
+  generateUniqueId,
+  truncateFileNameWithExtension,
+} from "src/utils/utils";
 
 const StyledUpload = styled(AriaUpload)``;
 
@@ -68,6 +71,7 @@ const TextContainer = styled.div`
 `;
 
 type FilePreview = {
+  id: string;
   name: string;
   previewUrl: string;
 };
@@ -88,7 +92,7 @@ const Upload = ({
   showPreview = true,
   maxFiles = 5,
   ...props
-}: UploadProps): JSX.Element => {
+}: UploadProps) => {
   const [filePreviews, setFilePreviews] = useState<FilePreview[]>([]);
   const flexDirection = showPreview ? "row" : "column";
   const maxDisplayNameLength = 10;
@@ -112,6 +116,7 @@ const Upload = ({
       const limitedFiles = filteredFiles.slice(0, maxFiles);
 
       const previews = limitedFiles.map((file) => ({
+        id: generateUniqueId(),
         name: truncateFileNameWithExtension(file.name, maxDisplayNameLength),
         previewUrl: URL.createObjectURL(file),
       }));
@@ -119,13 +124,16 @@ const Upload = ({
     }
   };
 
-  const handleDelete = (fileToDelete: FilePreview) => {
+  const handleDelete = (fileToDeleteId: string) => {
     const updatedFilePreviews = filePreviews.filter(
-      (file) => file.name !== fileToDelete.name,
+      (file) => file.id !== fileToDeleteId,
     );
     setFilePreviews(updatedFilePreviews);
 
-    if (fileToDelete.previewUrl) {
+    const fileToDelete = filePreviews.find(
+      (file) => file.id === fileToDeleteId,
+    );
+    if (fileToDelete && fileToDelete.previewUrl) {
       URL.revokeObjectURL(fileToDelete.previewUrl);
     }
   };
@@ -151,7 +159,7 @@ const Upload = ({
                 <PreviewImage src={file.previewUrl} alt="File preview" />
                 <TextContainer>
                   <FileName>{file.name}</FileName>
-                  <DeleteIcon onClick={() => handleDelete(file)} />
+                  <DeleteIcon onClick={() => handleDelete(file.id)} />
                 </TextContainer>
               </PreviewContainer>
             ))
@@ -166,7 +174,7 @@ const Upload = ({
               <React.Fragment key={`${file.name}-${index}`}>
                 <TextContainer>
                   <FileName>{file.name}</FileName>
-                  <DeleteIcon onClick={() => handleDelete(file)} />
+                  <DeleteIcon onClick={() => handleDelete(file.id)} />
                 </TextContainer>
               </React.Fragment>
             ))}

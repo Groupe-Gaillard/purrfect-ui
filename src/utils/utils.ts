@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export type HexColor = {
   light?: string;
   dark?: string;
@@ -52,4 +54,11 @@ export const truncateFileNameWithExtension = (
     return `${baseName.substring(0, maxLength)}...${extension ? `.${extension}` : ""}`; // Tronquer en conservant l'extension
   }
   return fileName;
+};
+
+/**
+ * Function to generate a unique id.
+ */
+export const generateUniqueId = (): string => {
+  return uuidv4();
 };
