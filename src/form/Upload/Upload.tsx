@@ -4,11 +4,11 @@ import {
   FileTriggerProps as AriaUploadProps,
 } from "react-aria-components";
 import styled from "styled-components";
-import { ButtonProps } from "src/action/Button/Button";
-import Button from "src/action/Button/Button";
+import Button, { ButtonProps } from "src/action/Button/Button";
 import { body1, sizing, theme } from "src/guidelines/theme";
 import DeleteIcon from "src/icons/delete";
 import FilesIcon from "src/icons/files";
+import { truncateFileNameWithExtension } from "src/utils/utils";
 
 const StyledUpload = styled(AriaUpload)``;
 
@@ -32,18 +32,14 @@ const StyledButton = styled(Button)`
   width: 100%;
 `;
 
-const StyledIconContainer = styled.span`
-  margin-top: 2px;
-`;
-
 const PreviewContainer = styled.div`
-  width: ${sizing(200)};
-  height: ${sizing(200)};
+  width: ${sizing(120)};
+  height: ${sizing(80)};
   border-radius: ${theme.borderRadius.default};
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: ${sizing(16)};
+  padding: ${sizing(32)};
   align-items: center;
   background-color: ${theme.color.gray100};
   border: 1px solid ${theme.color.gray100};
@@ -78,20 +74,24 @@ type FilePreview = {
 
 type UploadProps = AriaUploadProps & {
   label: string;
-  buttonProps: ButtonProps;
-  leadingIcon?: React.ReactNode;
-  trailingIcon?: React.ReactNode;
   maxFiles?: number;
   showPreview?: boolean;
+  kind?: ButtonProps["kind"];
+  variant?: ButtonProps["variant"];
+  size?: ButtonProps["size"];
+  leadingIcon?: ButtonProps["leadingIcon"];
+  trailingIcon?: ButtonProps["trailingIcon"];
+  onPress?: ButtonProps["onPress"];
 };
 
 const Upload = ({
   showPreview = true,
   maxFiles = 5,
   ...props
-}: UploadProps) => {
+}: UploadProps): JSX.Element => {
   const [filePreviews, setFilePreviews] = useState<FilePreview[]>([]);
   const flexDirection = showPreview ? "row" : "column";
+  const maxDisplayNameLength = 10;
 
   useEffect(() => {
     return () => {
@@ -112,7 +112,7 @@ const Upload = ({
       const limitedFiles = filteredFiles.slice(0, maxFiles);
 
       const previews = limitedFiles.map((file) => ({
-        name: file.name,
+        name: truncateFileNameWithExtension(file.name, maxDisplayNameLength),
         previewUrl: URL.createObjectURL(file),
       }));
       setFilePreviews(previews);
@@ -134,14 +134,14 @@ const Upload = ({
     <>
       <StyledUpload {...props} onSelect={handleSelect}>
         <UploadButtonContainer>
-          <StyledButton {...props.buttonProps}>
-            {props.leadingIcon && (
-              <StyledIconContainer>{props.leadingIcon}</StyledIconContainer>
-            )}
+          <StyledButton
+            kind={props.kind}
+            variant={props.variant}
+            size={props.size}
+            leadingIcon={props.leadingIcon}
+            trailingIcon={props.trailingIcon}
+          >
             {props.label}
-            {props.trailingIcon && (
-              <StyledIconContainer>{props.trailingIcon}</StyledIconContainer>
-            )}
           </StyledButton>
         </UploadButtonContainer>
         <Wrapper direction={flexDirection}>

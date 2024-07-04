@@ -26,14 +26,12 @@ afterAll(() => {
 
 describe("Upload", () => {
   it("should renders without errors", () => {
-    render(<Upload label="Upload File" buttonProps={{ onPress: vi.fn() }} />);
+    render(<Upload label="Upload File" onPress={vi.fn()} />);
     expect(screen.getByText("Upload File")).toBeInTheDocument();
   });
 
   it("should display a preview after file upload", () => {
-    const { container } = render(
-      <Upload label="Upload" buttonProps={{ onPress: vi.fn() }} />,
-    );
+    const { container } = render(<Upload label="Upload" onPress={vi.fn()} />);
     const input = container.querySelector('input[type="file"]')!;
     const file = new File(["contenu"], "exemple.txt", { type: "text/plain" });
     fireEvent.change(input, { target: { files: [file] } });
@@ -44,7 +42,7 @@ describe("Upload", () => {
     const { getByText } = render(
       <Upload
         label="Upload"
-        buttonProps={{ onPress: vi.fn() }}
+        onPress={vi.fn()}
         trailingIcon={
           <svg>
             <path d="..." />
@@ -61,12 +59,7 @@ describe("Upload", () => {
 
   it("should allow uploading multiple files with a max of 5", () => {
     const { container } = render(
-      <Upload
-        label="Upload"
-        buttonProps={{ onPress: vi.fn() }}
-        allowsMultiple
-        maxFiles={5}
-      />,
+      <Upload label="Upload" onPress={vi.fn()} allowsMultiple maxFiles={5} />,
     );
 
     const files = [
@@ -96,7 +89,7 @@ describe("Upload", () => {
 
   it("should delete a file when DeleteIcon is clicked", async () => {
     const { queryByText, findByText, container } = render(
-      <Upload label="Upload File" buttonProps={{ onPress: vi.fn() }} />,
+      <Upload label="Upload File" onPress={vi.fn()} />,
     );
 
     const file = new File(["content"], "file1.txt", { type: "text/plain" });
@@ -117,7 +110,7 @@ describe("Upload", () => {
     const { container } = render(
       <Upload
         label="Upload File"
-        buttonProps={{ onPress: vi.fn() }}
+        onPress={vi.fn()}
         acceptedFileTypes={[".txt"]}
       />,
     );
