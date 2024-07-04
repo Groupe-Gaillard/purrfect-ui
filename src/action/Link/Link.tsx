@@ -39,11 +39,14 @@ const StyledLink = styled(AriaLink)<{
   }
   ${disabledStyle}
 `;
+
 type LinkProps = AriaLinkProps & {
   isUnderlined?: boolean;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
   children?: React.ReactNode;
+  onPress?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 const StyledIconContainer = styled.span<{ isUnderlined?: boolean }>`

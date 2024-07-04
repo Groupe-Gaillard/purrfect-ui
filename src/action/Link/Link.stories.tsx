@@ -39,7 +39,7 @@ const Title = styled.h1`
 
 type Story = StoryObj<typeof Link>;
 
-export const standardLink: Story = {
+export const Demo: Story = {
   args: {},
 
   render: (args) => (

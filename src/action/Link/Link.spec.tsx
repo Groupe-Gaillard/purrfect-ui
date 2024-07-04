@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-// Add this line to import React
 import { describe, expect, it } from "vitest";
 import Link from "./Link";
 
@@ -27,7 +26,7 @@ describe("<Link />", () => {
     expect(link).not.toHaveStyle("text-decoration: underline");
   });
 
-  it("should render Link with leading and trailing icons when isUnderlined is true", () => {
+  it("should render leading and/or trailing icons when leadingIcon and/or trailingIcon is true", () => {
     render(
       <Link
         href="https://example.com"
@@ -89,7 +88,7 @@ describe("<Link />", () => {
     expect(link).toBeInTheDocument();
   });
 
-  it("should apply disabled styles when isDisabled is true", () => {
+  it("should apply disabled style when isDisabled is true", () => {
     render(
       <Link href="https://example.com" isDisabled={true}>
         Disabled Link
