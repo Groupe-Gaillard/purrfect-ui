@@ -45,7 +45,6 @@ export const Demo: Story = {
   render: (args) => (
     <>
       <Title>Link</Title>
-
       <Link
         {...args}
         leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
