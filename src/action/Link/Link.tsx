@@ -13,67 +13,52 @@ const disabledStyle = css<{ isDisabled?: boolean }>`
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
-    border-bottom: 1px solid ${theme.color.linkDisabled};
   `}
 `;
 
 const StyledLink = styled(AriaLink)<{
   isDisabled?: boolean;
-  isUnderlined?: boolean;
+  underline?: "always" | "hovered" | "never";
 }>`
+  outline: none;
   display: flex;
   align-items: center;
   cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "pointer")};
   ${body1};
   max-width: max-content;
-  display: inline-block;
-  line-height: 0.7;
-  text-decoration: none;
-  border-bottom: ${({ isUnderlined, isDisabled }) =>
-    isUnderlined && !isDisabled
-      ? `1px solid ${theme.color.linkPrimary}`
-      : "none"};
-
+  text-decoration: ${({ isDisabled, underline }) =>
+    isDisabled ? "none" : underline === "always" ? "underline" : "none"};
   color: ${theme.color.linkPrimary};
   &:hover {
     color: ${theme.color.linkHover};
-    border-bottom: ${({ isUnderlined, isDisabled }) =>
-      isUnderlined && !isDisabled
-        ? `1px solid ${theme.color.linkHover}`
-        : "none"};
+    text-decoration: ${({ isDisabled, underline }) =>
+      isDisabled
+        ? "none"
+        : underline === "hovered"
+          ? "underline"
+          : underline === "always"
+            ? "underline"
+            : "none"};
   }
   &:active {
     color: ${theme.color.linkActive};
-    border-bottom: ${({ isUnderlined, isDisabled }) =>
-      isUnderlined && !isDisabled
-        ? `1px solid ${theme.color.linkActive}`
-        : "none"};
+    text-decoration: ${({ isDisabled, underline }) =>
+      isDisabled ? "none" : underline === "always" ? "underline" : "none"};
   }
   &:visited {
     color: ${theme.color.linkVisited};
-    border-bottom: ${({ isUnderlined, isDisabled }) =>
-      isUnderlined && !isDisabled
-        ? `1px solid ${theme.color.linkVisited}`
-        : "none"};
+    text-decoration: ${({ isDisabled, underline }) =>
+      isDisabled ? "none" : underline === "always" ? "underline" : "none"};
   }
   ${disabledStyle}
 `;
 
 type LinkProps = AriaLinkProps & {
-  isUnderlined?: boolean;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
   children?: React.ReactNode;
-  className?: string;
-  onPress?: () => void;
-  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  underline?: "always" | "hovered" | "never";
 };
-
-const StyledContainer = styled.div`
-  gap: 8px;
-  display: flex;
-  align-items: center;
-`;
 
 const Link = ({
   children,
@@ -83,25 +68,23 @@ const Link = ({
   isDisabled,
   target,
   className,
-  isUnderlined = true,
   hrefLang = "fr",
+  underline,
 }: LinkProps) => {
   return (
-    <StyledContainer>
-      <StyledLink
-        href={href}
-        target={target}
-        className={className}
-        hrefLang={hrefLang}
-        isDisabled={isDisabled}
-        isUnderlined={isUnderlined}
-        rel={target === "_blank" ? "noopener noreferrer" : undefined}
-      >
-        {leadingIcon}
-        {children}
-        {trailingIcon}
-      </StyledLink>
-    </StyledContainer>
+    <StyledLink
+      href={href}
+      target={target}
+      className={className}
+      hrefLang={hrefLang}
+      isDisabled={isDisabled}
+      underline={underline}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
+    >
+      {leadingIcon}
+      {children}
+      {trailingIcon}
+    </StyledLink>
   );
 };
 

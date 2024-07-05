@@ -195,7 +195,7 @@ const theme: Theme = {
     linkPrimary: "#007bff",
     linkSecondary: "#6c757d",
     linkActive: "#004085",
-    linkVisited: "#484848",
+    linkVisited: "#800080",
     linkDisabled: "#007bff61",
   },
 

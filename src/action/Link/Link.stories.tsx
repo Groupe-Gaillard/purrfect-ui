@@ -7,7 +7,7 @@ import { sizing } from "src/utils/utils";
 import Link from "./Link";
 
 const meta: Meta<typeof Link> = {
-  title: "Components/Link",
+  title: "action/Link",
   component: Link,
   argTypes: {
     leadingIcon: {
@@ -16,8 +16,8 @@ const meta: Meta<typeof Link> = {
     trailingIcon: {
       control: "boolean",
     },
-    isUnderlined: {
-      control: "boolean",
+    underline: {
+      control: { type: "select", options: ["always", "hovered", "never"] },
     },
   },
   args: {
@@ -28,6 +28,7 @@ const meta: Meta<typeof Link> = {
     className: "",
     leadingIcon: false,
     trailingIcon: false,
+    underline: "hovered",
   },
 };
 export default meta;
@@ -45,6 +46,60 @@ export const Demo: Story = {
   render: (args) => (
     <>
       <Title>Link</Title>
+      <Link
+        {...args}
+        leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
+        trailingIcon={args.trailingIcon ? <PlusIcon /> : undefined}
+      >
+        {args.children}
+      </Link>
+    </>
+  ),
+};
+
+export const AlwaysUnderlined: Story = {
+  args: {
+    underline: "always",
+  },
+  render: (args) => (
+    <>
+      <Title>Always Underlined Link</Title>
+      <Link
+        {...args}
+        leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
+        trailingIcon={args.trailingIcon ? <PlusIcon /> : undefined}
+      >
+        {args.children}
+      </Link>
+    </>
+  ),
+};
+
+export const HoverUnderlined: Story = {
+  args: {
+    underline: "hovered",
+  },
+  render: (args) => (
+    <>
+      <Title>Hover Underlined Link</Title>
+      <Link
+        {...args}
+        leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
+        trailingIcon={args.trailingIcon ? <PlusIcon /> : undefined}
+      >
+        {args.children}
+      </Link>
+    </>
+  ),
+};
+
+export const NeverUnderlined: Story = {
+  args: {
+    underline: "never",
+  },
+  render: (args) => (
+    <>
+      <Title>Never Underlined Link</Title>
       <Link
         {...args}
         leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
