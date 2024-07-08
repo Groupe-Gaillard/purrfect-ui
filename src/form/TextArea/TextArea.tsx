@@ -9,8 +9,8 @@ import {
   TextFieldProps,
 } from "react-aria-components";
 import styled from "styled-components";
-import { sizing, theme } from "src/guidelines/theme";
-import { body1, typographies } from "src/guidelines/theme/typographies";
+import { breakpoints, sizing, theme } from "src/guidelines/theme";
+import { body1, narrow } from "src/guidelines/theme/typographies";
 
 const StyledTextField = styled(TextField)`
   display: flex;
@@ -27,13 +27,12 @@ const StyledLabel = styled(Label)`
 `;
 
 const StyledTextArea = styled(AriaTextArea)`
-  padding: ${sizing(6)};
+  ${body1};
+  padding: ${sizing(4)};
   margin: 0;
   border: 1px solid ${theme.color.gray200};
   border-radius: ${theme.borderRadius.default};
   background: ${theme.color.white};
-  font-size: ${typographies.fontSize.base};
-  color: ${theme.color.text.dark};
 
   &[data-focused] {
     outline: ${sizing(2)} solid ${theme.color.primary};
@@ -43,11 +42,14 @@ const StyledTextArea = styled(AriaTextArea)`
     color: ${theme.color.danger};
     border-color: ${theme.color.danger};
   }
+
+  @media ${breakpoints.minWidth.md} {
+    padding: ${sizing(6)};
+  }
 `;
 
 const StyledText = styled(Text)`
-  ${body1};
-  font-size: ${typographies.fontSize.sm};
+  ${narrow};
 `;
 
 const StyledIsRequired = styled.span`

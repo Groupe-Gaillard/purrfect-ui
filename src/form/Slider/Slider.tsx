@@ -9,7 +9,7 @@ import {
   SliderTrack,
 } from "react-aria-components";
 import styled, { css } from "styled-components";
-import { body1, theme } from "../../guidelines/theme";
+import { body1, breakpoints, sizing, theme } from "../../guidelines/theme";
 
 type SliderProps = AriaSliderProps &
   SliderThumbProps & {
@@ -18,15 +18,17 @@ type SliderProps = AriaSliderProps &
   };
 
 const StyledSlider = styled(AriaSlider)<{ sliderMaxWidth?: string }>`
+  ${body1};
   display: grid;
   grid-template-areas:
     "label output"
     "track track";
   grid-template-columns: 1fr auto;
-  color: ${theme.color.text.dark};
+
   &[data-disabled] {
     cursor: not-allowed;
   }
+
   ${({ sliderMaxWidth }) => css`
     max-width: ${sliderMaxWidth || "100%"};
   `}
@@ -58,7 +60,7 @@ const StyledSliderTrack = styled(SliderTrack)`
       background: ${theme.color.gray100};
     }
   }
-  height: 30px;
+  height: ${sizing(24)};
   width: 100%;
 
   &:before {
@@ -70,10 +72,14 @@ const StyledSliderTrack = styled(SliderTrack)`
   &[data-hovered] {
     cursor: pointer;
   }
+
+  @media ${breakpoints.minWidth.md} {
+    height: ${sizing(30)};
+  }
 `;
 const StyledSliderThumb = styled(SliderThumb)`
-  width: 1.429rem;
-  height: 1.429rem;
+  width: ${sizing(20)};
+  height: ${sizing(20)};
   border-radius: 50%;
   background: ${theme.color.primary};
   border: 2px solid ${theme.color.primary};
@@ -90,6 +96,10 @@ const StyledSliderThumb = styled(SliderThumb)`
     background: ${theme.color.primary200};
   }
   top: 50%;
+  @media ${breakpoints.minWidth.md} {
+    width: ${sizing(24)};
+    height: ${sizing(24)};
+  }
 `;
 
 const Slider = (props: SliderProps) => {

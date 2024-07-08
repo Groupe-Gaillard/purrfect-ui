@@ -7,17 +7,16 @@ import {
   Text,
 } from "react-aria-components";
 import styled, { css } from "styled-components";
-import { body1, sizing, theme } from "src/guidelines/theme";
-import { typographies } from "src/guidelines/theme/typographies";
+import { body1, breakpoints, sizing, theme } from "src/guidelines/theme";
+import { narrow } from "src/guidelines/theme/typographies";
 
 const StyledLabel = styled(Label)`
   ${body1}
 `;
 
 const StyledText = styled(Text)`
-  ${body1};
+  ${narrow};
   width: 100%;
-  font-size: ${typographies.fontSize.sm};
 `;
 
 const StyledIsRequired = styled.span`
@@ -34,7 +33,7 @@ type Orientation = "horizontal" | "vertical";
 const StyledRadioGroup = styled(AriaRadioGroup)<{ orientation?: Orientation }>`
   display: flex;
   flex-wrap: wrap;
-  gap: ${sizing(8)};
+  gap: ${sizing(6)};
   color: ${theme.color.text.dark};
   &[data-disabled] {
     opacity: 0.5;
@@ -42,6 +41,10 @@ const StyledRadioGroup = styled(AriaRadioGroup)<{ orientation?: Orientation }>`
   ${({ orientation }) => css`
     flex-direction: ${orientation === "horizontal" ? "row" : "column"};
   `}
+
+  @media ${breakpoints.minWidth.md} {
+    gap: ${sizing(8)};
+  }
 `;
 
 type RadioGroupProps = AriaRadioGroupProps & {
