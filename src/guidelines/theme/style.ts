@@ -78,6 +78,11 @@ interface Color {
   gray700: string;
   gray800: string;
   gray900: string;
+  linkPrimary: string;
+  linkSecondary: string;
+  linkActive: string;
+  linkVisited: string;
+  linkDisabled: string;
 }
 
 interface Transition {}
@@ -185,6 +190,13 @@ const theme: Theme = {
     gray700: "#555555",
     gray800: "#333333",
     gray900: "#111111",
+
+    // Link variant
+    linkPrimary: "#007bff",
+    linkSecondary: "#6c757d",
+    linkActive: "#004085",
+    linkVisited: "#800080",
+    linkDisabled: "#007bff61",
   },
 
   shadows: {

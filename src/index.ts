@@ -18,3 +18,5 @@ export { default as TextArea } from "src/form/TextArea/TextArea";
 export type { TextAreaProps } from "src/form/TextArea/TextArea";
 export { default as TextField } from "src/form/TextField/TextField";
 export type { TextFieldProps } from "src/form/TextField/TextField";
+export { default as Link } from "src/action/Link/Link";
+export type { LinkProps } from "src/action/Link/Link";
