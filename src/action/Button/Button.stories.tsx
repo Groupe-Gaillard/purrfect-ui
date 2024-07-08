@@ -65,7 +65,7 @@ export const ButtonList = () => {
     "gray",
   ];
   const buttonSizes: Array<Size> = ["small", "normal", "large"];
-  const buttonKind: Array<Kind> = ["normal", "outlined"];
+  const buttonKind: Array<Kind> = ["normal", "outlined", "link"];
   const buttonState: Array<boolean> = [false, true];
 
   return (
