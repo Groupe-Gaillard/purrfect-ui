@@ -85,11 +85,11 @@ type UploadProps = AriaUploadProps & {
   showPreview?: boolean;
 };
 
-const Upload: React.FC<UploadProps> = ({
+const Upload = ({
   showPreview = true,
   maxFiles = 5,
   ...props
-}) => {
+}: UploadProps) => {
   const [filePreviews, setFilePreviews] = useState<FilePreview[]>([]);
   const flexDirection = showPreview ? "row" : "column";
 
@@ -177,3 +177,4 @@ const Upload: React.FC<UploadProps> = ({
 };
 
 export default Upload;
+export type { UploadProps };

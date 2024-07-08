@@ -22,3 +22,5 @@ export { default as TextField } from "src/form/TextField/TextField";
 export type { TextFieldProps } from "src/form/TextField/TextField";
 export { default as Link } from "src/action/Link/Link";
 export type { LinkProps } from "src/action/Link/Link";
+export { default as Upload } from "src/form/Upload/Upload";
+export type { UploadProps } from "src/form/Upload/Upload";
