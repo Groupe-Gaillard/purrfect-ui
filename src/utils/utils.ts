@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export type HexColor = {
   light?: string;
   dark?: string;
@@ -34,4 +36,29 @@ export const getContrastYIQ = (hexColor: string | HexColor) => {
  * */
 export const sizing = (value: number): string => {
   return `${value / 16}rem`;
+};
+
+/**
+ * Function to truncate a text to a length value and keep its extension
+ * */
+export const truncateFileNameWithExtension = (
+  fileName: string,
+  maxLength: number,
+): string => {
+  const extension = fileName.slice(((fileName.lastIndexOf(".") - 1) >>> 0) + 2); // Extraire l'extension
+  const baseName = fileName.slice(
+    0,
+    fileName.lastIndexOf(".") - extension.length,
+  );
+  if (baseName.length > maxLength) {
+    return `${baseName.substring(0, maxLength)}...${extension ? `.${extension}` : ""}`; // Tronquer en conservant l'extension
+  }
+  return fileName;
+};
+
+/**
+ * Function to generate a unique id.
+ */
+export const generateUniqueId = (): string => {
+  return uuidv4();
 };
