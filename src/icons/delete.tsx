@@ -1,10 +1,11 @@
 import React from "react";
 
 type DeleteIconProps = {
-  onClick: () => void;
+  onClick?: () => void;
+  style?: React.CSSProperties;
 };
 
-const DeleteIcon: React.FC<DeleteIconProps> = ({ onClick }) => {
+const DeleteIcon: React.FC<DeleteIconProps> = ({ onClick, style }) => {
   return (
     <svg
       onClick={onClick}
@@ -17,6 +18,7 @@ const DeleteIcon: React.FC<DeleteIconProps> = ({ onClick }) => {
       width="25px"
       xmlns="http://www.w3.org/2000/svg"
       data-testid="delete-icon"
+      style={style}
     >
       <path
         fillRule="evenodd"
