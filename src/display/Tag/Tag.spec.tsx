@@ -40,7 +40,6 @@ describe("Tag Component", () => {
 
   it("renders the Tag with an icon", () => {
     render(<Tag leadingIcon={<AddIcon />}>With Icon</Tag>);
-    // Adjust the query to match the role and accessible name of the button element
     const icon = screen.getByRole("button", { name: "With Icon" });
     expect(icon).toBeInTheDocument();
   });
