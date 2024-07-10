@@ -39,9 +39,11 @@ describe("Tag Component", () => {
   });
 
   it("renders the Tag with an icon", () => {
-    render(<Tag leadingIcon={<AddIcon />}>With Icon</Tag>);
-    const icon = screen.getByRole("button", { name: "With Icon" });
-    expect(icon).toBeInTheDocument();
+    const { container } = render(
+      <Tag leadingIcon={<AddIcon />}>With Icon</Tag>,
+    );
+    const svgIcon = container.querySelector("svg");
+    expect(svgIcon).toBeInTheDocument();
   });
 
   it("handles click event", () => {

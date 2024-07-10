@@ -26,7 +26,7 @@ const getTagSizeStyles = (size: TagSize = "normal") => {
 
         & > ${IconSVG} {
           height: ${sizing(20)};
-          width: ${sizing(16)};
+          width: ${sizing(20)};
         }
       `;
     default:
