@@ -3,20 +3,31 @@ import { useButton, usePress } from "react-aria";
 import styled, { css } from "styled-components";
 import { Variant } from "src/action/Button/Button";
 import { body1, theme } from "src/guidelines/theme";
+import IconSVG from "src/icons/IconSVG";
 import { getContrastYIQ, sizing } from "src/utils/utils";
 
-export type TagSizeType = "normal" | "large";
-const getTagSizeStyles = (size: TagSizeType = "normal") => {
+export type TagSize = "normal" | "large";
+const getTagSizeStyles = (size: TagSize = "normal") => {
   switch (size) {
     case "normal":
       return css`
-        max-height: ${sizing(16)};
+        height: ${sizing(16)};
         padding: ${sizing(2)} ${sizing(4)};
+
+        & > ${IconSVG} {
+          height: ${sizing(16)};
+          width: ${sizing(16)};
+        }
       `;
     case "large":
       return css`
-        max-height: ${sizing(20)};
+        height: ${sizing(20)};
         padding: ${sizing(4)} ${sizing(8)};
+
+        & > ${IconSVG} {
+          height: ${sizing(20)};
+          width: ${sizing(16)};
+        }
       `;
     default:
       return css``;
@@ -60,7 +71,7 @@ const tagKind = (kind: TagKind = "normal", variant: Variant = "primary") => {
 };
 
 const StyledButtonSpan = styled.span<{
-  size?: TagSizeType;
+  size?: TagSize;
   variant?: Variant;
   kind?: TagKind;
   isDisabled?: boolean;
@@ -72,9 +83,7 @@ const StyledButtonSpan = styled.span<{
     ${tagColor(variant)};
     ${tagKind(kind, variant)};
     ${onPress &&
-    `
-    cursor: pointer;
-    &:hover {
+    ` &:hover {
     opacity: 0.9;
   }`}
   `};
@@ -91,7 +100,7 @@ const StyledButtonSpan = styled.span<{
 `;
 
 type TagProps = {
-  size?: TagSizeType;
+  size?: TagSize;
   variant?: Variant;
   children?: React.ReactNode;
   kind?: TagKind;

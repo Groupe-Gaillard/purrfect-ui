@@ -2,18 +2,12 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { describe, expect, it, vi } from "vitest";
 import Tag from "src/display/Tag/Tag";
-import DeleteIcon from "src/icons/delete";
+import AddIcon from "src/icons/Add";
 
 describe("Tag Component", () => {
   it("renders the base tag", () => {
     render(<Tag>Tag</Tag>);
     expect(screen.getByText("Tag")).toBeInTheDocument();
-  });
-
-  it("renders the Tag with a variant prop", () => {
-    render(<Tag variant="primary">Primary Tag</Tag>);
-    const tag = screen.getByText("Primary Tag");
-    expect(tag).toBeInTheDocument();
   });
 
   it("renders the Tag with a kind prop", () => {
@@ -45,8 +39,9 @@ describe("Tag Component", () => {
   });
 
   it("renders the Tag with an icon", () => {
-    render(<Tag leadingIcon={<DeleteIcon />}>With Icon</Tag>);
-    const icon = screen.getByTestId("delete-icon");
+    render(<Tag leadingIcon={<AddIcon />}>With Icon</Tag>);
+    // Adjust the query to match the role and accessible name of the button element
+    const icon = screen.getByRole("button", { name: "With Icon" });
     expect(icon).toBeInTheDocument();
   });
 

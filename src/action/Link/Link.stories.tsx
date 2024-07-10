@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import { heading1 } from "src/guidelines/theme";
-import PlusIcon from "src/icons/plus";
+import AddIcon from "src/icons/Add";
 import { sizing } from "src/utils/utils";
 import Link from "./Link";
 
@@ -48,8 +48,8 @@ export const Demo: Story = {
       <Title>Link</Title>
       <Link
         {...args}
-        leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
-        trailingIcon={args.trailingIcon ? <PlusIcon /> : undefined}
+        leadingIcon={args.leadingIcon ? <AddIcon /> : undefined}
+        trailingIcon={args.trailingIcon ? <AddIcon /> : undefined}
       >
         {args.children}
       </Link>
@@ -66,8 +66,8 @@ export const AlwaysUnderlined: Story = {
       <Title>Always Underlined Link</Title>
       <Link
         {...args}
-        leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
-        trailingIcon={args.trailingIcon ? <PlusIcon /> : undefined}
+        leadingIcon={args.leadingIcon ? <AddIcon /> : undefined}
+        trailingIcon={args.trailingIcon ? <AddIcon /> : undefined}
       >
         {args.children}
       </Link>
@@ -84,8 +84,8 @@ export const HoverUnderlined: Story = {
       <Title>Hover Underlined Link</Title>
       <Link
         {...args}
-        leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
-        trailingIcon={args.trailingIcon ? <PlusIcon /> : undefined}
+        leadingIcon={args.leadingIcon ? <AddIcon /> : undefined}
+        trailingIcon={args.trailingIcon ? <AddIcon /> : undefined}
       >
         {args.children}
       </Link>
@@ -102,8 +102,8 @@ export const NeverUnderlined: Story = {
       <Title>Never Underlined Link</Title>
       <Link
         {...args}
-        leadingIcon={args.leadingIcon ? <PlusIcon /> : undefined}
-        trailingIcon={args.trailingIcon ? <PlusIcon /> : undefined}
+        leadingIcon={args.leadingIcon ? <AddIcon /> : undefined}
+        trailingIcon={args.trailingIcon ? <AddIcon /> : undefined}
       >
         {args.children}
       </Link>

@@ -1,10 +1,4 @@
-import {
-  fireEvent,
-  getByTestId,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
@@ -98,7 +92,7 @@ describe("Upload", () => {
 
     await findByText("file1.txt");
 
-    const deleteIcon = getByTestId(container, "delete-icon");
+    const deleteIcon = screen.getByRole("button", { name: `Delete file1.txt` });
     deleteIcon && userEvent.click(deleteIcon);
 
     await waitFor(() => {

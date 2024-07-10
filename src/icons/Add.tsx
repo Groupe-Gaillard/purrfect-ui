@@ -1,15 +1,16 @@
 import React from "react";
+import IconSVG from "./IconSVG";
 
-const PlusIcon = () => {
+const AddIcon = () => {
   return (
-    <svg
+    <IconSVG
       stroke="currentColor"
       fill="none"
       strokeWidth="2"
       viewBox="0 0 24 24"
       aria-hidden="true"
-      height="16px"
-      width="16px"
+      height="20px"
+      width="20px"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -17,8 +18,8 @@ const PlusIcon = () => {
         strokeLinejoin="round"
         d="M12 6v6m0 0v6m0-6h6m-6 0H6"
       ></path>
-    </svg>
+    </IconSVG>
   );
 };
 
-export default PlusIcon;
+export default AddIcon;
