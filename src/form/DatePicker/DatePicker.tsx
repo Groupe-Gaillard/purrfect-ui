@@ -20,7 +20,7 @@ import styled from "styled-components";
 import Button from "src/action/Button/Button";
 import { body1, sizing, theme } from "src/guidelines/theme";
 import { typographies } from "src/guidelines/theme/typographies";
-import Close from "src/icons/close";
+import Close from "src/icons/Close";
 
 const StyledDatePicker = styled(AriaDatePicker)`
   display: flex;

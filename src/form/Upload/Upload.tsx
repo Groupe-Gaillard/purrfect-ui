@@ -6,8 +6,8 @@ import {
 import styled from "styled-components";
 import Button, { ButtonProps } from "src/action/Button/Button";
 import { body1, sizing, theme } from "src/guidelines/theme";
-import DeleteIcon from "src/icons/delete";
-import FilesIcon from "src/icons/files";
+import DeleteIcon from "src/icons/Delete";
+import FilesIcon from "src/icons/Files";
 import {
   generateUniqueId,
   truncateFileNameWithExtension,
@@ -68,6 +68,13 @@ const TextContainer = styled.div`
   align-items: center;
   gap: 10px;
   margin-top: ${sizing(10)};
+`;
+
+const DeleteButton = styled.button`
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
 `;
 
 type FilePreview = {
@@ -159,7 +166,12 @@ const Upload = ({
                 <PreviewImage src={file.previewUrl} alt="File preview" />
                 <TextContainer>
                   <FileName>{file.name}</FileName>
-                  <DeleteIcon onClick={() => handleDelete(file.id)} />
+                  <DeleteButton
+                    aria-label={`Delete ${file.name}`}
+                    onClick={() => handleDelete(file.id)}
+                  >
+                    <DeleteIcon />
+                  </DeleteButton>
                 </TextContainer>
               </PreviewContainer>
             ))
@@ -174,7 +186,12 @@ const Upload = ({
               <React.Fragment key={`${file.name}-${index}`}>
                 <TextContainer>
                   <FileName>{file.name}</FileName>
-                  <DeleteIcon onClick={() => handleDelete(file.id)} />
+                  <DeleteButton
+                    aria-label={`Delete ${file.name}`}
+                    onClick={() => handleDelete(file.id)}
+                  >
+                    <DeleteIcon />
+                  </DeleteButton>
                 </TextContainer>
               </React.Fragment>
             ))}

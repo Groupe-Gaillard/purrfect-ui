@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import Upload from "src/form/Upload/Upload";
 import { heading1, sizing } from "src/guidelines/theme/index";
-import UploadIcon from "src/icons/upload";
+import UploadIcon from "src/icons/Upload";
 
 const meta: Meta<typeof Upload> = {
   component: Upload,

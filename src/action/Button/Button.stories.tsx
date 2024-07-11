@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import Button, { Kind, Size, Variant } from "src/action/Button/Button";
 import { heading1, theme } from "src/guidelines/theme";
-import Default from "src/icons/default";
+import Default from "src/icons/Default";
 
 const meta: Meta<typeof Button> = {
   component: Button,
