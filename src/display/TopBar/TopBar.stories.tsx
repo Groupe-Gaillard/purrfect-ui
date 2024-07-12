@@ -73,7 +73,7 @@ export const oneChildEnd = {
   argTypes: {
     spacing: {
       control: "select",
-      options: ["start", "center", "end", "around", "evenly", "between"],
+      options: ["start", "center", "end"],
     },
   },
   render: (args: TopBarProps) => (
