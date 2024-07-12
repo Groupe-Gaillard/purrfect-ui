@@ -110,6 +110,9 @@ const TopBar = ({
     case "evenly":
       justifyContentValue = "space-evenly";
       break;
+    case "between":
+      justifyContentValue = "space-evenly";
+      break;
     default:
       justifyContentValue = "space-between";
   }
@@ -148,3 +151,4 @@ const TopBar = ({
 };
 
 export default TopBar;
+export type { TopBarProps };

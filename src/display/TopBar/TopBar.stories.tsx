@@ -2,11 +2,30 @@ import { Meta } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import { heading1, sizing, theme } from "src/guidelines/theme";
-import TopBar from "./TopBar";
+import TopBar, { TopBarProps } from "./TopBar";
+
+const Section = styled.div`
+  border: 1px solid ${theme.color.primary100};
+  padding: ${sizing(16)};
+  border-radius: ${theme.borderRadius.default};
+  text-align: center;
+  color: ${theme.color.primary700};
+  background-color: ${theme.color.primary100};
+`;
 
 const meta: Meta<typeof TopBar> = {
   component: TopBar,
   title: "Display/TopBar",
+  args: {
+    leftFlex: 1,
+    centerFlex: 1,
+    rightFlex: 1,
+    gap: "xxlarge",
+    spacing: "flex-start",
+    leftSection: <Section>LEFT</Section>,
+    centerSection: <Section>CENTER</Section>,
+    rightSection: <Section>RIGHT</Section>,
+  },
   argTypes: {
     gap: {
       control: "select",
@@ -14,14 +33,7 @@ const meta: Meta<typeof TopBar> = {
     },
     spacing: {
       control: "select",
-      options: [
-        "flex-start",
-        "flex-end",
-        "center",
-        "space-around",
-        "space-evenly",
-        "space-between",
-      ],
+      options: ["start", "center", "end", "around", "evenly", "between"],
     },
     leftFlex: {
       control: { type: "number", min: 1, max: 3 },
@@ -42,52 +54,8 @@ const Title = styled.h1`
   margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 
-const Section = styled.div`
-  border: 1px solid ${theme.color.primary100};
-  padding: ${sizing(16)};
-  border-radius: ${theme.borderRadius.default};
-  text-align: center;
-  color: ${theme.color.primary700};
-  background-color: ${theme.color.primary100};
-`;
-
 export const Demo = {
-  args: {
-    leftFlex: 2,
-    centerFlex: 1,
-    rightFlex: 1,
-    leftSection: <Section>LEFT</Section>,
-    centerSection: <Section>CENTER</Section>,
-    rightSection: <Section>RIGHT</Section>,
-    ariaLabel: "Top Bar",
-    gap: "xxlarge",
-    spacing: "flex-start",
-  },
-  argTypes: {
-    leftFlex: {
-      control: { type: "number", min: 1, max: 3 },
-    },
-    centerFlex: {
-      control: { type: "number", min: 1, max: 3 },
-    },
-    rightFlex: {
-      control: { type: "number", min: 1, max: 3 },
-    },
-    spacing: {
-      control: { type: "text" },
-      description: "Spacing around items",
-    },
-    gap: {
-      control: { type: "text" },
-      description: "Gap between items",
-    },
-    ariaLabel: {
-      control: { type: "text" },
-      description: "Accessibility label",
-    },
-  },
-
-  render: (args) => (
+  render: (args: TopBarProps) => (
     <>
       <Title>TopBar Demo</Title>
       <TopBar {...args} />
@@ -95,13 +63,13 @@ export const Demo = {
   ),
 };
 
-export const oneChild = {
+export const oneChildEnd = {
   render: () => (
     <>
-      <Title>TopBar One Child</Title>
+      <Title>TopBar One Child at the end</Title>
       <TopBar
         aria-label="Top Bar"
-        spacing="start"
+        spacing="end"
         leftWidth="33%"
         leftSection={<Section>LEFT</Section>}
       />
@@ -109,17 +77,44 @@ export const oneChild = {
   ),
 };
 
-export const twoChildren = {
+export const twoChildrenDifferentSizes = {
   render: () => (
     <>
-      <Title>TopBar Two children</Title>
+      <Title>TopBar Two children different sizes</Title>
       <TopBar
         aria-label="Top Bar"
-        gap="small"
         leftFlex={1}
         centerFlex={2}
         leftSection={<Section>LEFT</Section>}
         centerSection={<Section>CENTER</Section>}
+      />
+    </>
+  ),
+};
+
+export const SmallGap = {
+  render: (args: TopBarProps) => (
+    <>
+      <Title>TopBar three children smallest gap</Title>
+      <TopBar
+        {...args}
+        leftSection={<Section>LEFT</Section>}
+        centerSection={<Section>CENTER</Section>}
+        rightSection={<Section>RIGHT</Section>}
+      />
+    </>
+  ),
+};
+
+export const BigGap = {
+  render: (args: TopBarProps) => (
+    <>
+      <Title>TopBar three children biggest gap</Title>
+      <TopBar
+        {...args}
+        leftSection={<Section>LEFT</Section>}
+        centerSection={<Section>CENTER</Section>}
+        rightSection={<Section>RIGHT</Section>}
       />
     </>
   ),

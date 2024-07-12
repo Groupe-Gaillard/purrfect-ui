@@ -28,3 +28,5 @@ export { default as Tag } from "src/display/Tag/Tag";
 export type { TagProps } from "src/display/Tag/Tag";
 export { default as Table } from "src/display/Table/Table";
 export type { TableProps } from "src/display/Table/Table";
+export { default as TopBar } from "src/display/TopBar/TopBar";
+export type { TopBarProps } from "src/display/TopBar/TopBar";
