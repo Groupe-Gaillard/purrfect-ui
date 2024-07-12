@@ -10,6 +10,7 @@ const StyledTopBar = styled.div<{ spacing?: string; gap?: string }>`
   display: flex;
   justify-content: ${({ spacing }) => spacing || "space-between"};
   align-items: center;
+  padding: ${sizing(16)};
   gap: ${({ gap }) => (gap ? sizing(getGapSize(gap)) : `${sizing(16)}`)};
   border: 1px solid ${theme.color.primary100};
   border-radius: ${theme.borderRadius.default};
@@ -17,15 +18,24 @@ const StyledTopBar = styled.div<{ spacing?: string; gap?: string }>`
   //? border bottom uniquement ?
 `;
 
-const Section = styled.div<{ flex?: number }>`
+const SectionsStyle = styled.div<{ flex?: number }>`
   flex: ${({ flex }) => flex || 1};
   flex-basis: 0;
-  padding: ${sizing(16)};
+  box-sizing: border-box;
 `;
 
-const LeftSection = styled(Section)``;
-const CenterSection = styled(Section)``;
-const RightSection = styled(Section)``;
+const LeftSection = styled(SectionsStyle)``;
+const CenterSection = styled(SectionsStyle)``;
+const RightSection = styled(SectionsStyle)``;
+const OneSection = styled(SectionsStyle)<{
+  leftWidth?: string;
+  centerWidth?: string;
+  rightWidth?: string;
+}>`
+  width: ${({ leftWidth, centerWidth, rightWidth }) =>
+    leftWidth || centerWidth || rightWidth || "auto"};
+  flex: none;
+`;
 
 const getGapSize = (gap: string): number => {
   switch (gap) {
@@ -45,14 +55,17 @@ const getGapSize = (gap: string): number => {
 };
 
 type TopBarProps = AriaTopBarProps & {
-  leftChildren?: React.ReactNode;
-  centerChildren?: React.ReactNode;
-  rightChildren?: React.ReactNode;
+  leftSection?: React.ReactNode;
+  centerSection?: React.ReactNode;
+  rightSection?: React.ReactNode;
   gap?: string;
   spacing?: string;
   leftFlex?: number;
   centerFlex?: number;
   rightFlex?: number;
+  leftWidth?: string;
+  centerWidth?: string;
+  rightWidth?: string;
 };
 
 type TopBarSpacing =
@@ -64,14 +77,17 @@ type TopBarSpacing =
   | "space-between";
 
 const TopBar = ({
-  leftChildren,
-  centerChildren,
-  rightChildren,
+  leftSection,
+  centerSection,
+  rightSection,
   gap,
   spacing,
   leftFlex = 1,
   centerFlex = 1,
   rightFlex = 1,
+  leftWidth,
+  centerWidth,
+  rightWidth,
   ...props
 }: TopBarProps) => {
   const ref = useRef(null);
@@ -98,6 +114,9 @@ const TopBar = ({
       justifyContentValue = "space-between";
   }
 
+  const hasSingleSection =
+    [leftSection, centerSection, rightSection].filter(Boolean).length === 1;
+
   return (
     <StyledTopBar
       {...toolbarProps}
@@ -105,14 +124,24 @@ const TopBar = ({
       spacing={justifyContentValue}
       ref={ref}
     >
-      {leftChildren && (
-        <LeftSection flex={leftFlex}> {leftChildren}</LeftSection>
+      {hasSingleSection && (
+        <OneSection
+          leftWidth={leftWidth}
+          centerWidth={centerWidth}
+          rightWidth={rightWidth}
+        >
+          {leftSection || centerSection || rightSection}
+        </OneSection>
       )}
-      {centerChildren && (
-        <CenterSection flex={centerFlex}>{centerChildren}</CenterSection>
+
+      {leftSection && !hasSingleSection && (
+        <LeftSection flex={leftFlex}> {leftSection}</LeftSection>
       )}
-      {rightChildren && (
-        <RightSection flex={rightFlex}>{rightChildren}</RightSection>
+      {centerSection && (
+        <CenterSection flex={centerFlex}>{centerSection}</CenterSection>
+      )}
+      {rightSection && (
+        <RightSection flex={rightFlex}>{rightSection}</RightSection>
       )}
     </StyledTopBar>
   );
