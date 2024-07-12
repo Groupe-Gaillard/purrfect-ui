@@ -99,6 +99,36 @@ export const DemoWithDisabledOption: Story = {
     <div>
       <Title>Select</Title>
       <Select {...args}>
+        {optionsWithDisabledOption.map((oneOption) => {
+          return (
+            <Option
+              key={oneOption.id}
+              id={oneOption.id}
+              isDisabled={oneOption.isDisabled ?? false}
+            >
+              {oneOption.label}
+            </Option>
+          );
+        })}
+      </Select>
+    </div>
+  ),
+};
+
+export const DisabledSelect: Story = {
+  args: {
+    autoFocus: true,
+    className: "",
+    isDisabled: true,
+    isRequired: false,
+    description: "Helper text",
+    label: "Select",
+    onSelectionChange: fn(),
+  },
+  render: (args) => (
+    <div>
+      <Title>Select</Title>
+      <Select {...args}>
         {options.map((oneOption) => {
           return (
             <Option key={oneOption.id} id={oneOption.id}>
@@ -107,27 +137,6 @@ export const DemoWithDisabledOption: Story = {
           );
         })}
       </Select>
-
-      <Title>Contained Select</Title>
-      <div
-        style={{
-          width: "350px",
-        }}
-      >
-        <Select {...args}>
-          {optionsWithDisabledOption.map((oneOption) => {
-            return (
-              <Option
-                key={oneOption.id}
-                id={oneOption.id}
-                isDisabled={oneOption.isDisabled ?? false}
-              >
-                {oneOption.label}
-              </Option>
-            );
-          })}
-        </Select>
-      </div>
     </div>
   ),
 };

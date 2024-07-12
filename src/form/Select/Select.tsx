@@ -24,10 +24,18 @@ const StyledComboBox = styled(ComboBox)`
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
 `;
 
 const StyledLabel = styled(Label)`
   ${body1};
+`;
+
+const StyledIsRequired = styled.span`
+  color: ${theme.color.danger};
 `;
 
 const StyledGroup = styled(Group)`
@@ -116,7 +124,10 @@ const Select = <T extends object>({
 }: SelectProps<T>) => {
   return (
     <StyledComboBox {...props}>
-      <StyledLabel>{label}</StyledLabel>
+      <StyledLabel>
+        {label}
+        {props.isRequired && <StyledIsRequired> *</StyledIsRequired>}
+      </StyledLabel>
       <StyledGroup>
         <StyledInput />
         <StyledButton>
