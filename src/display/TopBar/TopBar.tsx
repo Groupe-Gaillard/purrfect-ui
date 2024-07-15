@@ -12,28 +12,28 @@ const StyledTopBar = styled.div<{ spacing?: string; gap?: string }>`
   align-items: center;
   padding: ${sizing(16)};
   gap: ${({ gap }) => (gap ? sizing(getGapSize(gap)) : `${sizing(16)}`)};
-  border: 1px solid ${theme.color.primary100};
-  border-radius: ${theme.borderRadius.default};
-  box-shadow: ${theme.shadows.default};
-  //? border bottom uniquement ?
+  border-bottom: 1px solid ${theme.color.primary100};
+  box-shadow: ${theme.shadows.navigation};
 `;
 
-const SectionsStyle = styled.div<{ flex?: number }>`
-  flex: ${({ flex }) => flex || 1};
-  flex-basis: 0;
+const SectionsStyle = styled.div<{
+  flex?: number;
+}>`
   box-sizing: border-box;
+  flex: ${({ flex }) => (flex ? flex : "none")};
+  flex-basis: 0;
 `;
 
 const LeftSection = styled(SectionsStyle)``;
 const CenterSection = styled(SectionsStyle)``;
 const RightSection = styled(SectionsStyle)``;
 const OneSection = styled(SectionsStyle)<{
-  leftWidth?: string;
-  centerWidth?: string;
-  rightWidth?: string;
+  sectionLeftWidth?: string;
+  sectionCenterWidth?: string;
+  sectionRightWidth?: string;
 }>`
-  width: ${({ leftWidth, centerWidth, rightWidth }) =>
-    leftWidth || centerWidth || rightWidth || "auto"};
+  width: ${({ sectionLeftWidth, sectionCenterWidth, sectionRightWidth }) =>
+    sectionLeftWidth || sectionCenterWidth || sectionRightWidth || "auto"};
   flex: none;
 `;
 
@@ -63,9 +63,9 @@ type TopBarProps = AriaTopBarProps & {
   leftFlex?: number;
   centerFlex?: number;
   rightFlex?: number;
-  leftWidth?: string;
-  centerWidth?: string;
-  rightWidth?: string;
+  sectionLeftWidth?: string;
+  sectionCenterWidth?: string;
+  sectionRightWidth?: string;
 };
 
 type TopBarSpacing =
@@ -85,9 +85,9 @@ const TopBar = ({
   leftFlex = 1,
   centerFlex = 1,
   rightFlex = 1,
-  leftWidth,
-  centerWidth,
-  rightWidth,
+  sectionLeftWidth,
+  sectionCenterWidth,
+  sectionRightWidth,
   ...props
 }: TopBarProps) => {
   const ref = useRef(null);
@@ -111,7 +111,7 @@ const TopBar = ({
       justifyContentValue = "space-evenly";
       break;
     case "between":
-      justifyContentValue = "space-evenly";
+      justifyContentValue = "space-between";
       break;
     default:
       justifyContentValue = "space-between";
@@ -126,12 +126,13 @@ const TopBar = ({
       gap={gap}
       spacing={justifyContentValue}
       ref={ref}
+      aria-label={props["aria-label"]}
     >
       {hasSingleSection && (
         <OneSection
-          leftWidth={leftWidth}
-          centerWidth={centerWidth}
-          rightWidth={rightWidth}
+          sectionLeftWidth={sectionLeftWidth}
+          sectionCenterWidth={sectionCenterWidth}
+          sectionRightWidth={sectionRightWidth}
         >
           {leftSection || centerSection || rightSection}
         </OneSection>

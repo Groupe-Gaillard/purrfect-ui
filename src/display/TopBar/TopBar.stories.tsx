@@ -16,6 +16,16 @@ const Section = styled.div`
 const meta: Meta<typeof TopBar> = {
   component: TopBar,
   title: "Display/TopBar",
+};
+
+export default meta;
+
+const Title = styled.h1`
+  ${heading1};
+  margin: ${sizing(24)} 0 ${sizing(16)};
+`;
+
+export const Demo = {
   args: {
     leftFlex: 1,
     centerFlex: 1,
@@ -23,6 +33,66 @@ const meta: Meta<typeof TopBar> = {
     gap: "xxlarge",
     spacing: "flex-start",
     leftSection: <Section>LEFT</Section>,
+    centerSection: <Section>CENTER</Section>,
+    rightSection: <Section>RIGHT</Section>,
+    "aria-label": "TopBar Demo",
+  },
+  argTypes: {
+    gap: {
+      control: "select",
+      options: ["small", "medium", "large", "xlarge", "xxlarge"],
+    },
+    spacing: {
+      control: "select",
+      options: ["start", "center", "end", "around", "evenly", "between"],
+    },
+    leftFlex: {
+      control: { type: "number", min: 0, max: 3 },
+    },
+    centerFlex: {
+      control: { type: "number", min: 0, max: 3 },
+    },
+    rightFlex: {
+      control: { type: "number", min: 0, max: 3 },
+    },
+    "aria-label": {
+      control: { type: "text" },
+    },
+  },
+  render: (args: TopBarProps) => (
+    <>
+      <Title>Demo</Title>
+      <TopBar {...args} />
+    </>
+  ),
+};
+
+export const oneChildEnd = {
+  args: {
+    spacing: "end",
+    leftSection: <Section>LEFT</Section>,
+    sectionLeftWidth: "33%",
+  },
+  argTypes: {
+    spacing: {
+      control: "select",
+      options: ["start", "center", "end", "around", "evenly", "between"],
+    },
+  },
+  render: (args: TopBarProps) => (
+    <>
+      <Title>One Child at the end</Title>
+      <TopBar {...args} />
+    </>
+  ),
+};
+
+export const twoChildrenDifferentSizes = {
+  args: {
+    centerFlex: 2,
+    rightFlex: 1,
+    gap: "xxlarge",
+    spacing: "flex-start",
     centerSection: <Section>CENTER</Section>,
     rightSection: <Section>RIGHT</Section>,
   },
@@ -35,81 +105,37 @@ const meta: Meta<typeof TopBar> = {
       control: "select",
       options: ["start", "center", "end", "around", "evenly", "between"],
     },
-    leftFlex: {
-      control: { type: "number", min: 1, max: 3 },
-    },
     centerFlex: {
-      control: { type: "number", min: 1, max: 3 },
+      control: { type: "number", min: 0, max: 3 },
     },
     rightFlex: {
-      control: { type: "number", min: 1, max: 3 },
+      control: { type: "number", min: 0, max: 3 },
     },
   },
-};
-
-export default meta;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
-
-export const Demo = {
   render: (args: TopBarProps) => (
     <>
-      <Title>TopBar Demo</Title>
+      <Title>Two children different sizes</Title>
       <TopBar {...args} />
     </>
   ),
 };
 
-export const oneChildEnd = {
-  render: () => (
-    <>
-      <Title>TopBar One Child at the end</Title>
-      <TopBar
-        aria-label="Top Bar"
-        spacing="end"
-        leftWidth="33%"
-        leftSection={<Section>LEFT</Section>}
-      />
-    </>
-  ),
-};
-
-export const twoChildrenDifferentSizes = {
-  render: () => (
-    <>
-      <Title>TopBar Two children different sizes</Title>
-      <TopBar
-        aria-label="Top Bar"
-        leftFlex={1}
-        centerFlex={2}
-        leftSection={<Section>LEFT</Section>}
-        centerSection={<Section>CENTER</Section>}
-      />
-    </>
-  ),
-};
-
-export const SmallGap = {
-  render: (args: TopBarProps) => (
-    <>
-      <Title>TopBar three children smallest gap</Title>
-      <TopBar
-        {...args}
-        leftSection={<Section>LEFT</Section>}
-        centerSection={<Section>CENTER</Section>}
-        rightSection={<Section>RIGHT</Section>}
-      />
-    </>
-  ),
-};
-
 export const BigGap = {
+  args: {
+    gap: "xxlarge",
+    leftSection: <Section>LEFT</Section>,
+    centerSection: <Section>CENTER</Section>,
+    rightSection: <Section>RIGHT</Section>,
+  },
+  argTypes: {
+    gap: {
+      control: "select",
+      options: ["small", "medium", "large", "xlarge", "xxlarge"],
+    },
+  },
   render: (args: TopBarProps) => (
     <>
-      <Title>TopBar three children biggest gap</Title>
+      <Title>Three children biggest gap</Title>
       <TopBar
         {...args}
         leftSection={<Section>LEFT</Section>}
