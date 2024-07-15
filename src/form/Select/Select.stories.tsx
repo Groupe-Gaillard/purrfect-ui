@@ -140,3 +140,29 @@ export const DisabledSelect: Story = {
     </div>
   ),
 };
+
+export const RequiredSelect: Story = {
+  args: {
+    autoFocus: true,
+    className: "",
+    isDisabled: false,
+    isRequired: true,
+    description: "Helper text",
+    label: "Select",
+    onSelectionChange: fn(),
+  },
+  render: (args) => (
+    <div>
+      <Title>Select</Title>
+      <Select {...args}>
+        {options.map((oneOption) => {
+          return (
+            <Option key={oneOption.id} id={oneOption.id}>
+              {oneOption.label}
+            </Option>
+          );
+        })}
+      </Select>
+    </div>
+  ),
+};
