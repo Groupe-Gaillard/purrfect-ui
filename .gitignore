@@ -6,3 +6,4 @@ storybook-static/*
 tsconfig.tsbuildinfo
 dist/*
 .cache/
+.vscode/
