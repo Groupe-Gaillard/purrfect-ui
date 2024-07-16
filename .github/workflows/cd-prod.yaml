@@ -31,6 +31,8 @@ jobs:
             - args: [--global, gulp, prettier, typescript]
       - name: Install dependencies and build 🔧
         run: pnpm install --frozen-lockfile && pnpm build
-      - uses: simenandre/publish-with-pnpm@v1
-        with:
-          npm-auth-token: ${{ secrets.NPM_TOKEN }}
+      - name: Publish 🚀
+        shell: bash
+        run: pnpm publish packages/components --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
