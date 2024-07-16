@@ -24,7 +24,7 @@ describe("<TopBar /> component", () => {
 
   it("should render 1 child", () => {
     render(<TopBar leftSection={<div>LEFT</div>} />);
-    expect(screen.getByText(/LEFT/)).toBeInTheDocument();
+    expect(screen.getByText(/LEFT/i)).toBeInTheDocument();
   });
 
   it("should render 1 child and limit its size and place it at the end of the TopBar", () => {
@@ -37,7 +37,7 @@ describe("<TopBar /> component", () => {
     );
 
     expect(screen.getByRole("toolbar")).toBeInTheDocument();
-    const leftSection = screen.getByText(/LEFT/);
+    const leftSection = screen.getByText(/LEFT/i);
     expect(leftSection).toBeInTheDocument();
     const parentElement = leftSection.parentElement;
     expect(parentElement).toHaveStyle("width: 33%");
@@ -53,8 +53,8 @@ describe("<TopBar /> component", () => {
       />,
     );
     expect(screen.getByRole("toolbar")).toBeInTheDocument();
-    const leftSection = screen.getByText(/LEFT/);
-    const centerSection = screen.getByText(/CENTER/);
+    const leftSection = screen.getByText(/LEFT/i);
+    const centerSection = screen.getByText(/CENTER/i);
     const parentLeftElement = leftSection.parentElement;
     const parentCenterElement = centerSection.parentElement;
     expect(parentLeftElement).toHaveStyle("flex: 2");

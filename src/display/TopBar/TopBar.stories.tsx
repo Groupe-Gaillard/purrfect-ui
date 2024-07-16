@@ -35,7 +35,7 @@ export const Demo = {
     leftSection: <Section>LEFT</Section>,
     centerSection: <Section>CENTER</Section>,
     rightSection: <Section>RIGHT</Section>,
-    "aria-label": "TopBar Demo",
+    ariaLabel: "TopBar Demo",
   },
   argTypes: {
     gap: {
@@ -54,9 +54,6 @@ export const Demo = {
     },
     rightFlex: {
       control: { type: "number", min: 0, max: 3 },
-    },
-    "aria-label": {
-      control: { type: "text" },
     },
   },
   render: (args: TopBarProps) => (

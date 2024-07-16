@@ -1,7 +1,3 @@
-import {
-  AriaToolbarProps as AriaTopBarProps,
-  useToolbar,
-} from "@react-aria/toolbar";
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { sizing, theme } from "src/guidelines/theme";
@@ -54,7 +50,7 @@ const getGapSize = (gap: string): number => {
   }
 };
 
-type TopBarProps = AriaTopBarProps & {
+type TopBarProps = {
   leftSection?: React.ReactNode;
   centerSection?: React.ReactNode;
   rightSection?: React.ReactNode;
@@ -66,15 +62,10 @@ type TopBarProps = AriaTopBarProps & {
   sectionLeftWidth?: string;
   sectionCenterWidth?: string;
   sectionRightWidth?: string;
+  ariaLabel?: string;
 };
 
-type TopBarSpacing =
-  | "flex-start"
-  | "flex-end"
-  | "center"
-  | "space-around"
-  | "space-evenly"
-  | "space-between";
+type TopBarSpacing = "flex-start" | "flex-end" | "center";
 
 const TopBar = ({
   leftSection,
@@ -88,10 +79,9 @@ const TopBar = ({
   sectionLeftWidth,
   sectionCenterWidth,
   sectionRightWidth,
-  ...props
+  ariaLabel,
 }: TopBarProps) => {
   const ref = useRef(null);
-  const { toolbarProps } = useToolbar(props, ref);
 
   let justifyContentValue: TopBarSpacing;
   switch (spacing) {
@@ -104,17 +94,8 @@ const TopBar = ({
     case "center":
       justifyContentValue = "center";
       break;
-    case "around":
-      justifyContentValue = "space-around";
-      break;
-    case "evenly":
-      justifyContentValue = "space-evenly";
-      break;
-    case "between":
-      justifyContentValue = "space-between";
-      break;
     default:
-      justifyContentValue = "space-between";
+      justifyContentValue = "center";
   }
 
   const hasSingleSection =
@@ -122,11 +103,10 @@ const TopBar = ({
 
   return (
     <StyledTopBar
-      {...toolbarProps}
       gap={gap}
       spacing={justifyContentValue}
       ref={ref}
-      aria-label={props["aria-label"]}
+      aria-label={ariaLabel}
     >
       {hasSingleSection && (
         <OneSection
@@ -141,10 +121,10 @@ const TopBar = ({
       {leftSection && !hasSingleSection && (
         <LeftSection flex={leftFlex}> {leftSection}</LeftSection>
       )}
-      {centerSection && (
+      {centerSection && !hasSingleSection && (
         <CenterSection flex={centerFlex}>{centerSection}</CenterSection>
       )}
-      {rightSection && (
+      {rightSection && !hasSingleSection && (
         <RightSection flex={rightFlex}>{rightSection}</RightSection>
       )}
     </StyledTopBar>
