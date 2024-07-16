@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import Checkbox from "src/form/Checkbox/Checkbox";
-import { heading1, sizing } from "src/guidelines/theme/index";
+import { body1, heading1, sizing } from "src/guidelines/theme/index";
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
@@ -16,6 +16,15 @@ const Title = styled.h1`
   margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 
+const StyledText = styled.p`
+  ${body1}
+  margin-top: ${sizing(10)}
+`;
+
+const StyledContainer = styled.div`
+  display: flex;
+`;
+
 export const checkbox: Story = {
   args: {
     label: "Meow",
@@ -25,13 +34,9 @@ export const checkbox: Story = {
   render: (args) => (
     <>
       <Title>Checkbox</Title>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
+      <StyledContainer>
         <Checkbox {...args} />
-      </div>
+      </StyledContainer>
     </>
   ),
 };
@@ -46,16 +51,13 @@ export const checkboxDefaultSelected: Story = {
   render: (args) => (
     <>
       <Title>Checkbox</Title>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
+      <StyledContainer>
         <Checkbox {...args} />
-      </div>
+      </StyledContainer>
     </>
   ),
 };
+
 export const checkboxDisabled: Story = {
   args: {
     label: "Meow",
@@ -65,13 +67,28 @@ export const checkboxDisabled: Story = {
   render: (args) => (
     <>
       <Title>Checkbox</Title>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
+      <StyledContainer>
         <Checkbox {...args} />
-      </div>
+      </StyledContainer>
+    </>
+  ),
+};
+
+export const checkboxIndeterminate: Story = {
+  args: {
+    label: "Meow",
+    isIndeterminate: true,
+  },
+  render: (args) => (
+    <>
+      <Title>Checkbox is Indeterminate</Title>
+      <StyledContainer>
+        <Checkbox {...args} />
+      </StyledContainer>
+      <StyledText>
+        This behaviour is used when you can select several checkbox, like in the
+        Table component
+      </StyledText>
     </>
   ),
 };

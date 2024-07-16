@@ -50,6 +50,9 @@ export const Colors: Story = {
     const warningColors = themeColors.filter(([key]) =>
       key.startsWith("warning"),
     ) as unknown as Array<string>;
+    const infoColors = themeColors.filter(([key]) =>
+      key.startsWith("info"),
+    ) as unknown as Array<string>;
     const grayColors = themeColors.filter(([key]) =>
       key.startsWith("gray"),
     ) as unknown as Array<string>;
@@ -138,6 +141,30 @@ export const Colors: Story = {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {warningColors.map(([key, value], index: number) => (
+              <>
+                <Rectangle
+                  bgColor={value}
+                  textColor={theme.color.text[getContrastYIQ(value)]}
+                  style={{
+                    order: index === 0 ? 5 : index >= 5 ? index + 1 : index,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontWeight: index === 0 ? "bold" : "normal",
+                      fontSize: index === 0 ? "1.125rem" : "0.825rem",
+                      textDecoration: index === 0 ? "underline" : "none",
+                    }}
+                  >
+                    {key}
+                  </div>
+                  <div style={{ marginLeft: "auto" }}>{value}</div>
+                </Rectangle>
+              </>
+            ))}
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {infoColors.map(([key, value], index: number) => (
               <>
                 <Rectangle
                   bgColor={value}

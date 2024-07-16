@@ -104,12 +104,20 @@ type CheckboxProps = AriaCheckboxProps & {
 const Checkbox = (props: CheckboxProps) => {
   return (
     <StyledCheckboxContainer {...props}>
-      <StyledCheckbox>
-        <StyledSvg viewBox="0 0 18 18" aria-hidden="true">
-          <polyline points="1 9 7 14 15 4" />
-        </StyledSvg>
-      </StyledCheckbox>
-      <StyledLabel>{props.label}</StyledLabel>
+      {({ isIndeterminate }) => (
+        <>
+          <StyledCheckbox>
+            <StyledSvg viewBox="0 0 18 18" aria-hidden="true">
+              {isIndeterminate ? (
+                <rect x={1} y={7.5} width={15} height={3} />
+              ) : (
+                <polyline points="1 9 7 14 15 4" />
+              )}
+            </StyledSvg>
+          </StyledCheckbox>
+          {props.label && <StyledLabel>{props.label}</StyledLabel>}
+        </>
+      )}
     </StyledCheckboxContainer>
   );
 };
