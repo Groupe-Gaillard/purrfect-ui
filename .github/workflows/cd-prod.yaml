@@ -1,10 +1,15 @@
 name: CD / Production
 
+# on:
+#   workflow_dispatch:
+#   workflow_run:
+#     workflows: ['CI / Production']
+#     types: [completed]
 on:
-  workflow_dispatch:
-  workflow_run:
-    workflows: ['CI / Production']
-    types: [completed]
+  push:
+    branches:
+      - gh-readonly-queue/main/**
+  pull_request:
 
 jobs:
   deploy-npm:
@@ -26,7 +31,6 @@ jobs:
             - args: [--global, gulp, prettier, typescript]
       - name: Install dependencies and build 🔧
         run: pnpm install --frozen-lockfile && pnpm build
-      - name: Publish package on NPM 📦
-        run: pnpm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: simenandre/publish-with-pnpm@v1
+        with:
+          npm-auth-token: ${{ secrets.NPM_TOKEN }}
