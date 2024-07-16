@@ -135,7 +135,7 @@ describe("Table", () => {
     expect(row).toHaveAttribute("aria-selected", "true");
   });
 
-  it("Should click only on one row", async () => {
+  it("Should allow only one selected row", async () => {
     render(
       <Table
         dataColumns={dataColumns}

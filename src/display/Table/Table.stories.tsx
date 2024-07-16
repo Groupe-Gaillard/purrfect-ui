@@ -169,10 +169,10 @@ export const tableBase: Story = {
 
 export const tableLinesDefaultSelected: Story = {
   args: {
-    dataColumns: dataColumns,
-    dataRows: dataRows,
     selectionMode: "multiple",
     defaultSelectedKeys: [2, 4],
+    dataColumns: dataColumns,
+    dataRows: dataRows,
   },
 
   render: (args) => (
@@ -185,9 +185,9 @@ export const tableLinesDefaultSelected: Story = {
 
 export const tableLinesNonSelectable: Story = {
   args: {
+    selectionMode: "none",
     dataColumns: dataColumns,
     dataRows: dataRows,
-    selectionMode: "none",
   },
 
   render: (args) => (
@@ -200,9 +200,9 @@ export const tableLinesNonSelectable: Story = {
 
 export const tableOnlyOneLineSelectable: Story = {
   args: {
+    selectionMode: "single",
     dataColumns: dataColumns,
     dataRows: dataRows,
-    selectionMode: "single",
   },
 
   render: (args) => (
@@ -215,9 +215,9 @@ export const tableOnlyOneLineSelectable: Story = {
 
 export const tableOneLineDisabled: Story = {
   args: {
+    selectionMode: "multiple",
     dataColumns: dataColumns,
     dataRows: dataRowsOneIsDisabled,
-    selectionMode: "multiple",
   },
 
   render: (args) => (
@@ -230,9 +230,9 @@ export const tableOneLineDisabled: Story = {
 
 export const tableColumnResizable: Story = {
   args: {
+    selectionMode: "multiple",
     dataColumns: dataColumnsResizable,
     dataRows: dataRows,
-    selectionMode: "multiple",
   },
 
   render: (args) => (
@@ -245,9 +245,9 @@ export const tableColumnResizable: Story = {
 
 export const tableEvenLinesBackgroundColored: Story = {
   args: {
+    evenRowsBackgroundIsColored: true,
     dataColumns: dataColumns,
     dataRows: dataRows,
-    evenRowsBackgroundIsColored: true,
   },
 
   render: (args) => (

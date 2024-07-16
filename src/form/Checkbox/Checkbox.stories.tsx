@@ -21,6 +21,10 @@ const StyledText = styled.p`
   margin-top: ${sizing(10)}
 `;
 
+const StyledContainer = styled.div`
+  display: flex;
+`;
+
 export const checkbox: Story = {
   args: {
     label: "Meow",
@@ -30,13 +34,9 @@ export const checkbox: Story = {
   render: (args) => (
     <>
       <Title>Checkbox</Title>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
+      <StyledContainer>
         <Checkbox {...args} />
-      </div>
+      </StyledContainer>
     </>
   ),
 };
@@ -51,13 +51,9 @@ export const checkboxDefaultSelected: Story = {
   render: (args) => (
     <>
       <Title>Checkbox</Title>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
+      <StyledContainer>
         <Checkbox {...args} />
-      </div>
+      </StyledContainer>
     </>
   ),
 };
@@ -71,13 +67,9 @@ export const checkboxDisabled: Story = {
   render: (args) => (
     <>
       <Title>Checkbox</Title>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
+      <StyledContainer>
         <Checkbox {...args} />
-      </div>
+      </StyledContainer>
     </>
   ),
 };
@@ -90,13 +82,9 @@ export const checkboxIndeterminate: Story = {
   render: (args) => (
     <>
       <Title>Checkbox is Indeterminate</Title>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
+      <StyledContainer>
         <Checkbox {...args} />
-      </div>
+      </StyledContainer>
       <StyledText>
         This behaviour is used when you can select several checkbox, like in the
         Table component
