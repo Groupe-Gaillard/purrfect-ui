@@ -107,6 +107,7 @@ const TopBar = ({
       spacing={justifyContentValue}
       ref={ref}
       aria-label={ariaLabel}
+      role="toolbar"
     >
       {hasSingleSection && (
         <OneSection

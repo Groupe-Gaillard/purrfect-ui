@@ -8,6 +8,7 @@ describe("<TopBar /> component", () => {
     render(<TopBar />);
     expect(screen.getByRole("toolbar")).toBeInTheDocument();
   });
+
   it("should render 3 children", () => {
     render(
       <TopBar
