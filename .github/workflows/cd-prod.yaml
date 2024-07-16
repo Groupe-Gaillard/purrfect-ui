@@ -1,15 +1,10 @@
 name: CD / Production
 
-# on:
-#   workflow_dispatch:
-#   workflow_run:
-#     workflows: ['CI / Production']
-#     types: [completed]
 on:
-  push:
-    branches:
-      - gh-readonly-queue/main/**
-  pull_request:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['CI / Production']
+    types: [completed]
 
 jobs:
   deploy-npm:
