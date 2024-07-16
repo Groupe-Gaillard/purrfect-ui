@@ -26,3 +26,5 @@ export { default as Upload } from "src/form/Upload/Upload";
 export type { UploadProps } from "src/form/Upload/Upload";
 export { default as Tag } from "src/display/Tag/Tag";
 export type { TagProps } from "src/display/Tag/Tag";
+export { default as Table } from "src/display/Table/Table";
+export type { TableProps } from "src/display/Table/Table";
