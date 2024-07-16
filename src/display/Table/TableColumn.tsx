@@ -1,11 +1,11 @@
 import React from "react";
 import { Column as AriaColumn, ColumnProps } from "react-aria-components";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { sizing, theme } from "src/guidelines/theme";
 import SortDown from "src/icons/SortDown";
 import SortUp from "src/icons/SortUp";
 
-const StyledColumn = styled(AriaColumn)`
+const StyledColumn = styled(AriaColumn)<{ allowsSorting?: boolean }>`
   padding: ${sizing(4)} ${sizing(8)};
   text-align: left;
   outline: none;
@@ -17,10 +17,12 @@ const StyledColumn = styled(AriaColumn)`
     outline: 2px solid ${theme.color.primary};
     outline-offset: -2px;
   }
-  & > * {
-    display: inline-block;
-    vertical-align: middle;
-  }
+  ${({ allowsSorting }) => css`
+    & > * {
+      display: ${allowsSorting && "inline-block"};
+      vertical-align: ${allowsSorting && "middle"};
+    }
+  `}
 `;
 
 const StyledSortIndicator = styled.span`
