@@ -200,6 +200,16 @@ const theme: Theme = {
     warning800: "#604200",
     warning900: "#402c00",
 
+    // Info variant
+    info100: "#E2F3F6",
+    info200: "#A8DCE4",
+    info300: "#6EC5D3",
+    info400: "#34AEC1",
+    info600: "#148EA1",
+    info700: "#0E6573",
+    info800: "#093D45",
+    info900: "#06292E",
+
     // Gray variant
     gray100: "#f0f0f0",
     gray200: "#d2d2d2",
