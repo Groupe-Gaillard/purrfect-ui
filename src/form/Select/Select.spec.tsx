@@ -44,17 +44,14 @@ describe("Select", () => {
       </Select>,
     );
 
-    // Open Select
     const selectButton = screen.getByRole("button", {
       name: /show suggestions my select/i,
     });
     await waitFor(() => userEvent.click(selectButton));
 
-    // Select the Snake option
     const snakeOption = screen.getByRole("option", { name: /snake/i });
     await waitFor(() => userEvent.click(snakeOption));
 
-    // Check if the Select have the right value
     const select = screen.getByRole("combobox", { name: /my select/i });
     expect(select).toHaveDisplayValue(/snake/i);
   });
@@ -72,11 +69,9 @@ describe("Select", () => {
       </Select>,
     );
 
-    // Open Select
     const select = screen.getByRole("combobox", { name: /my select/i });
     await waitFor(() => userEvent.type(select, "{arrowdown}"));
 
-    // Select the Snake option
     await waitFor(() =>
       userEvent.type(
         select,
@@ -85,7 +80,6 @@ describe("Select", () => {
     );
     await waitFor(() => userEvent.type(select, "{enter}"));
 
-    // Check if the Select have the right value
     expect(select).toHaveDisplayValue(/snake/i);
   });
 
@@ -106,17 +100,14 @@ describe("Select", () => {
       </Select>,
     );
 
-    // Open Select
     const selectButton = screen.getByRole("button", {
       name: /show suggestions my select/i,
     });
     await waitFor(() => userEvent.click(selectButton));
 
-    // Select the Snake option
     const snakeOption = screen.getByRole("option", { name: /snake/i });
     await waitFor(() => userEvent.click(snakeOption));
 
-    // Check if the Select have the right value
     const select = screen.getByRole("combobox", { name: /my select/i });
     expect(select).not.toHaveDisplayValue(/snake/i);
   });
@@ -138,11 +129,9 @@ describe("Select", () => {
       </Select>,
     );
 
-    // Open Select
     const select = screen.getByRole("combobox", { name: /my select/i });
     await waitFor(() => userEvent.type(select, "{arrowdown}"));
 
-    // Select the Snake option
     await waitFor(() =>
       userEvent.type(
         select,
@@ -151,7 +140,6 @@ describe("Select", () => {
     );
     await waitFor(() => userEvent.type(select, "{enter}"));
 
-    // Check if the Select have the right value
     expect(select).not.toHaveDisplayValue(/snake/i);
   });
 

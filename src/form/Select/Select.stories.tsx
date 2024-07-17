@@ -33,7 +33,6 @@ const options = [
 export const Demo: Story = {
   args: {
     autoFocus: true,
-    className: "",
     isDisabled: false,
     isRequired: false,
     description: "Helper text",
@@ -88,7 +87,6 @@ const optionsWithDisabledOption = [
 export const DemoWithDisabledOption: Story = {
   args: {
     autoFocus: true,
-    className: "",
     isDisabled: false,
     isRequired: false,
     description: "Helper text",
@@ -118,7 +116,6 @@ export const DemoWithDisabledOption: Story = {
 export const DisabledSelect: Story = {
   args: {
     autoFocus: true,
-    className: "",
     isDisabled: true,
     isRequired: false,
     description: "Helper text",
@@ -144,7 +141,6 @@ export const DisabledSelect: Story = {
 export const RequiredSelect: Story = {
   args: {
     autoFocus: true,
-    className: "",
     isDisabled: false,
     isRequired: true,
     description: "Helper text",

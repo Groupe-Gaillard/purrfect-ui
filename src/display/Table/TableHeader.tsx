@@ -9,10 +9,9 @@ import styled from "styled-components";
 import TableColumn from "src/display/Table/TableColumn";
 import Checkbox from "src/form/Checkbox/Checkbox";
 import { sizing, theme } from "src/guidelines/theme";
-import { typographies } from "src/guidelines/theme/typographies";
 
 const StyledTableHeader = styled(AriaTableHeader)`
-  font-size: ${typographies.fontSize.sm};
+  font-size: ${theme.typographies.fontSize.sm};
   text-align: left;
 
   &:after {
