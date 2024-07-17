@@ -1,27 +1,5 @@
 import { sizing } from "src/guidelines/theme/index";
 
-/* Size
-| px     | rem       |
-| 1px    | 0,0625rem |
-| 2px    | 0,125rem  |
-| 3px    | 0,1875rem |
-| 4px    | 0,25rem   |
-| 5px    | 0,3125rem |
-| 6px    | 0,375rem  |
-| 7px    | 0,4375rem |
-| 8px    | 0,5rem    |
-| 10px   | 0,625rem  |
-| 12px   | 0,75rem   |
-| 14px   | 0,875rem  |
-| 16px   | 1rem      |
-| 24px   | 1,5rem    |
-| 32px   | 2rem      |
-| 40px   | 2,5rem    |
-| 60px   | 3,75rem   |
-| 80px   | 5rem      |
-| 100px  | 6,25rem   |
-*/
-
 interface Color {
   [key: string]: string | { [key: string]: string };
   primary: string;
@@ -112,14 +90,6 @@ interface BorderRadius {
   [key: string]: string;
 }
 
-interface Theme {
-  color: Color;
-  transitions: Transition;
-  size: Size;
-  shadows: Shadows;
-  borderRadius: BorderRadius;
-}
-
 interface Breakpoints {
   minWidth: {
     xs: string;
@@ -130,6 +100,98 @@ interface Breakpoints {
     xxl: string;
   };
 }
+
+interface Theme {
+  color: Color;
+  transitions: Transition;
+  size: Size;
+  shadows: Shadows;
+  borderRadius: BorderRadius;
+
+  typographies: {
+    lineHeight: {
+      xs: string;
+      sm: string;
+      base: string;
+      md: string;
+      lg: string;
+    };
+    fontWeight: {
+      light: number;
+      normal: number;
+      medium: number;
+      bold: number;
+    };
+    fontSize: {
+      xxs: string;
+      xs: string;
+      sm: string;
+      base: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xxl: string;
+      xxxl: string;
+      xxxxl: string;
+    };
+  };
+
+  /**
+   * Sizing
+   * Function to convert a pixel value to a rem value.
+   * |   PX   |    Rem    |
+   * |--------|-----------|
+   * | 1px    | 0,0625rem |
+   * | 2px    | 0,125rem  |
+   * | 3px    | 0,1875rem |
+   * | 4px    | 0,25rem   |
+   * | 5px    | 0,3125rem |
+   * | 6px    | 0,375rem  |
+   * | 7px    | 0,4375rem |
+   * | 8px    | 0,5rem    |
+   * | 10px   | 0,625rem  |
+   * | 12px   | 0,75rem   |
+   * | 14px   | 0,875rem  |
+   * | 16px   | 1rem      |
+   * | 24px   | 1,5rem    |
+   * | 32px   | 2rem      |
+   * | 40px   | 2,5rem    |
+   * | 60px   | 3,75rem   |
+   * | 80px   | 5rem      |
+   * | 100px  | 6,25rem   |
+   */
+  sizing: (...values: Array<number>) => string;
+}
+
+const typographies = {
+  lineHeight: {
+    xs: "1",
+    sm: "1.25",
+    base: "1.375",
+    md: "1.5",
+    lg: "2",
+  },
+
+  fontWeight: {
+    light: 300,
+    normal: 400,
+    medium: 500,
+    bold: 700,
+  },
+
+  fontSize: {
+    xxs: sizing(9),
+    xs: sizing(10),
+    sm: sizing(12),
+    base: sizing(14),
+    md: sizing(16),
+    lg: sizing(18),
+    xl: sizing(20),
+    xxl: sizing(24),
+    xxxl: sizing(36),
+    xxxxl: sizing(48),
+  },
+};
 
 const theme: Theme = {
   transitions: {
@@ -243,6 +305,10 @@ const theme: Theme = {
     big: sizing(16),
     round: "50%",
   },
+
+  typographies: typographies,
+
+  sizing: sizing,
 };
 
 const breakpoints: Breakpoints = {
