@@ -1,15 +1,14 @@
-/* eslint-disable sort-imports */
-
-/* eslint-enable import/order */
 import React from "react";
 import {
   Breadcrumbs as AriaBreadCrumbs,
-  BreadcrumbProps as AriaBreadCrumbsProps,
+  BreadcrumbsProps as AriaBreadCrumbsProps,
   Breadcrumb as AriaBreadcrumb,
+  BreadcrumbProps as AriaBreadcrumbItemProps,
 } from "react-aria-components";
 import styled from "styled-components";
 import Link from "src/action/Link/Link";
-import { body1 } from "src/guidelines/theme";
+import { body1, theme } from "src/guidelines/theme";
+import { typographies } from "src/guidelines/theme/typographies";
 
 const StyledBreadcrumbs = styled(AriaBreadCrumbs)`
   ${body1}
@@ -18,39 +17,78 @@ const StyledBreadcrumbs = styled(AriaBreadCrumbs)`
   list-style: none;
 `;
 
-const StyledBreadcrumb = styled(AriaBreadcrumb)`
+const StyledBreadcrumbItem = styled(AriaBreadcrumb)`
   display: flex;
+
   &:not(:last-child)::after {
-    content: "›";
+    content: "/";
     padding: 0 5px;
+  }
+  &:last-child span {
+    font-weight: ${typographies.fontWeight.bold};
+    outline: none;
   }
 `;
 
-type BreadcrumbProps = AriaBreadCrumbsProps & {
-  label?: string;
+const StyledLink = styled(Link)<{
+  onClick?: () => void;
+  href?: string;
+  isDisabled?: boolean;
+  variant?: string;
+}>`
+  /* color: ${({ variant }) =>
+    variant === "link" ? theme.color.link : "inherit"}; */
+
+  &[data-current] {
+    font-weight: bold;
+    cursor: ${({ href }) => (href ? "pointer" : "default")};
+  }
+  &[data-focus-visible]:after {
+    content: "";
+    position: absolute;
+    inset: -2px -4px;
+    border-radius: ${theme.borderRadius.default};
+    border: 2px solid ${theme.color.text.dark};
+  }
+  &:visited {
+    color: inherit;
+  }
+  &[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+type BreadcrumbsProps<T> = AriaBreadCrumbsProps<T> & {
+  items: BreadcrumbItem[];
 };
 
-const Breadcrumb = () => {
+export type BreadcrumbItem = AriaBreadcrumbItemProps & {
+  href?: string;
+  isDisabled?: boolean;
+  variant?: string;
+};
+
+const Breadcrumb = <T,>(props: BreadcrumbsProps<T>) => {
   return (
     <>
-      <StyledBreadcrumbs>
-        <StyledBreadcrumb>
-          <Link href="/" underline="hovered">
-            Home
-          </Link>
-        </StyledBreadcrumb>
-        <StyledBreadcrumb>
-          <Link href="/react-aria/" underline="hovered">
-            React Aria
-          </Link>
-        </StyledBreadcrumb>
-        <StyledBreadcrumb>
-          <Link underline="hovered">StyledBreadcrumbs</Link>
-        </StyledBreadcrumb>
+      <StyledBreadcrumbs {...props}>
+        {props.items.map((item) => (
+          <StyledBreadcrumbItem key={item.id} className={props.className}>
+            <StyledLink
+              variant={item.variant}
+              href={item.href}
+              isDisabled={item.isDisabled}
+            >
+              {item.children}
+            </StyledLink>
+          </StyledBreadcrumbItem>
+        ))}
       </StyledBreadcrumbs>
     </>
   );
 };
 
 export default Breadcrumb;
-export type { BreadcrumbProps };
+export type { BreadcrumbsProps as BreadcrumbProps };
+//! gérer le dernier element qui est toujours data-disabled coté style

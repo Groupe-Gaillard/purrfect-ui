@@ -5,6 +5,7 @@ import {
 } from "react-aria-components";
 import styled, { css } from "styled-components";
 import { body1, theme } from "src/guidelines/theme";
+import { Variant } from "../Button/Button";
 
 const disabledStyle = css<{ isDisabled?: boolean }>`
   ${({ isDisabled }) =>
@@ -16,9 +17,20 @@ const disabledStyle = css<{ isDisabled?: boolean }>`
   `}
 `;
 
+const linkColor = (variant: Variant = "link") => {
+  const color = theme.color[variant];
+  return css`
+    color: ${color};
+    &:hover:enabled {
+      opacity: 0.9;
+    }
+  `;
+};
+
 const StyledLink = styled(AriaLink)<{
   isDisabled?: boolean;
   underline?: "always" | "hovered" | "never";
+  variant?: Variant;
 }>`
   outline: none;
   display: flex;
@@ -28,7 +40,9 @@ const StyledLink = styled(AriaLink)<{
   max-width: max-content;
   text-decoration: ${({ isDisabled, underline }) =>
     isDisabled ? "none" : underline === "always" ? "underline" : "none"};
-  color: ${theme.color.linkPrimary};
+  ${({ variant }) => css`
+    ${linkColor(variant)};
+  `}
   &:hover {
     color: ${theme.color.linkHover};
     text-decoration: ${({ isDisabled, underline }) =>
@@ -58,6 +72,7 @@ type LinkProps = AriaLinkProps & {
   trailingIcon?: React.ReactNode;
   children?: React.ReactNode;
   underline?: "always" | "hovered" | "never";
+  variant?: Variant;
 };
 
 const Link = ({
@@ -70,6 +85,7 @@ const Link = ({
   className,
   hrefLang = "fr",
   underline,
+  variant,
 }: LinkProps) => {
   return (
     <StyledLink
@@ -79,6 +95,7 @@ const Link = ({
       hrefLang={hrefLang}
       isDisabled={isDisabled}
       underline={underline}
+      variant={variant}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
     >
       {leadingIcon}

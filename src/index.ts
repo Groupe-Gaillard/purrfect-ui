@@ -43,6 +43,9 @@ export type { TableProps } from "src/display/Table/Table";
 export { default as TopBar } from "src/display/TopBar/TopBar";
 export type { TopBarProps } from "src/display/TopBar/TopBar";
 
+export { default as Breadcrumb } from "src/navigation/Breadcrumb/Breadcrumb";
+export type { BreadcrumbProps } from "src/navigation/Breadcrumb/Breadcrumb";
+
 export {
   heading1,
   heading2,
