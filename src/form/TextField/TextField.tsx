@@ -8,15 +8,17 @@ import {
   Label,
   Text,
 } from "react-aria-components";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { breakpoints, sizing, theme } from "src/guidelines/theme";
 import { body1 } from "src/guidelines/theme/typographies";
 
 const StyledTextField = styled(AriaTextField)`
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
   color: ${theme.color.text.dark};
+  position: relative;
+
   &[data-disabled] {
     opacity: 0.5;
   }
@@ -26,9 +28,17 @@ const StyledLabel = styled(Label)`
   ${body1}
 `;
 
-const StyledInput = styled(Input)`
+const iconSizing = 20;
+
+const StyledInput = styled(Input)<{
+  $hasLeadingIcon?: boolean;
+  $hasTrailingIcon?: boolean;
+}>`
   ${body1};
-  padding: ${sizing(4)};
+  padding-left: ${({ $hasLeadingIcon }) =>
+    sizing(4 + ($hasLeadingIcon ? iconSizing : 0))};
+  padding-right: ${({ $hasTrailingIcon }) =>
+    sizing(4 + ($hasTrailingIcon ? iconSizing : 0))};
   margin: 0;
   border: 1px solid ${theme.color.gray200};
   border-radius: ${theme.borderRadius.default};
@@ -40,13 +50,17 @@ const StyledInput = styled(Input)`
     outline: ${sizing(2)} solid ${theme.color.primary};
     outline-offset: -1px;
   }
+
   &[data-invalid] {
     color: ${theme.color.danger};
     border-color: ${theme.color.danger};
   }
 
   @media ${breakpoints.minWidth.md} {
-    padding: ${sizing(6)};
+    padding-left: ${({ $hasLeadingIcon }) =>
+      sizing(6 + ($hasLeadingIcon ? iconSizing + 4 : 0))};
+    padding-right: ${({ $hasTrailingIcon }) =>
+      sizing(6 + ($hasTrailingIcon ? iconSizing + 4 : 0))};
   }
 `;
 
@@ -64,7 +78,35 @@ const StyledFieldError = styled(FieldError)`
   color: ${theme.color.danger};
 `;
 
-type TextFieldProps = { label?: string; helperText?: string } & Pick<
+const commonIconsCss = css`
+  width: ${sizing(iconSizing)};
+  height: ${sizing(iconSizing)};
+  position: absolute;
+  top: ${sizing(iconSizing + 5)};
+  pointer-events: none;
+
+  & > svg {
+    height: ${sizing(iconSizing)};
+    width: ${sizing(iconSizing)};
+  }
+`;
+
+const StyledLeadingIcon = styled.div`
+  ${commonIconsCss};
+  left: ${sizing(4)};
+`;
+
+const StyledTrailingIcon = styled.div`
+  ${commonIconsCss};
+  right: ${sizing(4)};
+`;
+
+type TextFieldProps = {
+  label?: string;
+  helperText?: string;
+  leadingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
+} & Pick<
   AriaTextFieldProps,
   | "autoFocus"
   | "className"
@@ -94,7 +136,17 @@ const TextField = (props: TextFieldProps) => {
         {props.label}
         {props.isRequired && <StyledIsRequired> *</StyledIsRequired>}
       </StyledLabel>
-      <StyledInput placeholder={props.placeholder} />
+      {props.leadingIcon && (
+        <StyledLeadingIcon>{props.leadingIcon}</StyledLeadingIcon>
+      )}
+      <StyledInput
+        placeholder={props.placeholder}
+        $hasLeadingIcon={!!props.leadingIcon}
+        $hasTrailingIcon={!!props.trailingIcon}
+      />
+      {props.trailingIcon && (
+        <StyledTrailingIcon>{props.trailingIcon}</StyledTrailingIcon>
+      )}
       <StyledText slot="description">{props.helperText}</StyledText>
       <StyledFieldError />
     </StyledTextField>

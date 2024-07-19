@@ -4,6 +4,8 @@ import React from "react";
 import styled from "styled-components";
 import TextField from "src/form/TextField/TextField";
 import { heading1, sizing } from "src/guidelines/theme";
+import AddIcon from "src/icons/Add";
+import UploadIcon from "src/icons/Upload";
 
 const meta: Meta<typeof TextField> = {
   component: TextField,
@@ -51,6 +53,8 @@ export const textFieldBase: Story = {
     placeholder: "I'm a Placeholder",
     type: "text",
     value: "",
+    leadingIcon: <AddIcon />,
+    trailingIcon: <UploadIcon />,
   },
   argTypes: {
     inputMode: {
