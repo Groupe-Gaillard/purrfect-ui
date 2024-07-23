@@ -4,8 +4,53 @@ import {
   LinkProps as AriaLinkProps,
 } from "react-aria-components";
 import styled, { css } from "styled-components";
-import { body1, theme } from "src/guidelines/theme";
+import { body1, breakpoints, sizing, theme } from "src/guidelines/theme";
 import { Variant } from "../Button/Button";
+
+export type Size = "small" | "normal" | "large";
+const linkSize = (size: Size = "normal") => {
+  switch (size) {
+    case "small":
+      return css`
+        font-size: ${theme.typographies.fontSize.sm};
+
+        & > svg {
+          height: ${sizing(16)};
+          width: ${sizing(16)};
+        }
+
+        @media ${breakpoints.minWidth.md} {
+          font-size: ${theme.typographies.fontSize.base};
+        }
+      `;
+    case "normal":
+      return css`
+        font-size: ${theme.typographies.fontSize.base};
+
+        & > svg {
+          height: ${sizing(18)};
+          width: ${sizing(18)};
+        }
+
+        @media ${breakpoints.minWidth.md} {
+          font-size: ${theme.typographies.fontSize.md};
+        }
+      `;
+    case "large":
+      return css`
+        font-size: ${theme.typographies.fontSize.md};
+
+        & > svg {
+          height: ${sizing(20)};
+          width: ${sizing(20)};
+        }
+
+        @media ${breakpoints.minWidth.md} {
+          font-size: ${theme.typographies.fontSize.lg};
+        }
+      `;
+  }
+};
 
 const disabledStyle = css<{ isDisabled?: boolean }>`
   ${({ isDisabled }) =>
@@ -31,6 +76,7 @@ const StyledLink = styled(AriaLink)<{
   isDisabled?: boolean;
   underline?: "always" | "hovered" | "never";
   variant?: Variant;
+  size?: Size;
 }>`
   outline: none;
   display: flex;
@@ -43,6 +89,11 @@ const StyledLink = styled(AriaLink)<{
   ${({ variant }) => css`
     ${linkColor(variant)};
   `}
+
+  ${({ size }) => css`
+    ${linkSize(size)};
+  `}
+
   &:hover {
     color: ${theme.color.linkHover};
     text-decoration: ${({ isDisabled, underline }) =>
@@ -73,6 +124,7 @@ type LinkProps = AriaLinkProps & {
   children?: React.ReactNode;
   underline?: "always" | "hovered" | "never";
   variant?: Variant;
+  size?: Size;
 };
 
 const Link = ({
@@ -86,6 +138,7 @@ const Link = ({
   hrefLang = "fr",
   underline,
   variant,
+  size,
 }: LinkProps) => {
   return (
     <StyledLink
@@ -96,6 +149,7 @@ const Link = ({
       isDisabled={isDisabled}
       underline={underline}
       variant={variant}
+      size={size}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
     >
       {leadingIcon}
