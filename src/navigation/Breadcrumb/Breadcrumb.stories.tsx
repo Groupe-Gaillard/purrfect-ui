@@ -2,7 +2,6 @@ import type { Meta } from "@storybook/react";
 import React from "react";
 import styled, { css } from "styled-components";
 import { heading1, theme } from "src/guidelines/theme";
-import { typographies } from "src/guidelines/theme/typographies";
 import Breadcrumb, {
   BreadcrumbItem,
   BreadcrumbProps,
@@ -24,13 +23,13 @@ const StyledBreadCrumb = styled(Breadcrumb)<BreadcrumbProps<object>>`
   ${(props) =>
     props.className === "custom-class" &&
     css`
-      color: ${theme.color.danger};
       text-transform: uppercase;
+      font-weight: ${theme.typographies.fontWeight.bold};
     `}
 
   & a.custom-class__solo {
     color: ${theme.color.info};
-    font-weight: ${typographies.fontWeight.bold};
+    font-weight: ${theme.typographies.fontWeight.bold};
     border: 1px solid ${theme.color.info};
     border-radius: ${theme.borderRadius.default};
     padding: ${sizing(2)} ${sizing(4)};
@@ -40,6 +39,11 @@ const StyledBreadCrumb = styled(Breadcrumb)<BreadcrumbProps<object>>`
 const breadcrumbs: BreadcrumbItem[] = [
   { id: 1, children: "MiaHome", href: "/" },
   { id: 2, children: "Miammy", href: "/" },
+  { id: 3, children: "Miamamia" },
+];
+const breadcrumbsWithVariant: BreadcrumbItem[] = [
+  { id: 1, children: "MiaHome", href: "/" },
+  { id: 2, children: "Miammy", href: "/", variant: "success" },
   { id: 3, children: "Miamamia" },
 ];
 const breadcrumbLinkCustomClassName: BreadcrumbItem[] = [
@@ -67,33 +71,19 @@ const breadcrumbsLargeNumber: BreadcrumbItem[] = [
   { id: 7, children: "Product B", href: "" },
 ];
 
-const variantOptions = [
-  "primary",
-  "success",
-  "danger",
-  "warning",
-  "info",
-  "gray",
-  "link",
-] as const;
-
 export const Demo = {
   args: {
     className: "Breacrumb Class",
     isDisabled: false,
-    items: breadcrumbs,
     variant: "primary",
+    items: breadcrumbs,
   },
-  argsType: {
+  argTypes: {
     className: {
       control: "text",
     },
     isDisabled: {
       control: "boolean",
-    },
-    variant: {
-      control: "select",
-      options: variantOptions,
     },
   },
 
@@ -116,6 +106,21 @@ export const BreadcrumbsLastHasHref = {
       <>
         <Title>Href on last element</Title>
         <Breadcrumb {...args} />
+      </>
+    );
+  },
+};
+
+export const BreadcrumbsWithVariant = {
+  args: {
+    items: breadcrumbsWithVariant,
+  },
+
+  render: (args: BreadcrumbProps<object>) => {
+    return (
+      <>
+        <Title>Color Variant on Item</Title>
+        <StyledBreadCrumb {...args} />
       </>
     );
   },

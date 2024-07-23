@@ -5,12 +5,12 @@ import {
   Breadcrumb as AriaBreadcrumb,
   BreadcrumbProps as AriaBreadcrumbItemProps,
 } from "react-aria-components";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { Variant } from "src/action/Button/Button";
 import Link from "src/action/Link/Link";
 import { body1, theme } from "src/guidelines/theme";
-import { typographies } from "src/guidelines/theme/typographies";
 
-const StyledBreadcrumbs = styled(AriaBreadCrumbs)`
+const StyledBreadcrumbs = styled(AriaBreadCrumbs)<{ variant?: Variant }>`
   ${body1}
   display: flex;
   align-items: center;
@@ -30,10 +30,10 @@ const StyledLink = styled(Link)<{
   onClick?: () => void;
   href?: string;
   isDisabled?: boolean;
-  variant?: string;
+  variant?: Variant;
 }>`
   &[data-current] {
-    font-weight: ${typographies.fontWeight.bold};
+    font-weight: ${theme.typographies.fontWeight.bold};
     color: inherit;
     cursor: ${({ href }) => (href ? "pointer" : "default")};
   }
@@ -45,7 +45,14 @@ const StyledLink = styled(Link)<{
     border: 2px solid ${theme.color.text.dark};
   }
   &:visited {
-    color: inherit;
+    ${({ variant }) =>
+      variant
+        ? css`
+            color: ${theme.color[variant]};
+          `
+        : css`
+            color: inherit;
+          `}
   }
   &[data-disabled] {
     opacity: 0.5;
@@ -60,7 +67,7 @@ type BreadcrumbsProps<T> = AriaBreadCrumbsProps<T> & {
 export type BreadcrumbItem = AriaBreadcrumbItemProps & {
   href?: string;
   isDisabled?: boolean;
-  variant?: string;
+  variant?: Variant;
 };
 
 const Breadcrumb = <T,>(props: BreadcrumbsProps<T>) => {
