@@ -31,7 +31,7 @@ const numbersSizing: number[] = [1, 2, 4, 8, 16];
 
 const Body1 = styled.p`
   ${body1};
-  margin: ${sizing(16)} 0 ${sizing(16)};
+  margin: ${sizing(16, 0)};
 `;
 
 export const Sizing: Story = {
