@@ -24,10 +24,6 @@ const StyledBreadcrumbItem = styled(AriaBreadcrumb)`
     content: "/";
     padding: 0 5px;
   }
-  &:last-child span {
-    font-weight: ${typographies.fontWeight.bold};
-    outline: none;
-  }
 `;
 
 const StyledLink = styled(Link)<{
@@ -36,11 +32,9 @@ const StyledLink = styled(Link)<{
   isDisabled?: boolean;
   variant?: string;
 }>`
-  /* color: ${({ variant }) =>
-    variant === "link" ? theme.color.link : "inherit"}; */
-
   &[data-current] {
-    font-weight: bold;
+    font-weight: ${typographies.fontWeight.bold};
+    color: inherit;
     cursor: ${({ href }) => (href ? "pointer" : "default")};
   }
   &[data-focus-visible]:after {
@@ -79,6 +73,7 @@ const Breadcrumb = <T,>(props: BreadcrumbsProps<T>) => {
               variant={item.variant}
               href={item.href}
               isDisabled={item.isDisabled}
+              className={item.className}
             >
               {item.children}
             </StyledLink>
@@ -91,4 +86,3 @@ const Breadcrumb = <T,>(props: BreadcrumbsProps<T>) => {
 
 export default Breadcrumb;
 export type { BreadcrumbsProps as BreadcrumbProps };
-//! gérer le dernier element qui est toujours data-disabled coté style

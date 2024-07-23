@@ -2,6 +2,7 @@ import type { Meta } from "@storybook/react";
 import React from "react";
 import styled, { css } from "styled-components";
 import { heading1, theme } from "src/guidelines/theme";
+import { typographies } from "src/guidelines/theme/typographies";
 import Breadcrumb, {
   BreadcrumbItem,
   BreadcrumbProps,
@@ -26,11 +27,24 @@ const StyledBreadCrumb = styled(Breadcrumb)<BreadcrumbProps<object>>`
       color: ${theme.color.danger};
       text-transform: uppercase;
     `}
+
+  & a.custom-class__solo {
+    color: ${theme.color.info};
+    font-weight: ${typographies.fontWeight.bold};
+    border: 1px solid ${theme.color.info};
+    border-radius: ${theme.borderRadius.default};
+    padding: ${sizing(2)} ${sizing(4)};
+  }
 `;
 
 const breadcrumbs: BreadcrumbItem[] = [
   { id: 1, children: "MiaHome", href: "/" },
   { id: 2, children: "Miammy", href: "/" },
+  { id: 3, children: "Miamamia" },
+];
+const breadcrumbLinkCustomClassName: BreadcrumbItem[] = [
+  { id: 1, children: "MiaHome", href: "/" },
+  { id: 2, children: "Miammy", href: "/", className: "custom-class__solo" },
   { id: 3, children: "Miamamia" },
 ];
 const breadcrumbsLastHasHref: BreadcrumbItem[] = [
@@ -117,6 +131,21 @@ export const BreadcrumbCustomClassName = {
     return (
       <>
         <Title>Custom class name</Title>
+        <StyledBreadCrumb {...args} />
+      </>
+    );
+  },
+};
+
+export const BreadcrumbLinkCustomClassName = {
+  args: {
+    items: breadcrumbLinkCustomClassName,
+  },
+
+  render: (args: BreadcrumbProps<object>) => {
+    return (
+      <>
+        <Title>Custom class name on one Breadcrumb Item</Title>
         <StyledBreadCrumb {...args} />
       </>
     );
