@@ -10,7 +10,7 @@ import { Variant } from "src/action/Button/Button";
 import Link from "src/action/Link/Link";
 import { body1, theme } from "src/guidelines/theme";
 
-const StyledBreadcrumbs = styled(AriaBreadCrumbs)<{ variant?: Variant }>`
+const StyledBreadcrumbs = styled(AriaBreadCrumbs)`
   ${body1}
   display: flex;
   align-items: center;
@@ -29,8 +29,6 @@ const StyledBreadcrumbItem = styled(AriaBreadcrumb)`
 const StyledLink = styled(Link)<{
   onClick?: () => void;
   href?: string;
-  isDisabled?: boolean;
-  variant?: Variant;
 }>`
   &[data-current] {
     font-weight: ${theme.typographies.fontWeight.bold};
@@ -75,7 +73,7 @@ const Breadcrumb = <T,>(props: BreadcrumbsProps<T>) => {
     <>
       <StyledBreadcrumbs {...props}>
         {props.items.map((item) => (
-          <StyledBreadcrumbItem key={item.id} className={props.className}>
+          <StyledBreadcrumbItem key={item.id} {...props}>
             <StyledLink
               variant={item.variant}
               href={item.href}
