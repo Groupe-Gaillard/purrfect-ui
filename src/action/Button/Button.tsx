@@ -22,7 +22,8 @@ export type Variant =
   | "danger"
   | "warning"
   | "info"
-  | "gray";
+  | "gray"
+  | "link";
 const buttonVariant = (variant: Variant = "primary") => {
   const color = theme.color[variant];
 

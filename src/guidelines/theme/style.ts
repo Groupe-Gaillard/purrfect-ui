@@ -212,6 +212,7 @@ const theme: Theme = {
     success: "#4caf50",
     danger: "#C41C1C",
     warning: "#ffb000",
+    link: "#007bff",
     info: "#17a2b8",
     gray: "#888888",
     white: "#ffffff",
