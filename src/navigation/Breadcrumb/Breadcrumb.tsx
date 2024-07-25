@@ -27,8 +27,8 @@ const StyledBreadcrumbItem = styled(AriaBreadcrumb)`
 `;
 
 const StyledLink = styled(Link)<{
-  onClick?: () => void;
   href?: string;
+  variant?: Variant;
 }>`
   &[data-current] {
     font-weight: ${theme.typographies.fontWeight.bold};
