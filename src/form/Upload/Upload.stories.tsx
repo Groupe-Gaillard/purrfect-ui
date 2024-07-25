@@ -77,7 +77,7 @@ export const uploadTypeRestriction: Story = {
   args: {
     label: "Upload",
     showPreview: false,
-    acceptedFileTypes: [".txt"],
+    acceptedFileTypes: ["text/plain"],
     trailingIcon: <UploadIcon />,
   },
   render: (args) => (
