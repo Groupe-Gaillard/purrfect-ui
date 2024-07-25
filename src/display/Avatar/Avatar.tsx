@@ -9,16 +9,15 @@ const avatarSizes = (size?: AvatarSize) => {
   switch (size) {
     case "small":
       return css`
-        height: ${sizing(30)};
-        width: ${sizing(30)};
-      `;
-    case "large":
-      return css`
-        height: ${sizing(100)};
-        width: ${sizing(100)};
+        height: ${sizing(32)};
+        width: ${sizing(32)};
       `;
     case "medium":
-    default:
+      return css`
+        height: ${sizing(48)};
+        width: ${sizing(48)};
+      `;
+    case "large":
       return css`
         height: ${sizing(70)};
         width: ${sizing(70)};
@@ -28,8 +27,8 @@ const avatarSizes = (size?: AvatarSize) => {
 
 const fontSizeMap: { [key in AvatarSize]: string } = {
   small: `${theme.typographies.fontSize.base}`,
-  medium: `${theme.typographies.fontSize.xl}`,
-  large: `${theme.typographies.fontSize.xxxxl}`,
+  medium: `${theme.typographies.fontSize.xxl}`,
+  large: `${theme.typographies.fontSize.xxxl}`,
 };
 
 const StyledAvatar = styled.div<{ size?: AvatarSize; isDisabled?: boolean }>`
@@ -37,12 +36,13 @@ const StyledAvatar = styled.div<{ size?: AvatarSize; isDisabled?: boolean }>`
   box-shadow: ${theme.shadows.navigation};
   display: flex;
   align-items: center;
+  font-family: sans-serif;
+  font-size: ${(props) => fontSizeMap[props.size || "medium"]};
+  font-weight: ${theme.typographies.fontWeight.bold};
   justify-content: center;
   background-color: ${theme.color.gray};
   color: ${theme.color.white};
   overflow: hidden;
-  font-size: ${(props) => fontSizeMap[props.size || "medium"]};
-  font-weight: ${theme.typographies.fontWeight.bold};
   ${({ size }) => avatarSizes(size)};
   ${({ isDisabled }) =>
     isDisabled &&

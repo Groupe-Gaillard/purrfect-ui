@@ -3,8 +3,7 @@ import React from "react";
 import { describe, expect, it } from "vitest";
 import Avatar from "src/display/Avatar/Avatar";
 
-const mockImage =
-  "https://i.pinimg.com/736x/e5/18/a6/e518a631f086064879c6697d58efaf1f.jpg";
+const mockImage = "https://picsum.photos/200/300";
 
 describe("Avatar", () => {
   it("Should show an avatar with an image"),

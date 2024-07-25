@@ -9,7 +9,7 @@ const meta: Meta<typeof Avatar> = {
   title: "display/Avatar",
   component: Avatar,
   args: {
-    src: "https://i.pinimg.com/736x/e5/18/a6/e518a631f086064879c6697d58efaf1f.jpg",
+    src: "https://picsum.photos/200/300",
     isDisabled: false,
     className: "",
     size: "medium",
@@ -27,8 +27,6 @@ const Title = styled.h1`
 type Story = StoryObj<typeof Avatar>;
 
 export const Demo: Story = {
-  args: {},
-
   render: (args) => (
     <>
       <Title>Avatar</Title>
@@ -40,7 +38,7 @@ export const Demo: Story = {
 export const WithoutImage: Story = {
   args: {
     src: undefined,
-    username: "Remi Caradec",
+    username: "Matou Technologies",
     alt: "Maurice",
   },
 
