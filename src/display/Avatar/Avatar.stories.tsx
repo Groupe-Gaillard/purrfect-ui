@@ -6,7 +6,7 @@ import { heading1 } from "src/guidelines/theme";
 import { sizing } from "src/utils/utils";
 
 const meta: Meta<typeof Avatar> = {
-  title: "action/Avatar",
+  title: "display/Avatar",
   component: Avatar,
   args: {
     src: "https://i.pinimg.com/736x/e5/18/a6/e518a631f086064879c6697d58efaf1f.jpg",
