@@ -1,3 +1,6 @@
+export { default as Avatar } from "src/display/Avatar/Avatar";
+export type { AvatarProps } from "src/display/Avatar/Avatar";
+
 export { default as Button } from "src/action/Button/Button";
 export type { ButtonProps } from "src/action/Button/Button";
 
