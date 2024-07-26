@@ -49,8 +49,6 @@ export type { TopBarProps } from "src/display/TopBar/TopBar";
 export { default as Breadcrumb } from "src/navigation/Breadcrumb/Breadcrumb";
 export type { BreadcrumbProps } from "src/navigation/Breadcrumb/Breadcrumb";
 
-export { Title, Title2 } from "src/utils/StorybookComponents/Titles";
-
 export {
   heading1,
   heading2,
