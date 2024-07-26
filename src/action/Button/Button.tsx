@@ -23,7 +23,8 @@ export type Variant =
   | "warning"
   | "info"
   | "gray"
-  | "link";
+  | "link"
+  | "dark";
 const buttonVariant = (variant: Variant = "primary") => {
   const color = theme.color[variant];
 
@@ -115,6 +116,22 @@ const buttonSize = (size: Size = "normal") => {
   }
 };
 
+export type Radius = "normal" | "rounded" | "none";
+const radiusSize = (radius: Radius = "normal") => {
+  switch (radius) {
+    case "rounded":
+      return css`
+        border-radius: ${theme.borderRadius.round};
+      `;
+    case "normal":
+      return css``;
+    case "none":
+      return css`
+        border-radius: 0;
+      `;
+  }
+};
+
 export type Kind = "normal" | "outlined" | "link";
 const buttonKind = (kind: Kind = "normal", variant: Variant = "primary") => {
   const color = theme.color[variant];
@@ -140,7 +157,7 @@ const buttonKind = (kind: Kind = "normal", variant: Variant = "primary") => {
       return css`
         background-color: transparent;
         color: ${color};
-        border: 0;
+        border: 2px solid transparent;
 
         &:hover:enabled {
           opacity: 0.8;
@@ -153,6 +170,7 @@ const StyledButton = styled(AriaButton)<{
   kind?: Kind;
   variant?: Variant;
   size?: Size;
+  radius?: Radius;
 }>`
   cursor: pointer;
   border: none;
@@ -162,10 +180,11 @@ const StyledButton = styled(AriaButton)<{
   justify-content: center;
   gap: ${sizing(8)};
 
-  ${({ variant, size, kind }) => css`
+  ${({ variant, size, kind, radius }) => css`
     ${buttonVariant(variant)};
     ${buttonSize(size)};
     ${buttonKind(kind, variant)};
+    ${radiusSize(radius)};
   `};
 
   &:disabled {
@@ -181,6 +200,7 @@ type ButtonProps = AriaButtonProps & {
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
   children?: React.ReactNode;
+  radius?: Radius;
 };
 
 const Button = ({
@@ -191,6 +211,7 @@ const Button = ({
   size,
   leadingIcon,
   trailingIcon,
+  radius,
   ...others
 }: ButtonProps) => {
   return (
@@ -200,6 +221,7 @@ const Button = ({
       kind={kind}
       variant={variant}
       size={size}
+      radius={radius}
     >
       {leadingIcon}
       {children}

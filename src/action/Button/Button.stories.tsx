@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Button>;
 
 export const Demo: Story = {
   args: {
-    children: "Meow",
+    children: "Meow meow !",
     onPress: fn(),
     isDisabled: false,
     kind: "normal",
@@ -25,7 +25,6 @@ export const Demo: Story = {
 };
 
 const Container = styled.div`
-  width: 487px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -49,10 +48,9 @@ const Title = styled.p<{ color: Variant }>`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: repeat(3, auto);
-  grid-template-columns: repeat(4, 487px);
+  grid-template-columns: repeat(2, 800px);
   justify-items: center;
-  gap: 8px;
+  gap: 16px;
 `;
 
 export const ButtonList = () => {
@@ -63,6 +61,7 @@ export const ButtonList = () => {
     "danger",
     "info",
     "gray",
+    "dark",
   ];
   const buttonSizes: Array<Size> = ["small", "normal", "large"];
   const buttonKind: Array<Kind> = ["normal", "outlined", "link"];
@@ -93,7 +92,7 @@ export const ButtonList = () => {
                         onPress={fn()}
                         leadingIcon={<Default />}
                       >
-                        Meow
+                        Kind: {oneKind}
                       </Button>
                       <Button
                         kind={oneKind}
@@ -101,8 +100,9 @@ export const ButtonList = () => {
                         size={oneSize}
                         isDisabled={oneState}
                         onPress={fn()}
+                        radius="rounded"
                       >
-                        Meow
+                        Radius: rounded
                       </Button>
                       <Button
                         kind={oneKind}
@@ -112,7 +112,7 @@ export const ButtonList = () => {
                         onPress={fn()}
                         trailingIcon={<Default />}
                       >
-                        Meow
+                        Size: {oneSize}
                       </Button>
                     </div>
                   ));
