@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import Button from "src/action/Button/Button";
-import { body1, heading1, sizing } from "src/guidelines/theme";
+import { body1, sizing } from "src/guidelines/theme";
+import { Title } from "src/utils/StorybookComponents/Titles";
 import Table from "./Table";
 import TableDragForExample from "./TableDragForExample";
 import TableSortingForExample from "./TableSortingForExample";
@@ -14,11 +15,6 @@ const meta: Meta<typeof Table> = {
 export default meta;
 
 type Story = StoryObj<typeof Table>;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 const Text = styled.p`
   ${body1};

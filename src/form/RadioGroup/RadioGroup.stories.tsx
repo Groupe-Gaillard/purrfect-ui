@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import React from "react";
-import styled from "styled-components";
 import Radio from "src/form/Radio/Radio";
 import RadioGroup from "src/form/RadioGroup/RadioGroup";
-import { heading1, sizing } from "src/guidelines/theme/index";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof RadioGroup> = {
   component: RadioGroup,
@@ -12,11 +11,6 @@ const meta: Meta<typeof RadioGroup> = {
 
 export default meta;
 type Story = StoryObj<typeof RadioGroup>;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 const radiosButton = [
   {

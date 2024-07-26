@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import styled from "styled-components";
 import Switch from "src/form/Switch/Switch";
-import { heading1, sizing } from "src/guidelines/theme/index";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Switch> = {
   component: Switch,
@@ -10,11 +9,6 @@ const meta: Meta<typeof Switch> = {
 
 export default meta;
 type Story = StoryObj<typeof Switch>;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 export const switchStory: Story = {
   args: {

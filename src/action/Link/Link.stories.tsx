@@ -1,9 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import styled from "styled-components";
-import { heading1 } from "src/guidelines/theme";
 import AddIcon from "src/icons/Add";
-import { sizing } from "src/utils/utils";
+import { Title } from "src/utils/StorybookComponents/Titles";
 import Link from "./Link";
 
 const meta: Meta<typeof Link> = {
@@ -32,11 +30,6 @@ const meta: Meta<typeof Link> = {
   },
 };
 export default meta;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 type Story = StoryObj<typeof Link>;
 

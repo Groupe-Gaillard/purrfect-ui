@@ -2,18 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import { getContrastYIQ, sizing, theme } from "src/guidelines/theme/index";
-import { heading1 } from "src/guidelines/theme/typographies";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta = {};
 
 export default meta;
 
 type Story = StoryObj;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 const Square = styled.div<{
   bgColor: string | undefined;
@@ -44,7 +39,7 @@ export const Borders: Story = {
             flexWrap: "wrap",
           }}
         >
-          <Title style={{ width: "100%" }}>Border Radius</Title>
+          <Title>Border Radius</Title>
           {Object.entries(theme.borderRadius).map(([key, value]) => (
             <Square
               key={key}

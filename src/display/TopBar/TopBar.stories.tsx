@@ -1,8 +1,9 @@
 import { Meta } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { heading1, sizing, theme } from "src/guidelines/theme";
-import TopBar, { TopBarProps } from "./TopBar";
+import TopBar, { TopBarProps } from "src/display/TopBar/TopBar";
+import { sizing, theme } from "src/guidelines/theme";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const Section = styled.div`
   border: 1px solid ${theme.color.primary100};
@@ -19,11 +20,6 @@ const meta: Meta<typeof TopBar> = {
 };
 
 export default meta;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 export const Demo = {
   args: {

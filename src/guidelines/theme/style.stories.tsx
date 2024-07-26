@@ -1,12 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import {
-  getContrastYIQ,
-  heading1,
-  sizing,
-  theme,
-} from "src/guidelines/theme/index";
+import { getContrastYIQ, sizing, theme } from "src/guidelines/theme/index";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta = {};
 
@@ -28,11 +24,6 @@ const Rectangle = styled.div<{
   font-family: sans-serif;
   font-size: 0%.875rem;
   background-color: ${({ bgColor }) => bgColor};
-`;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
 `;
 
 export const Colors: Story = {

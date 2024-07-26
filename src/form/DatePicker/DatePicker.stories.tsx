@@ -2,9 +2,8 @@ import { getLocalTimeZone, today } from "@internationalized/date";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Button } from "react-aria-components";
-import styled from "styled-components";
 import DatePicker from "src/form/DatePicker/DatePicker";
-import { heading1, sizing } from "src/guidelines/theme";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof DatePicker> = {
   component: DatePicker,
@@ -12,11 +11,6 @@ const meta: Meta<typeof DatePicker> = {
 
 export default meta;
 type Story = StoryObj<typeof DatePicker>;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 export const datePickerBase: Story = {
   args: {

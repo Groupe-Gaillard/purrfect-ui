@@ -3,7 +3,8 @@ import React from "react";
 import { Label, RadioGroup } from "react-aria-components";
 import styled from "styled-components";
 import Radio from "src/form/Radio/Radio";
-import { body1, heading1, sizing } from "src/guidelines/theme";
+import { body1 } from "src/guidelines/theme";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Radio> = {
   component: Radio,
@@ -12,10 +13,6 @@ const meta: Meta<typeof Radio> = {
 export default meta;
 type Story = StoryObj<typeof Radio>;
 
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 const StyledLabel = styled(Label)`
   ${body1}
 `;
