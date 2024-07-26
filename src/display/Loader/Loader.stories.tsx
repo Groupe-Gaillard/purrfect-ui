@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Loader>;
 
 const Title = styled.p`
   ${heading1};
-  margin: ${sizing(16)} 0;
+  margin: ${sizing(16, 0)};
 `;
 
 export const LoaderBase: Story = {
