@@ -4,6 +4,9 @@ export type { AvatarProps } from "src/display/Avatar/Avatar";
 export { default as Button } from "src/action/Button/Button";
 export type { ButtonProps } from "src/action/Button/Button";
 
+export { default as ButtonMenu } from "src/navigation/Menu/MenuButton";
+export type { ButtonMenuProps } from "src/navigation/Menu/MenuButton";
+
 export { default as Checkbox } from "src/form/Checkbox/Checkbox";
 export type { CheckboxProps } from "src/form/Checkbox/Checkbox";
 
@@ -18,6 +21,9 @@ export type { LinkProps } from "src/action/Link/Link";
 
 export { default as Loader } from "src/display/Loader/Loader";
 export type { LoaderProps } from "src/display/Loader/Loader";
+
+export { default as Menu } from "src/navigation/Menu/Menu";
+export type { MenuProps } from "src/navigation/Menu/Menu";
 
 export { default as Radio } from "src/form/Radio/Radio";
 export type { RadioProps } from "src/form/Radio/Radio";
