@@ -1,13 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import {
-  body1,
-  heading1,
-  heading2,
-  sizing,
-  theme,
-} from "src/guidelines/theme/index";
+import { body1, sizing, theme } from "src/guidelines/theme/index";
+import { Title, Title2 } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta = {};
 
@@ -33,14 +28,7 @@ const RectangleOutside = styled.div<{ paddingSize: number }>`
 `;
 
 const numbersSizing: number[] = [1, 2, 4, 8, 16];
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
-const Title2 = styled.h2`
-  ${heading2};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
+
 const Body1 = styled.p`
   ${body1};
   margin: ${sizing(16)} 0 ${sizing(16)};

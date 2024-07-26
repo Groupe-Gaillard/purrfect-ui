@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import styled from "styled-components";
 import Slider from "src/form/Slider/Slider";
-import { heading1, sizing } from "src/guidelines/theme/index";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Slider> = {
   component: Slider,
@@ -11,11 +10,6 @@ const meta: Meta<typeof Slider> = {
 export default meta;
 
 type Story = StoryObj<typeof Slider>;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 export const Base: Story = {
   args: {

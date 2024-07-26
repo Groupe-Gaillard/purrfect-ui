@@ -1,11 +1,12 @@
 import type { Meta } from "@storybook/react";
 import React from "react";
 import styled, { css } from "styled-components";
-import { heading1, theme } from "src/guidelines/theme";
+import { theme } from "src/guidelines/theme";
 import Breadcrumb, {
   BreadcrumbItem,
   BreadcrumbProps,
 } from "src/navigation/Breadcrumb/Breadcrumb";
+import { Title } from "src/utils/StorybookComponents/Titles";
 import { sizing } from "src/utils/utils";
 
 const meta: Meta<typeof Breadcrumb> = {
@@ -13,11 +14,6 @@ const meta: Meta<typeof Breadcrumb> = {
 };
 
 export default meta;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 const StyledBreadCrumb = styled(Breadcrumb)<BreadcrumbProps<object>>`
   ${(props) =>

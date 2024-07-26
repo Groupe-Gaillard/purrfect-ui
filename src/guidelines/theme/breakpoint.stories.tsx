@@ -7,18 +7,14 @@ import {
   sizing,
   theme,
 } from "src/guidelines/theme/index";
-import { body1, heading1 } from "src/guidelines/theme/typographies";
+import { body1 } from "src/guidelines/theme/typographies";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta = {};
 
 export default meta;
 
 type Story = StoryObj;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 const StyledDiv = styled.div`
   padding: ${sizing(16)};
@@ -61,7 +57,7 @@ export const Breakpoint: Story = {
   render: () => {
     return (
       <>
-        <Title style={{ width: "100%" }}>Breakpoint</Title>
+        <Title>Breakpoint</Title>
         <StyledDiv>
           Before 480 = White
           <br />

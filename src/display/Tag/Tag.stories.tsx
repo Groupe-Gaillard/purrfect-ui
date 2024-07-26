@@ -26,11 +26,12 @@ const Block = styled.div`
   flex-direction: column;
   gap: ${sizing(8)};
   align-items: center;
-  min-width: 200px;
+  min-width: ${sizing(200)};
   text-align: center;
   border: 1px solid ${theme.color.gray};
   border-radius: ${theme.borderRadius.default};
   padding: ${sizing(16)};
+  box-shadow: ${theme.shadows.base};
 `;
 
 const ListTitle = styled.p<{ color: Variant; isDisabled?: boolean }>`
@@ -41,7 +42,7 @@ const ListTitle = styled.p<{ color: Variant; isDisabled?: boolean }>`
   color: ${({ color, isDisabled }) =>
     isDisabled ? theme.color.gray : theme.color[color]};
   display: flex;
-  margin: 16px 0;
+  margin: ${sizing(16, 0)};
   justify-content: center;
 `;
 
@@ -55,7 +56,7 @@ const StyledContainer = styled.div`
 const Title = styled.p<{ color: Variant }>`
   ${heading1};
   color: ${({ color }) => theme.color[color]};
-  margin: ${sizing(16)} 0;
+  margin: ${sizing(16, 0)};
 `;
 
 export const TagList = () => {

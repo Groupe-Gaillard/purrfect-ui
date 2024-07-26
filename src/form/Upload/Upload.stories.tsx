@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import styled from "styled-components";
 import Upload from "src/form/Upload/Upload";
-import { heading1, sizing } from "src/guidelines/theme/index";
 import UploadIcon from "src/icons/Upload";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Upload> = {
   component: Upload,
@@ -11,11 +10,6 @@ const meta: Meta<typeof Upload> = {
 
 export default meta;
 type Story = StoryObj<typeof Upload>;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 export const upload: Story = {
   args: {

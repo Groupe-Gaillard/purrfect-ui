@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import React from "react";
-import styled from "styled-components";
 import Select, { Option } from "src/form/Select/Select";
-import { heading1, sizing } from "src/guidelines/theme";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Select> = {
   component: Select,
@@ -12,11 +11,6 @@ const meta: Meta<typeof Select> = {
 export default meta;
 
 type Story = StoryObj<typeof Select>;
-
-const Title = styled.h1`
-  ${heading1};
-  margin: ${sizing(24)} 0 ${sizing(16)};
-`;
 
 const options = [
   { id: "cat", label: "Cat", description: "The funny animal" },
