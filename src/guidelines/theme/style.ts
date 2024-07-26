@@ -324,3 +324,4 @@ const breakpoints: Breakpoints = {
 };
 
 export { theme, breakpoints };
+export type { BorderRadius };
