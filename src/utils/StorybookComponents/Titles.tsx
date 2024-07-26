@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { heading1, heading2 } from "src/guidelines/theme";
+import { heading1, heading2 } from "src/guidelines/theme/typographies";
 import { sizing } from "src/utils/utils";
 
 const Title = styled.h1`
