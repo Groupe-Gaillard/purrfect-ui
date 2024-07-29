@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import React from "react";
+import React, { FormEvent } from "react";
+import Button from "src/action/Button/Button";
 import Radio from "src/form/Radio/Radio";
 import RadioGroup from "src/form/RadioGroup/RadioGroup";
 import { Title } from "src/utils/StorybookComponents/Titles";
@@ -147,6 +148,11 @@ export const radioGroupReadOnly: Story = {
   ),
 };
 
+const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  alert("Submitted");
+};
+
 export const radioGroupIsRequired: Story = {
   args: {
     label: "RadioGroup isRequired",
@@ -158,13 +164,13 @@ export const radioGroupIsRequired: Story = {
   render: (args) => (
     <>
       <Title>RadioGroup is required</Title>
-      <form>
+      <form onSubmit={handleSubmit}>
         <RadioGroup {...args}>
           {radiosButton.map((oneRadio, index) => (
             <Radio key={index} {...oneRadio} />
           ))}
         </RadioGroup>
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </>
   ),
