@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import React from "react";
+import React, { FormEvent } from "react";
+import Button from "src/action/Button/Button";
 import TextArea from "src/form/TextArea/TextArea";
 import { Title } from "src/utils/StorybookComponents/Titles";
 
@@ -12,11 +13,15 @@ export default meta;
 
 type Story = StoryObj<typeof TextArea>;
 
+const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  alert("Submit");
+};
+
 export const textAreaBase: Story = {
   args: {
     autoFocus: true,
     className: "",
-    cols: 50,
     helperText: "Helper text or description",
     id: "monId",
     isDisabled: false,
@@ -82,9 +87,9 @@ export const textAreaIsRequired: Story = {
   render: (args) => (
     <>
       <Title>TextArea required</Title>
-      <form>
+      <form onSubmit={handleSubmit}>
         <TextArea {...args} />
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </>
   ),
