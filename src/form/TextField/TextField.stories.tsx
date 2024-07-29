@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import React from "react";
+import React, { FormEvent } from "react";
+import Button from "src/action/Button/Button";
 import TextField from "src/form/TextField/TextField";
 import AddIcon from "src/icons/Add";
 import UploadIcon from "src/icons/Upload";
@@ -25,6 +26,11 @@ const inputModeArray = [
   "search",
 ];
 const inputTypeArray = ["text", "search", "url", "tel", "email", "password"];
+
+const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  alert("Submit");
+};
 
 export const textFieldBase: Story = {
   args: {
@@ -112,7 +118,7 @@ export const textFieldIsRequired: Story = {
   render: (args) => (
     <>
       <Title>TextField required</Title>
-      <form>
+      <form onSubmit={handleSubmit}>
         <TextField {...args} />
         <button type="submit">Submit</button>
       </form>
@@ -134,7 +140,7 @@ export const textFieldEmail: Story = {
       <Title>TextField with type Email</Title>
       <form method="GET">
         <TextField {...args} />
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </>
   ),
