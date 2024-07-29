@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import React from "react";
+import React, { FormEvent } from "react";
+import Button from "src/action/Button/Button";
 import Select, { Option } from "src/form/Select/Select";
 import { Title } from "src/utils/StorybookComponents/Titles";
 
@@ -23,6 +24,11 @@ const options = [
   { id: "panda", label: "Panda" },
   { id: "snake", label: "Snake" },
 ];
+
+const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  alert("Submit");
+};
 
 export const Demo: Story = {
   args: {
@@ -144,15 +150,18 @@ export const RequiredSelect: Story = {
   render: (args) => (
     <div>
       <Title>Select</Title>
-      <Select {...args}>
-        {options.map((oneOption) => {
-          return (
-            <Option key={oneOption.id} id={oneOption.id}>
-              {oneOption.label}
-            </Option>
-          );
-        })}
-      </Select>
+      <form onSubmit={handleSubmit}>
+        <Select {...args}>
+          {options.map((oneOption) => {
+            return (
+              <Option key={oneOption.id} id={oneOption.id}>
+                {oneOption.label}
+              </Option>
+            );
+          })}
+        </Select>
+        <Button type="submit">Submit</Button>
+      </form>
     </div>
   ),
 };
