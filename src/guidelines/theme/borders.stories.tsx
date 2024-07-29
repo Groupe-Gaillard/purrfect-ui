@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
+import { BorderRadius } from "src/guidelines/theme";
 import { getContrastYIQ, sizing, theme } from "src/guidelines/theme/index";
 import { Title } from "src/utils/StorybookComponents/Titles";
 
@@ -40,19 +41,24 @@ export const Borders: Story = {
           }}
         >
           <Title>Border Radius</Title>
-          {Object.entries(theme.borderRadius).map(([key, value]) => (
-            <Square
-              key={key}
-              bgColor={theme.color.primary300}
-              textColor={theme.color.text[getContrastYIQ(value)]}
-              style={{
-                borderRadius:
-                  theme.borderRadius[key] ?? theme.borderRadius.default,
-              }}
-            >
-              {key}
-            </Square>
-          ))}
+          {Object.entries(theme.borderRadius).map(([key, value]) => {
+            const borderRadiusKey = key as keyof BorderRadius;
+
+            return (
+              <Square
+                key={key}
+                bgColor={theme.color.primary300}
+                textColor={theme.color.text[getContrastYIQ(value)]}
+                style={{
+                  borderRadius:
+                    theme.borderRadius[borderRadiusKey] ??
+                    theme.borderRadius.default,
+                }}
+              >
+                {key}
+              </Square>
+            );
+          })}
         </div>
       </>
     );

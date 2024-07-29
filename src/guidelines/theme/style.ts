@@ -8,6 +8,7 @@ interface Color {
   warning: string;
   info: string;
   gray: string;
+  dark: string;
   white: string;
   black: string;
   text: {
@@ -75,7 +76,6 @@ interface Size {
 }
 
 interface Shadows {
-  [key: string]: string;
   paper: string;
   base: string;
   navigation: string;
@@ -87,7 +87,6 @@ interface BorderRadius {
   large: string;
   big: string;
   round: string;
-  [key: string]: string;
 }
 
 interface Breakpoints {
@@ -215,6 +214,7 @@ const theme: Theme = {
     link: "#007bff",
     info: "#17a2b8",
     gray: "#888888",
+    dark: "#2F2F2F",
     white: "#ffffff",
     black: "#000000",
     text: {
@@ -304,7 +304,7 @@ const theme: Theme = {
     small: sizing(3),
     large: sizing(8),
     big: sizing(16),
-    round: "50%",
+    round: sizing(500),
   },
 
   typographies: typographies,
@@ -324,3 +324,4 @@ const breakpoints: Breakpoints = {
 };
 
 export { theme, breakpoints };
+export type { BorderRadius };

@@ -27,6 +27,7 @@ const meta: Meta<typeof Link> = {
     leadingIcon: false,
     trailingIcon: false,
     underline: "hovered",
+    size: "normal",
   },
 };
 export default meta;
@@ -99,6 +100,26 @@ export const NeverUnderlined: Story = {
         trailingIcon={args.trailingIcon ? <AddIcon /> : undefined}
       >
         {args.children}
+      </Link>
+    </>
+  ),
+};
+
+export const SizeLink: Story = {
+  render: () => (
+    <>
+      <Title>Never Underlined Link</Title>
+      <Link size="small">Small link</Link>
+      <Link size="normal">Normal link</Link>
+      <Link size="large">Large link</Link>
+      <Link size="small" leadingIcon={<AddIcon />}>
+        Small link
+      </Link>
+      <Link size="normal" leadingIcon={<AddIcon />}>
+        Normal link
+      </Link>
+      <Link size="large" leadingIcon={<AddIcon />}>
+        Large link
       </Link>
     </>
   ),
