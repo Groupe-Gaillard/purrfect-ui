@@ -41,11 +41,11 @@ const AccordionContent = styled.div<{ isOpen: boolean; isVisible: boolean }>`
 
 type AccordionProps = {
   title: string;
-  content: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
 };
 
-const Accordion = ({ title, content, className }: AccordionProps) => {
+const Accordion = ({ title, children, className }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -78,7 +78,7 @@ const Accordion = ({ title, content, className }: AccordionProps) => {
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         aria-expanded={isOpen}
-        aria-controls="accordion-header"
+        aria-controls={accordionContentId}
         id={accordionHeaderId}
         className={className}
       >
@@ -89,10 +89,10 @@ const Accordion = ({ title, content, className }: AccordionProps) => {
         isOpen={isOpen}
         isVisible={isVisible}
         id={accordionContentId}
-        aria-labelledby="accordion-content"
+        aria-labelledby={accordionHeaderId}
         className={className}
       >
-        {content}
+        {children}
       </AccordionContent>
     </AccordionContainer>
   );

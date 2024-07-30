@@ -45,11 +45,9 @@ const linkHtml = (
 describe("Accordion Component", () => {
   it("renders with content", () => {
     render(
-      <Accordion
-        title="Accordion Title"
-        content={standardHtml}
-        className="custom-class"
-      />,
+      <Accordion title="Accordion Title" className="custom-class">
+        {standardHtml}
+      </Accordion>,
     );
     expect(screen.getByText("Accordion Title")).toBeInTheDocument();
     expect(
@@ -63,11 +61,9 @@ describe("Accordion Component", () => {
 
   it("toggles content visibility on header click", () => {
     render(
-      <Accordion
-        title="Accordion Title"
-        content={standardHtml}
-        className="custom-class"
-      />,
+      <Accordion title="Accordion Title" className="custom-class">
+        {standardHtml}
+      </Accordion>,
     );
     const header = screen.getByText("Accordion Title");
     fireEvent.click(header);
@@ -92,9 +88,9 @@ describe("Accordion Component", () => {
     render(
       <>
         <Title>Multiple Accordions</Title>
-        <Accordion title="Accordion 1" content={linkHtml} />
-        <Accordion title="Accordion 2" content={standardHtml} />
-        <Accordion title="Accordion 3" content={linkHtml} />
+        <Accordion title="Accordion 1">{linkHtml}</Accordion>
+        <Accordion title="Accordion 2">{standardHtml}</Accordion>
+        <Accordion title="Accordion 3">{linkHtml}</Accordion>
       </>,
     );
     expect(screen.getByText("Accordion 1")).toBeInTheDocument();

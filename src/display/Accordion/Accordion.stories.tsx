@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import Link from "src/action/Link/Link";
+import Accordion from "src/display/Accordion/Accordion";
 import { body1 } from "src/guidelines/theme";
 import { Title } from "src/utils/StorybookComponents/Titles";
 import { sizing } from "src/utils/utils";
-import Accordion from "./Accordion";
 
 const meta: Meta<typeof Accordion> = {
   title: "display/Accordion",
@@ -53,7 +53,7 @@ export const Demo: Story = {
   args: {
     title: "Accordion Title",
     className: "custom-class",
-    content: standardHtml,
+    children: standardHtml,
   },
   argTypes: {
     className: {
@@ -83,9 +83,9 @@ export const Multiple: Story = {
     return (
       <>
         <Title>Multiple Accordions</Title>
-        <Accordion title="Accordion 1" content={linkHtml} />
-        <Accordion title="Accordion 2" content={standardHtml} />
-        <Accordion title="Accordion 3" content={linkHtml} />
+        <Accordion title="Accordion 3">{linkHtml}</Accordion>
+        <Accordion title="Accordion 3">{standardHtml}</Accordion>
+        <Accordion title="Accordion 3">{linkHtml}</Accordion>
       </>
     );
   },
