@@ -1,4 +1,5 @@
-import {describe, expect} from "vitest";
+import React from "react";
+import { describe, expect, it } from "vitest";
 import Alert, {alertKindValues, alertSeverityValues} from "src/feedback/Alert/Alert";
 import {render, screen} from "@testing-library/react";
 import {theme} from "src/guidelines/theme";
@@ -52,6 +53,16 @@ describe("Alert", () => {
       expect(alert).toHaveStyle({
         backgroundColor: theme.color[severity],
       })
+    })
+  })
+
+  alertSeverityValues.forEach((severity) => {
+    it(`Applies correct icon for severity: ${severity}`, () => {
+      render(<Alert severity={severity}>Message</Alert>)
+
+      const icon = screen.getByRole('img')
+
+      expect(icon).toHaveAttribute('aria-label', `${severity}-icon`)
     })
   })
 })

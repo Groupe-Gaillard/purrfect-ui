@@ -1,6 +1,10 @@
 import React, {ReactNode} from "react";
 import styled, {css} from "styled-components";
-import {getContrastYIQ, theme} from "src/guidelines/theme";
+import {getContrastYIQ, sizing, theme} from "src/guidelines/theme";
+import SuccessIcon from "src/icons/Success";
+import InfoIcon from "src/icons/Info";
+import WarningIcon from "src/icons/Warning";
+import DangerIcon from "src/icons/Danger";
 
 const alertSeverityValues = ['success', 'info', 'warning', 'danger'] as const
 type AlertSeverity = typeof alertSeverityValues[number]
@@ -32,21 +36,40 @@ const alertKindStyle = (kind: AlertKind, severity: AlertSeverity) => css`
 const AlertWrapper = styled.div<{ severity: AlertSeverity, kind: AlertKind }>`
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 16px;
     margin: 16px 0;
 
     ${({severity}) => alertSeverityStyle(severity)};
     ${({kind, severity}) => alertKindStyle(kind, severity)};
 
-`
+`;
 
 const AlertMessage = styled.div`
   flex-grow: 1;
-`
+`;
+
+const IconWrapper = styled.div`
+  height: ${sizing(25)};
+  width: ${sizing(25)};
+  margin-right: ${sizing(8)};
+`;
+
+const iconMap = {
+  info: <InfoIcon />,
+  success: <SuccessIcon />,
+  warning: <WarningIcon />,
+  danger: <DangerIcon />,
+}
 
 const Alert = ({severity , kind, children}: AlertProps) => {
+  severity = severity ?? 'info'
+
   return (
-    <AlertWrapper severity={severity ?? 'info'} kind={kind ?? 'normal'}>
+    <AlertWrapper severity={severity} kind={kind ?? 'normal'}>
+      <IconWrapper>
+        {iconMap[severity]}
+      </IconWrapper>
       <AlertMessage>
         {children}
       </AlertMessage>
