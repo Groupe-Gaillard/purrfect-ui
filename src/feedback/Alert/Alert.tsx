@@ -1,10 +1,11 @@
-import React, {ReactNode} from "react";
+import React, { ReactNode, useState } from "react";
 import styled, {css} from "styled-components";
 import {getContrastYIQ, sizing, theme} from "src/guidelines/theme";
 import SuccessIcon from "src/icons/Success";
 import InfoIcon from "src/icons/Info";
 import WarningIcon from "src/icons/Warning";
 import DangerIcon from "src/icons/Danger";
+import AlertCloseable from "src/feedback/Alert/AlertCloseable";
 
 const alertSeverityValues = ['success', 'info', 'warning', 'danger'] as const
 type AlertSeverity = typeof alertSeverityValues[number]
@@ -15,6 +16,7 @@ type AlertKind = typeof alertKindValues[number]
 type AlertProps = {
   severity?: AlertSeverity,
   kind?: AlertKind,
+  closeable?: boolean
   children: ReactNode,
 }
 
@@ -62,8 +64,14 @@ const iconMap = {
   danger: <DangerIcon />,
 }
 
-const Alert = ({severity , kind, children}: AlertProps) => {
+const Alert = ({severity , kind, closeable = false, children}: AlertProps) => {
+  const [visible, setVisible] = useState(true)
+
   severity = severity ?? 'info'
+
+  if (!visible) {
+    return null
+  }
 
   return (
     <AlertWrapper severity={severity} kind={kind ?? 'normal'}>
@@ -73,6 +81,7 @@ const Alert = ({severity , kind, children}: AlertProps) => {
       <AlertMessage>
         {children}
       </AlertMessage>
+      {closeable && <AlertCloseable onClose={() => setVisible(false)}></AlertCloseable>}
     </AlertWrapper>
   )
 }
