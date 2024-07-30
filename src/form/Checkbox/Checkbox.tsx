@@ -13,8 +13,18 @@ const StyledCheckboxContainer = styled(AriaCheckbox)`
   gap: ${sizing(6)};
   ${body1}
   forced-color-adjust: none;
+
   &[data-disabled] {
     opacity: 0.5;
+  }
+
+  &[data-invalid] > div {
+    --checkmark-color: var(--gray-50);
+    border-color: ${theme.color.danger};
+  }
+
+  &[data-invalid][data-selected] > div {
+    border-color: ${theme.color.primary};
   }
 
   @media ${breakpoints.minWidth.md} {

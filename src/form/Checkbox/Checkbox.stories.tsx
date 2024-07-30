@@ -25,6 +25,7 @@ export const checkbox: Story = {
   args: {
     label: "Meow",
     isDisabled: false,
+    isInvalid: false,
     value: "meow",
   },
   render: (args) => (
