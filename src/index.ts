@@ -1,5 +1,11 @@
+export { default as Accordion } from "src/display/Accordion/Accordion";
+export type { AccordionProps } from "src/display/Accordion/Accordion";
+
 export { default as Avatar } from "src/display/Avatar/Avatar";
 export type { AvatarProps } from "src/display/Avatar/Avatar";
+
+export { default as Breadcrumb } from "src/navigation/Breadcrumb/Breadcrumb";
+export type { BreadcrumbProps } from "src/navigation/Breadcrumb/Breadcrumb";
 
 export { default as Button } from "src/action/Button/Button";
 export type { ButtonProps } from "src/action/Button/Button";
@@ -54,9 +60,6 @@ export type { TextFieldProps } from "src/form/TextField/TextField";
 
 export { default as Upload } from "src/form/Upload/Upload";
 export type { UploadProps } from "src/form/Upload/Upload";
-
-export { default as Breadcrumb } from "src/navigation/Breadcrumb/Breadcrumb";
-export type { BreadcrumbProps } from "src/navigation/Breadcrumb/Breadcrumb";
 
 export {
   heading1,

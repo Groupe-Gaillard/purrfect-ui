@@ -87,3 +87,12 @@ export const truncateFileNameWithExtension = (
 export const generateUniqueId = (): string => {
   return uuidv4();
 };
+
+/**
+ * Function to generate a unique id with a prefix.
+ */
+export const GenerateIdWithPrefix = (prefix: string) => {
+  return `${prefix}-${Math.random()
+    .toString(36)
+    .substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
+};
