@@ -10,7 +10,7 @@ import {
 } from "react-aria-components";
 import styled, { css } from "styled-components";
 import { breakpoints, sizing, theme } from "src/guidelines/theme";
-import { body1 } from "src/guidelines/theme/typographies";
+import { body1, narrow } from "src/guidelines/theme/typographies";
 
 const StyledTextField = styled(AriaTextField)`
   display: flex;
@@ -65,8 +65,7 @@ const StyledInput = styled(Input)<{
 `;
 
 const StyledText = styled(Text)`
-  ${body1};
-  font-size: ${theme.typographies.fontSize.sm};
+  ${narrow};
 `;
 
 const StyledIsRequired = styled.span`

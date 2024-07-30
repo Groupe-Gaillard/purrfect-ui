@@ -16,8 +16,6 @@ const StyledLabel = styled(Label)`
 
 const StyledText = styled(Text)`
   ${narrow};
-  width: 100%;
-  font-size: ${theme.typographies.fontSize.sm};
 `;
 
 const StyledIsRequired = styled.span`
@@ -36,7 +34,7 @@ const StyledRadioGroup = styled(AriaRadioGroup)<{ orientation?: Orientation }>`
   flex-wrap: wrap;
   gap: ${sizing(6)};
   color: ${theme.color.text.dark};
-  &[data-disabled] {
+  &[data-disabled] > span {
     opacity: 0.5;
   }
   ${({ orientation }) => css`

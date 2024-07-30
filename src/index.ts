@@ -16,6 +16,9 @@ export type { ButtonMenuProps } from "src/navigation/Menu/MenuButton";
 export { default as Checkbox } from "src/form/Checkbox/Checkbox";
 export type { CheckboxProps } from "src/form/Checkbox/Checkbox";
 
+export { default as CheckboxGroup } from "src/form/CheckboxGroup/CheckboxGroup";
+export type { CheckboxGroupProps } from "src/form/CheckboxGroup/CheckboxGroup";
+
 export { default as DatePicker } from "src/form/DatePicker/DatePicker";
 export type { DatePickerProps } from "src/form/DatePicker/DatePicker";
 

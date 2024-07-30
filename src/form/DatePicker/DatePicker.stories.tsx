@@ -1,7 +1,7 @@
 import { getLocalTimeZone, today } from "@internationalized/date";
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
-import { Button } from "react-aria-components";
+import React, { FormEvent } from "react";
+import Button from "src/action/Button/Button";
 import DatePicker from "src/form/DatePicker/DatePicker";
 import { Title } from "src/utils/StorybookComponents/Titles";
 
@@ -56,6 +56,11 @@ export const datePickerDateLimit: Story = {
   ),
 };
 
+const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  alert("Submit");
+};
+
 export const datePickerRequired: Story = {
   args: {
     label: "Choose your date",
@@ -66,7 +71,7 @@ export const datePickerRequired: Story = {
   render: (args) => (
     <>
       <Title>DatePicker isRequired</Title>
-      <form>
+      <form onSubmit={handleSubmit}>
         <DatePicker {...args} />
         <Button type="submit">Submit</Button>
       </form>

@@ -17,7 +17,7 @@ import {
   Text,
 } from "react-aria-components";
 import styled from "styled-components";
-import { body1, theme } from "src/guidelines/theme";
+import { body1, narrow, theme } from "src/guidelines/theme";
 import ChevronDown from "src/icons/ChevronDown";
 
 const StyledComboBox = styled(ComboBox)`
@@ -53,6 +53,11 @@ const StyledInput = styled(Input)`
   border-bottom-right-radius: 0;
   border: 1px solid ${theme.color.gray200};
   background-color: ${theme.color.white};
+
+  &[data-invalid] {
+    color: ${theme.color.danger};
+    border-color: ${theme.color.danger};
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -69,12 +74,12 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledText = styled(Text)`
-  ${body1};
-  font-size: ${theme.typographies.fontSize.sm};
+  ${narrow};
 `;
 
 const StyledFieldError = styled(FieldError)`
   ${body1};
+  color: ${theme.color.danger};
 `;
 
 const StyledPopover = styled(Popover)``;

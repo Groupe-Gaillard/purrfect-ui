@@ -10,13 +10,18 @@ import {
 } from "react-aria-components";
 import styled from "styled-components";
 import { breakpoints, sizing, theme } from "src/guidelines/theme";
-import { body1 } from "src/guidelines/theme/typographies";
+import { body1, narrow } from "src/guidelines/theme/typographies";
 
 const StyledTextField = styled(TextField)`
   display: flex;
   flex-direction: column;
-  width: fit-content;
   color: ${theme.color.text.dark};
+
+  &,
+  & > * {
+    box-sizing: border-box;
+  }
+
   &[data-disabled] {
     opacity: 0.5;
   }
@@ -30,6 +35,7 @@ const StyledTextArea = styled(AriaTextArea)`
   ${body1};
   padding: ${sizing(4)};
   margin: 0;
+  width: 100%;
   border: 1px solid ${theme.color.gray200};
   border-radius: ${theme.borderRadius.default};
   background: ${theme.color.white};
@@ -51,8 +57,7 @@ const StyledTextArea = styled(AriaTextArea)`
 `;
 
 const StyledText = styled(Text)`
-  ${body1};
-  font-size: ${theme.typographies.fontSize.sm};
+  ${narrow};
 `;
 
 const StyledIsRequired = styled.span`
