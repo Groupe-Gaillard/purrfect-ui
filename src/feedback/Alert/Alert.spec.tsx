@@ -1,7 +1,7 @@
 import React from "react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, test } from "vitest";
 import Alert, {alertKindValues, alertSeverityValues} from "src/feedback/Alert/Alert";
-import {render, screen} from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import {theme} from "src/guidelines/theme";
 
 describe("Alert", () => {
@@ -64,5 +64,22 @@ describe("Alert", () => {
 
       expect(icon).toHaveAttribute('aria-label', `${severity}-icon`)
     })
+  })
+
+  test('Closeable props renders divider, close button and remove alert on click', () => {
+    render(<Alert closeable>Message</Alert>)
+
+    const alert = screen.getByText('Message')
+    const button = screen.getByRole('button')
+    const divider = button.previousSibling
+
+    expect(divider).toHaveStyle({
+      alignSelf: 'stretch'
+    })
+
+    expect(button).toBeInTheDocument()
+
+    fireEvent.click(button)
+    expect(alert).not.toBeInTheDocument()
   })
 })

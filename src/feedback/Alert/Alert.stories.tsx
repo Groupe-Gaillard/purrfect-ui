@@ -26,6 +26,7 @@ export const AlertDemo: Story = {
   args: {
     severity: "info",
     kind: "normal",
+    closeable: false,
     children: "Message",
   },
   argTypes: {
