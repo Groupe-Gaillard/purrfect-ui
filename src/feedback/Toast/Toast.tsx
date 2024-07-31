@@ -74,3 +74,4 @@ const Toast = ({ position, duration, ...rest }: ToastProps) => {
 
 export default Toast;
 export { toastPositionValues };
+export type { ToastProps };
