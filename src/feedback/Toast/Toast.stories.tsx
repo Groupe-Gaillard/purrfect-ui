@@ -1,8 +1,8 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import styled from "styled-components";
 import Toast, { toastPositionValues } from "src/feedback/Toast/Toast";
 import { AlertDemo } from "src/feedback/Alert/Alert.stories";
-import styled from "styled-components";
 
 const meta: Meta<typeof Toast> = {
   component: Toast,
@@ -20,7 +20,7 @@ const Container = styled.div`
 export const ToastDemo: Story = {
   args: {
     position: "top-right",
-    ...AlertDemo.args
+    ...AlertDemo.args,
   },
   argTypes: {
     position: {
@@ -29,11 +29,11 @@ export const ToastDemo: Story = {
       control: { type: "select" },
       description: "",
     },
-    ...AlertDemo.argTypes
+    ...AlertDemo.argTypes,
   },
-  render: ( (args) => (
+  render: (args) => (
     <Container>
-      <Toast { ...args }>{ args.children }</Toast>
+      <Toast {...args}>{args.children}</Toast>
     </Container>
-  ))
+  ),
 };
