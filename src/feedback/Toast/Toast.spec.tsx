@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import { describe, expect, it, vi } from "vitest";
 import Toast, { toastPositionValues } from "src/feedback/Toast/Toast";
@@ -48,5 +48,26 @@ describe("Toast", () => {
 
     expect(alertMessage).toBeInTheDocument();
     expect(alert).toBeInTheDocument();
+  });
+
+  it("Disappears after the specified duration ", () => {
+    render(
+      <Toast position={"top-left"} duration={500}>
+        Message
+      </Toast>,
+    );
+
+    const toast = screen.getByText("Message");
+
+    expect(toast).toBeInTheDocument();
+
+    waitFor(
+      () => {
+        const toast = screen.getByText("Message");
+
+        expect(toast).not.toBeInTheDocument();
+      },
+      { timeout: 1000 },
+    );
   });
 });

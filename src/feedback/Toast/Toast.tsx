@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Alert, { AlertProps } from "src/feedback/Alert/Alert";
+import { useToastTimer } from "src/feedback/Toast/useToastTimer";
 
 const toastPositionValues = [
   "top-left",
@@ -14,6 +15,7 @@ type ToastPositionType = (typeof toastPositionValues)[number];
 
 type ToastProps = {
   position: ToastPositionType;
+  duration?: number; //in ms
 } & AlertProps;
 
 const ToastWrapper = styled.div<{ position: ToastPositionType }>`
@@ -56,7 +58,13 @@ const ToastWrapper = styled.div<{ position: ToastPositionType }>`
   }}
 `;
 
-const Toast = ({ position, ...rest }: ToastProps) => {
+const Toast = ({ position, duration, ...rest }: ToastProps) => {
+  const visible = useToastTimer(duration);
+
+  if (!visible) {
+    return null;
+  }
+
   return (
     <ToastWrapper position={position}>
       <Alert {...rest}>{rest.children}</Alert>
