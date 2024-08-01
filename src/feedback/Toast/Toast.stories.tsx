@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Toast, { toastPositionValues } from "src/feedback/Toast/Toast";
 import Toaster, { useToaster } from "src/feedback/Toast/Toaster";
 import { Button } from "src/index";
+import { Title2 } from "src/utils/StorybookComponents/Titles";
 import { AlertDemo } from "src/feedback/Alert/Alert.stories";
 
 const meta: Meta<typeof Toast> = {
@@ -49,47 +50,50 @@ const Buttons = () => {
   const toaster = useToaster();
 
   return (
-    <ButtonsWrapper>
-      <Button
-        variant={"success"}
-        onPress={() => toaster.success("Success message")}
-      >
-        Success
-      </Button>
-      <Button
-        variant={"info"}
-        onPress={() =>
-          toaster.info("Info message", {
-            kind: "outlined",
-            position: "top-centered",
-          })
-        }
-      >
-        Info
-      </Button>
-      <Button
-        variant={"warning"}
-        onPress={() =>
-          toaster.warning("Warning message", {
-            closeable: true,
-            position: "top-left",
-          })
-        }
-      >
-        Warning
-      </Button>
-      <Button
-        variant={"danger"}
-        onPress={() =>
-          toaster.danger("Danger message", {
-            position: "bottom-left",
-            duration: 3000,
-          })
-        }
-      >
-        Danger
-      </Button>
-    </ButtonsWrapper>
+    <>
+      <Title2>Toast</Title2>
+      <ButtonsWrapper>
+        <Button
+          variant={"success"}
+          onPress={() => toaster.success("Success message")}
+        >
+          Success
+        </Button>
+        <Button
+          variant={"info"}
+          onPress={() =>
+            toaster.info("Info message", {
+              kind: "outlined",
+              position: "top-centered",
+            })
+          }
+        >
+          Info
+        </Button>
+        <Button
+          variant={"warning"}
+          onPress={() =>
+            toaster.warning("Warning message", {
+              closeable: true,
+              position: "top-left",
+            })
+          }
+        >
+          Warning
+        </Button>
+        <Button
+          variant={"danger"}
+          onPress={() =>
+            toaster.danger("Danger message", {
+              position: "bottom-left",
+              duration: 3000,
+            })
+          }
+        >
+          Danger
+        </Button>
+      </ButtonsWrapper>
+    </>
   );
 };
 

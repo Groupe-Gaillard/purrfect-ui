@@ -1,12 +1,11 @@
 import React from "react";
-import IconSVG from "./IconSVG";
+import IconSVG from "src/icons/IconSVG";
 
-const InfoIcon = ({ className }: { className?: string }) => {
+const InfoIcon = () => {
   return (
     <IconSVG
       viewBox="0 0 24 24"
       fill="currentColor"
-      className={className}
       role="img"
       aria-label="info-icon"
     >

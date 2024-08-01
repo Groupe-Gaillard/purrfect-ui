@@ -1,23 +1,33 @@
 import React from "react";
 import styled from "styled-components";
-import { Divider } from "src/index";
+import Close from "src/icons/Close";
+import { sizing } from "src/utils/utils";
 
 const CloseButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  color: inherit;
 `;
 
-const StyledDivider = styled(Divider)`
-  height: unset;
-  align-self: stretch;
+const IconWrapper = styled.div`
+  height: ${sizing(25)};
+  width: ${sizing(25)};
+  margin-left: ${sizing(8)};
+  & > svg {
+    height: ${sizing(25)};
+    width: ${sizing(25)};
+  }
 `;
 
 const AlertCloseable = ({ onClose }: { onClose: () => void }) => {
   return (
     <>
-      <StyledDivider orientation={"vertical"}></StyledDivider>
-      <CloseButton onClick={() => onClose()}>X</CloseButton>
+      <CloseButton onClick={() => onClose()}>
+        <IconWrapper>
+          <Close />
+        </IconWrapper>
+      </CloseButton>
     </>
   );
 };

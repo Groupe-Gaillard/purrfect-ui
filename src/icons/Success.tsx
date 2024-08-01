@@ -1,12 +1,11 @@
 import React from "react";
-import IconSVG from "./IconSVG";
+import IconSVG from "src/icons/IconSVG";
 
-const SuccessIcon = ({ className }: { className?: string }) => {
+const SuccessIcon = () => {
   return (
     <IconSVG
       viewBox="0 0 1024 1024"
       fill="currentColor"
-      className={className}
       role="img"
       aria-label="success-icon"
     >

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Alert, { AlertProps } from "src/feedback/Alert/Alert";
 import { useToastTimer } from "src/feedback/Toast/useToastTimer";
+import { sizing } from "src/utils/utils";
 
 const toastPositionValues = [
   "top-left",
@@ -26,32 +27,32 @@ const ToastWrapper = styled.div<{ position: ToastPositionType }>`
     switch (position) {
       case "top-right":
         return `
-          top: 1rem;
-          right: 1rem;
+          top: ${sizing(16)};
+          right: ${sizing(16)};
         `;
       case "top-left":
         return `
-          top: 1rem;
-          left: 1rem;
+          top: ${sizing(16)};
+          left: ${sizing(16)};
         `;
       case "top-centered":
         return `
-          top: 1rem;
+          top: ${sizing(16)};
           margin-left: 50%;
         `;
       case "bottom-left":
         return `
-          bottom: 1rem;
-          left: 1rem;
+          bottom: ${sizing(16)};
+          left: ${sizing(16)};
         `;
       case "bottom-right":
         return `
-          bottom: 1rem;
-          right: 1rem;
+          bottom: ${sizing(16)};
+          right: ${sizing(16)};
         `;
       case "bottom-centered":
         return `
-          bottom: 1rem;
+          bottom: ${sizing(16)};
           margin-left: 50%;
         `;
     }

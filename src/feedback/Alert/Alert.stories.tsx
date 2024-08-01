@@ -5,8 +5,7 @@ import Alert, {
   alertKindValues,
   alertSeverityValues,
 } from "src/feedback/Alert/Alert";
-import { heading1 } from "src/guidelines/theme";
-import { isVowel, ucfirst } from "src/utils/stringHelper";
+import { Title, Title2 } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Alert> = {
   component: Alert,
@@ -15,10 +14,6 @@ const meta: Meta<typeof Alert> = {
 export default meta;
 
 type Story = StoryObj<typeof Alert>;
-
-const Title = styled.h1`
-  ${heading1};
-`;
 
 const FlexContainer = styled.div`
   display: flex;
@@ -51,9 +46,10 @@ export const AlertDemo: Story = {
 export const AlertList = () => {
   return (
     <FlexContainer>
+      <Title>Alert</Title>
       {alertKindValues.map((kind) => (
         <>
-          <Title>{ucfirst(kind)}</Title>
+          <Title2>{kind}</Title2>
           <FlexContainer>
             {alertSeverityValues.map((severity) => (
               <Alert
@@ -61,7 +57,7 @@ export const AlertList = () => {
                 kind={kind}
                 key={`${severity}-${kind}`}
               >
-                {`This ${isVowel(severity.charAt(0)) ? "an" : "a"} ${severity} message`}
+                {`This is a message with severity: ${severity}`}
               </Alert>
             ))}
           </FlexContainer>

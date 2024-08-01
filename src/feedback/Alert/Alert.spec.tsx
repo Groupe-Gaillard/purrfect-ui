@@ -69,16 +69,11 @@ describe("Alert", () => {
     });
   });
 
-  test("Closeable props renders divider, close button and remove alert on click", () => {
+  test("Closeable props renders close button and remove alert on click", () => {
     render(<Alert closeable>Message</Alert>);
 
     const alert = screen.getByText("Message");
     const button = screen.getByRole("button");
-    const divider = button.previousSibling;
-
-    expect(divider).toHaveStyle({
-      alignSelf: "stretch",
-    });
 
     expect(button).toBeInTheDocument();
 

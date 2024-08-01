@@ -39,8 +39,8 @@ const AlertWrapper = styled.div<{ severity: AlertSeverity; kind: AlertKind }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
-  margin: 16px 0;
+  padding: ${sizing(16)};
+  margin: ${sizing(16, 0)};
 
   ${({ severity }) => alertSeverityStyle(severity)};
   ${({ kind, severity }) => alertKindStyle(kind, severity)};
