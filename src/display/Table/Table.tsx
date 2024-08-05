@@ -31,13 +31,18 @@ export type TableProps<T> = {
   dataRows: Array<T & RowProps<T> & DataRows>;
   tableTitle: string;
   evenRowsBackgroundIsColored?: boolean;
+  borderColor?: string;
+  hasBordersBetweenRow?: boolean;
+  hasBordersBetweenLine?: boolean;
 } & AriaTableProps;
 
-const StyledResizableTableContainer = styled(ResizableTableContainer)`
+const StyledResizableTableContainer = styled(ResizableTableContainer)<{
+  borderColor: string;
+}>`
   width: 100%;
   overflow: auto;
   position: relative;
-  border: 1px solid ${theme.color.gray100};
+  border: 1px solid ${({ borderColor }) => borderColor};
   border-radius: ${theme.borderRadius.default};
   background: ${theme.color.white};
 `;
@@ -118,14 +123,22 @@ const StyledColumnResizer = styled(ColumnResizer)`
 `;
 
 const Table = <T,>(props: TableProps<T>) => {
+  const borderColor = props.borderColor ?? theme.color.gray100;
+  const hasBordersBetweenRow = props.hasBordersBetweenRow ?? false;
+  const hasBordersBetweenLine = props.hasBordersBetweenLine ?? false;
+
   return (
-    <StyledResizableTableContainer>
+    <StyledResizableTableContainer borderColor={borderColor}>
       <StyledTable
         {...props}
         aria-label={props.tableTitle}
         selectionMode={props.selectionMode || "multiple"}
       >
-        <TableHeader>
+        <TableHeader
+          borderColor={borderColor}
+          hasBordersBetweenRow={hasBordersBetweenRow}
+          hasBordersBetweenLine={hasBordersBetweenLine}
+        >
           {props.dataColumns.map(
             (column) =>
               column.isVisible && (
@@ -133,6 +146,8 @@ const Table = <T,>(props: TableProps<T>) => {
                   id={column.id}
                   key={column.id}
                   isRowHeader
+                  borderColor={borderColor}
+                  hasBordersBetweenRow={hasBordersBetweenRow}
                   allowsSorting={
                     props.onSortChange !== undefined ? true : false
                   }
@@ -159,11 +174,19 @@ const Table = <T,>(props: TableProps<T>) => {
               id={row.id}
               isDisabled={row.isDisabled}
               data-is-colored={row.isColored}
+              borderColor={borderColor}
+              hasBordersBetweenRow={hasBordersBetweenRow}
+              hasBordersBetweenLine={hasBordersBetweenLine}
             >
               {props.dataColumns.map(
                 (column) =>
                   column.isVisible && (
-                    <TableCell key={column.id}>
+                    <TableCell
+                      key={column.id}
+                      hasBordersBetweenRow={hasBordersBetweenRow}
+                      hasBordersBetweenLine={hasBordersBetweenLine}
+                      borderColor={borderColor}
+                    >
                       {(row as Record<string, any>)[column.id ?? "name"]}
                     </TableCell>
                   ),
