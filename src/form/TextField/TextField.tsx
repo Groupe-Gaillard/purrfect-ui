@@ -17,11 +17,16 @@ const StyledTextField = styled(AriaTextField)`
   flex-direction: column;
   width: 100%;
   color: ${theme.color.text.dark};
-  position: relative;
 
   &[data-disabled] {
     opacity: 0.5;
   }
+`;
+
+const StyledTextInputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
 `;
 
 const StyledLabel = styled(Label)`
@@ -81,7 +86,7 @@ const commonIconsCss = css`
   width: ${sizing(iconSizing)};
   height: ${sizing(iconSizing)};
   position: absolute;
-  top: ${sizing(iconSizing + 5)};
+  top: ${sizing(3)};
   pointer-events: none;
 
   & > svg {
@@ -135,17 +140,21 @@ const TextField = (props: TextFieldProps) => {
         {props.label}
         {props.isRequired && <StyledIsRequired> *</StyledIsRequired>}
       </StyledLabel>
-      {props.leadingIcon && (
-        <StyledLeadingIcon>{props.leadingIcon}</StyledLeadingIcon>
-      )}
-      <StyledInput
-        placeholder={props.placeholder}
-        $hasLeadingIcon={!!props.leadingIcon}
-        $hasTrailingIcon={!!props.trailingIcon}
-      />
-      {props.trailingIcon && (
-        <StyledTrailingIcon>{props.trailingIcon}</StyledTrailingIcon>
-      )}
+
+      <StyledTextInputGroup>
+        {props.leadingIcon && (
+          <StyledLeadingIcon>{props.leadingIcon}</StyledLeadingIcon>
+        )}
+        <StyledInput
+          placeholder={props.placeholder}
+          $hasLeadingIcon={!!props.leadingIcon}
+          $hasTrailingIcon={!!props.trailingIcon}
+        />
+        {props.trailingIcon && (
+          <StyledTrailingIcon>{props.trailingIcon}</StyledTrailingIcon>
+        )}
+      </StyledTextInputGroup>
+
       <StyledText slot="description">{props.helperText}</StyledText>
       <StyledFieldError />
     </StyledTextField>
