@@ -17,10 +17,10 @@ import {
   Text,
 } from "react-aria-components";
 import styled from "styled-components";
-import { body1, narrow, theme } from "src/guidelines/theme";
+import { body1, narrow, sizing, theme } from "src/guidelines/theme";
 import ChevronDown from "src/icons/ChevronDown";
 
-const StyledComboBox = styled(ComboBox)`
+const StyledComboBox = styled(ComboBox)<{ widthSelect?: string }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,10 @@ const StyledComboBox = styled(ComboBox)`
 
   &[data-disabled] {
     opacity: 0.5;
+  }
+
+  & .pui-select-group {
+    width: ${({ widthSelect }) => widthSelect ?? "100%"};
   }
 `;
 
@@ -40,7 +44,6 @@ const StyledIsRequired = styled.span`
 `;
 
 const StyledGroup = styled(Group)`
-  width: 100%;
   ${body1};
   display: grid;
   grid-template-columns: 1fr auto;
@@ -48,6 +51,8 @@ const StyledGroup = styled(Group)`
 
 const StyledInput = styled(Input)`
   ${body1};
+  flex: 1;
+  text-align: left;
   border-radius: ${theme.borderRadius.small};
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -65,6 +70,7 @@ const StyledButton = styled(Button)`
   display: flex;
   justify-content: stretch;
   align-items: center;
+  width: 100%;
   border-radius: ${theme.borderRadius.small};
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -85,7 +91,8 @@ const StyledFieldError = styled(FieldError)`
 const StyledPopover = styled(Popover)``;
 
 const StyledListBox = styled(ListBox)`
-  width: var(--trigger-width);
+  max-width: 90vw;
+  overflow: auto;
   border-radius: ${theme.borderRadius.small};
   border: 1px solid ${theme.color.gray200};
   background-color: ${theme.color.white};
@@ -113,12 +120,19 @@ const StyledListBox = styled(ListBox)`
   }
 `;
 
+const StyledListBoxItem = styled(ListBoxItem)`
+  padding-bottom: ${sizing(6)};
+`;
+
 interface SelectProps<T extends object>
   extends Omit<ComboBoxProps<T>, "children"> {
   label?: string;
   description?: string | null;
   errorMessage?: string | ((validation: ValidationResult) => string);
   children: React.ReactNode;
+  widthSelect?: string;
+  heightOptions?: string;
+  placeholder?: string;
 }
 
 const Select = <T extends object>({
@@ -134,8 +148,8 @@ const Select = <T extends object>({
         {label}
         {props.isRequired && <StyledIsRequired> *</StyledIsRequired>}
       </StyledLabel>
-      <StyledGroup>
-        <StyledInput />
+      <StyledGroup className="pui-select-group">
+        <StyledInput placeholder={props.placeholder ?? ""} />
         <StyledButton>
           <ChevronDown />
         </StyledButton>
@@ -143,7 +157,9 @@ const Select = <T extends object>({
       {description && <StyledText slot="description">{description}</StyledText>}
       <StyledFieldError>{errorMessage}</StyledFieldError>
       <StyledPopover>
-        <StyledListBox>{children}</StyledListBox>
+        <StyledListBox style={{ maxHeight: props.heightOptions ?? "auto" }}>
+          {children}
+        </StyledListBox>
       </StyledPopover>
     </StyledComboBox>
   );
@@ -151,7 +167,7 @@ const Select = <T extends object>({
 
 const Option = ({ ...props }: ListBoxItemProps) => {
   return (
-    <ListBoxItem
+    <StyledListBoxItem
       {...props}
       className={({ isFocused, isSelected }) => {
         return `${isFocused ? "focused" : ""} ${isSelected ? "selected" : ""}`;
