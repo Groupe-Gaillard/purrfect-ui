@@ -19,7 +19,7 @@ const BottomSheet = ({
   onClose: () => void;
 }) => {
   return (
-    <Sheet isOpen={isOpen} onClose={onClose} detent={detent}>
+    <Sheet isOpen={isOpen} onClose={onClose} detent={detent} className="bla">
       <Sheet.Container>
         <Sheet.Header>{header}</Sheet.Header>
         <Sheet.Content>
@@ -27,7 +27,7 @@ const BottomSheet = ({
           {footer}
         </Sheet.Content>
       </Sheet.Container>
-      <Sheet.Backdrop />
+      <Sheet.Backdrop onTap={isDismissable ? onClose : undefined} />
     </Sheet>
   );
 };

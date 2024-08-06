@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { usePreventScroll } from "react-aria";
 import { Dialog, Modal, ModalOverlay } from "react-aria-components";
 import styled, { css } from "styled-components";
@@ -134,9 +134,26 @@ const SideSheet = ({
     isDisabled: isOpen,
   });
 
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
-    <Overlay isOpen={isOpen} isDismissable={isDismissable}>
-      <StyledModal isOpen={isOpen} openFrom={openFrom} detent={detent}>
+    <Overlay
+      isOpen={isOpen}
+      isDismissable={isDismissable}
+      shouldCloseOnInteractOutside={() => {
+        if (isDismissable) {
+          onClose();
+        }
+
+        return false;
+      }}
+    >
+      <StyledModal
+        ref={ref}
+        isOpen={isOpen}
+        openFrom={openFrom}
+        detent={detent}
+      >
         <StyledDialog>
           {header}
           {children}
