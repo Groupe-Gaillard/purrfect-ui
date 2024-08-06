@@ -19,7 +19,7 @@ const BottomSheet = ({
   onClose: () => void;
 }) => {
   return (
-    <Sheet isOpen={isOpen} onClose={onClose} detent={detent} className="bla">
+    <Sheet isOpen={isOpen} onClose={onClose} detent={detent}>
       <Sheet.Container>
         <Sheet.Header>{header}</Sheet.Header>
         <Sheet.Content>
