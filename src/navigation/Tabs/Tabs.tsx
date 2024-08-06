@@ -26,11 +26,6 @@ const StyledTab = styled(Tab)<{ variant?: Variant }>`
   padding: ${sizing(10)};
   cursor: default;
   outline: none;
-  position: relative;
-  color: ${theme.color.text.dark};
-  transition: color 200ms;
-  --border-color: transparent;
-  forced-color-adjust: none;
   border-bottom: 3px solid transparent;
   display: flex;
   gap: ${sizing(8)};
@@ -43,7 +38,7 @@ const StyledTab = styled(Tab)<{ variant?: Variant }>`
   &[data-selected] {
     border-bottom: 3px solid
       ${({ variant }) => theme.color[variant || "primary"]};
-    font-weight: ${theme.typographies.fontWeight.bold};
+    color: ${({ variant }) => theme.color[variant || "primary"]};
   }
 
   &[data-disabled] {
@@ -102,7 +97,7 @@ type TabsProps = AriaTabsProps & {
 type tabItem = {
   id?: string;
   title?: string;
-  content?: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
@@ -132,7 +127,7 @@ const Tabs = (props: TabsProps) => {
         </StyledTabList>
         {props.tabs.map((tab) => (
           <StyledTabPanel key={tab.id} id={tab.id}>
-            {tab.content}
+            {tab.children}
           </StyledTabPanel>
         ))}
       </StyledTabs>
