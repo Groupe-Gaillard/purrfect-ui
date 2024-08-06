@@ -204,7 +204,7 @@ export const RequiredSelect: Story = {
   ),
 };
 
-const optsionWidths = [
+const optionsWidths = [
   {
     id: "cat",
     label:
@@ -248,7 +248,7 @@ export const SpecialWidthSelect: Story = {
         Select with small width on the select and big width on the options
       </Title2>
       <Select {...args}>
-        {optsionWidths.map((oneOption) => {
+        {optionsWidths.map((oneOption) => {
           return (
             <Option key={oneOption.id} id={oneOption.id}>
               {oneOption.label}
