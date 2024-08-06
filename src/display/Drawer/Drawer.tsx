@@ -10,7 +10,7 @@ export type DrawerProps = {
   children: React.ReactNode;
   footer?: React.ReactNode;
   detent?: "full" | "content";
-  isDismissable: boolean;
+  isDismissable?: boolean;
   onClose: () => void;
 };
 
@@ -21,7 +21,7 @@ const Drawer = ({
   footer = null,
   children,
   detent = "content",
-  isDismissable,
+  isDismissable = false,
   onClose,
 }: DrawerProps) => {
   const isMdScreen = useIsMdScreen();
