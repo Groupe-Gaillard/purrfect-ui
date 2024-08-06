@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
+import Link from "src/action/Link/Link";
 import AddIcon from "src/icons/Add";
 import { Title } from "src/utils/StorybookComponents/Titles";
-import Link from "./Link";
 
 const meta: Meta<typeof Link> = {
   title: "action/Link",

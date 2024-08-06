@@ -49,6 +49,9 @@ export type { SwitchProps } from "src/form/Switch/Switch";
 export { default as Table } from "src/display/Table/Table";
 export type { TableProps } from "src/display/Table/Table";
 
+export { default as Tabs } from "src/navigation/Tabs/Tabs";
+export type { TabsProps } from "src/navigation/Tabs/Tabs";
+
 export { default as Tag } from "src/display/Tag/Tag";
 export type { TagProps } from "src/display/Tag/Tag";
 
