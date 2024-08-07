@@ -66,15 +66,6 @@ interface Color {
 
 interface Transition {}
 
-interface Size {
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
-  xl: string;
-  xxl: string;
-}
-
 interface Shadows {
   paper: string;
   base: string;
@@ -99,6 +90,15 @@ interface Breakpoints {
     xxl: string;
   };
 }
+
+type Size = {
+  xs: `${string}px`;
+  sm: `${string}px`;
+  md: `${string}px`;
+  lg: `${string}px`;
+  xl: `${string}px`;
+  xxl: `${string}px`;
+};
 
 interface Theme {
   color: Color;
