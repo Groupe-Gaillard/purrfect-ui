@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import Button from "src/action/Button/Button";
-import { body1, sizing } from "src/guidelines/theme";
+import { body1, sizing, theme } from "src/guidelines/theme";
 import { Title } from "src/utils/StorybookComponents/Titles";
 import Table from "./Table";
 import TableDragForExample from "./TableDragForExample";
@@ -279,6 +279,27 @@ export const tableOneColumnIsNotVisible: Story = {
       <Title>Table with one column is not visible</Title>
       <Text>
         In the dataColumns array the 3rd entry has &quot;isVisible: false&quot;
+      </Text>
+      <Table {...args} />
+    </>
+  ),
+};
+
+export const tableWithBorders: Story = {
+  args: {
+    dataColumns: dataColumns,
+    dataRows: dataRows,
+    hasBordersBetweenRow: true,
+    hasBordersBetweenLine: true,
+    borderColor: theme.color.primary200,
+  },
+
+  render: (args) => (
+    <>
+      <Title>Table with borders inside</Title>
+      <Text>
+        In the Table you can choose if you want border line or/and border row,
+        and you can choose the color
       </Text>
       <Table {...args} />
     </>

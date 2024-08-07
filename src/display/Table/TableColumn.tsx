@@ -1,17 +1,26 @@
 import React from "react";
 import { Column as AriaColumn, ColumnProps } from "react-aria-components";
 import styled, { css } from "styled-components";
+import { hadBorderRow } from "src/display/Table/addBorderTable";
 import { sizing, theme } from "src/guidelines/theme";
 import SortDown from "src/icons/SortDown";
 import SortUp from "src/icons/SortUp";
 
-const StyledColumn = styled(AriaColumn)<{ allowsSorting?: boolean }>`
+const StyledColumn = styled(AriaColumn)<{
+  allowsSorting?: boolean;
+  hasBordersBetweenRow: boolean;
+  borderColor: string;
+}>`
   padding: ${sizing(4)} ${sizing(8)};
   text-align: left;
   outline: none;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  ${({ hasBordersBetweenRow, borderColor }) => css`
+    ${hadBorderRow(hasBordersBetweenRow, borderColor)}
+  `}
 
   &[data-focus-visible] {
     outline: 2px solid ${theme.color.primary};
@@ -34,9 +43,17 @@ const StyledSortIndicator = styled.span`
   }
 `;
 
-const TableColumn = (props: ColumnProps) => {
+type TabelColumnProps = ColumnProps & {
+  borderColor: string;
+  hasBordersBetweenRow: boolean;
+};
+const TableColumn = (props: TabelColumnProps) => {
   return (
-    <StyledColumn {...props}>
+    <StyledColumn
+      {...props}
+      hasBordersBetweenRow={props.hasBordersBetweenRow}
+      borderColor={props.borderColor}
+    >
       {({ allowsSorting, sortDirection }) => (
         <>
           {allowsSorting && (

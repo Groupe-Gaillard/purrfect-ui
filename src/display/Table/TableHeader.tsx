@@ -1,8 +1,8 @@
 import React from "react";
 import {
   TableHeader as AriaTableHeader,
+  TableHeaderProps as AriaTableHeaderProps,
   Collection,
-  TableHeaderProps,
   useTableOptions,
 } from "react-aria-components";
 import styled from "styled-components";
@@ -10,7 +10,7 @@ import TableColumn from "src/display/Table/TableColumn";
 import Checkbox from "src/form/Checkbox/Checkbox";
 import { sizing, theme } from "src/guidelines/theme";
 
-const StyledTableHeader = styled(AriaTableHeader)`
+const StyledTableHeader = styled(AriaTableHeader)<{ borderColor: string }>`
   font-size: ${theme.typographies.fontSize.sm};
   text-align: left;
 
@@ -21,7 +21,7 @@ const StyledTableHeader = styled(AriaTableHeader)`
   }
 
   & tr:last-child th {
-    border-bottom: 1px solid ${theme.color.gray100};
+    border-bottom: 1px solid ${({ borderColor }) => borderColor};
     cursor: default;
   }
 `;
@@ -30,19 +30,35 @@ const StyledTableColumn = styled(TableColumn)`
   width: ${sizing(25)} !important;
 `;
 
+type TableHeaderProps<T> = AriaTableHeaderProps<T> & {
+  borderColor: string;
+  hasBordersBetweenRow: boolean;
+  hasBordersBetweenLine: boolean;
+};
+
 const TableHeader = <T extends object>({
   columns,
   children,
+  ...otherProps
 }: TableHeaderProps<T>) => {
   const { selectionBehavior, selectionMode, allowsDragging } =
     useTableOptions();
 
   return (
-    <StyledTableHeader>
+    <StyledTableHeader borderColor={otherProps.borderColor}>
       {/* Add extra columns for drag and drop and selection. */}
-      {allowsDragging && <StyledTableColumn />}
+      {allowsDragging && (
+        <StyledTableColumn
+          borderColor={otherProps.borderColor}
+          hasBordersBetweenRow={otherProps.hasBordersBetweenRow}
+        />
+      )}
       {selectionBehavior === "toggle" && (
-        <StyledTableColumn width={25}>
+        <StyledTableColumn
+          width={25}
+          borderColor={otherProps.borderColor}
+          hasBordersBetweenRow={otherProps.hasBordersBetweenRow}
+        >
           {selectionMode === "multiple" && <Checkbox slot="selection" />}
         </StyledTableColumn>
       )}

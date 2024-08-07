@@ -51,25 +51,43 @@ const StyledRow = styled(Row)`
     height: ${sizing(12)};
     width: ${sizing(12)};
   }
+
+  &:last-child > td {
+    border-bottom: 0;
+  }
 `;
+
+type TableRowProps<T> = RowProps<T> & {
+  hasBordersBetweenRow: boolean;
+  hasBordersBetweenLine: boolean;
+  borderColor: string;
+};
 
 const TableRow = <T extends object>({
   columns,
   children,
   ...otherProps
-}: RowProps<T>) => {
+}: TableRowProps<T>) => {
   const { selectionBehavior, allowsDragging } = useTableOptions();
   return (
     <StyledRow {...otherProps}>
       {allowsDragging && (
-        <TableCell>
+        <TableCell
+          hasBordersBetweenLine={otherProps.hasBordersBetweenLine}
+          hasBordersBetweenRow={otherProps.hasBordersBetweenRow}
+          borderColor={otherProps.borderColor}
+        >
           <Button slot="drag" kind="link" size="small">
             <Drag />
           </Button>
         </TableCell>
       )}
       {selectionBehavior === "toggle" && (
-        <TableCell>
+        <TableCell
+          hasBordersBetweenLine={otherProps.hasBordersBetweenLine}
+          hasBordersBetweenRow={otherProps.hasBordersBetweenRow}
+          borderColor={otherProps.borderColor}
+        >
           <Checkbox slot="selection" />
         </TableCell>
       )}
