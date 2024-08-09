@@ -106,4 +106,4 @@ const MenuButton = ({
 };
 
 export default MenuButton;
-export type { MenuButtonProps as ButtonMenuProps };
+export type { MenuButtonProps };

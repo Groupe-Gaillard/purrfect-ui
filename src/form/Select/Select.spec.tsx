@@ -165,4 +165,23 @@ describe("Select", () => {
     expect(snakeOption).toBeInTheDocument();
     expect(catOption).not.toBeInTheDocument();
   });
+
+  it("Should show a leading icon", async () => {
+    const MockIcon = () => <svg data-testid="icon-svg"></svg>;
+
+    render(
+      <Select label="My Select" leadingIcon={<MockIcon />}>
+        {options.map((oneOption) => {
+          return (
+            <Option key={oneOption.id} id={oneOption.id}>
+              {oneOption.label}
+            </Option>
+          );
+        })}
+      </Select>,
+    );
+
+    const icon = screen.getByTestId("icon-svg");
+    expect(icon).toBeVisible();
+  });
 });

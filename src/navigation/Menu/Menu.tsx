@@ -33,7 +33,7 @@ export type MenuProps<T> = AriaMenuProps<T> & {
     value?: Array<object>;
   }>;
   widthOpened?: number;
-  backgnnroundColor?: string;
+  backgroundColor?: string;
 };
 
 const StyledMenu = styled(AriaMenu)<{
