@@ -9,7 +9,6 @@ import {
   ComboBox,
   FieldError,
   Group,
-  Input,
   Label,
   ListBox,
   ListBoxItem,
@@ -19,8 +18,9 @@ import {
 import styled from "styled-components";
 import { body1, narrow, sizing, theme } from "src/guidelines/theme";
 import ChevronDown from "src/icons/ChevronDown";
+import Input from "../Input/Input";
 
-const StyledComboBox = styled(ComboBox) <{ widthSelect?: string }>`
+const StyledComboBox = styled(ComboBox)<{ widthSelect?: string }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -60,9 +60,13 @@ const StyledInput = styled(Input)`
   background-color: ${theme.color.white};
   padding-right: ${buttonWidth};
 
+  &[data-focused] {
+    outline: ${sizing(2)} solid ${theme.color.primary};
+  }
+
   &[data-invalid] {
     color: ${theme.color.danger};
-    border-color: ${theme.color.danger};
+    outline: ${sizing(2)} solid ${theme.color.danger};
   }
 `;
 
@@ -137,12 +141,14 @@ interface SelectProps<T extends object>
   widthSelect?: string;
   heightOptions?: string;
   placeholder?: string;
+  leadingIcon?: React.ReactNode;
 }
 
 const Select = <T extends object>({
   label,
   description,
   errorMessage,
+  leadingIcon,
   children,
   ...props
 }: SelectProps<T>) => {
@@ -154,7 +160,10 @@ const Select = <T extends object>({
       </StyledLabel>
 
       <StyledGroup className="pui-select-group">
-        <StyledInput placeholder={props.placeholder ?? ""} />
+        <StyledInput
+          placeholder={props.placeholder ?? ""}
+          leadingIcon={leadingIcon}
+        />
         <StyledButton>
           <ChevronDown />
         </StyledButton>
