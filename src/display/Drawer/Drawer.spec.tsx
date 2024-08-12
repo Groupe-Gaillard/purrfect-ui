@@ -28,7 +28,7 @@ describe("Drawer", () => {
 
   it("Should not show the drawer", () => {
     render(
-      <Drawer isOpen={false} onClose={vi.fn()} header={<div>Test</div>}>
+      <Drawer isOpen={false} onClose={vi.fn()} ariaLabel="Test">
         <div>Content</div>
       </Drawer>,
     );
@@ -40,7 +40,7 @@ describe("Drawer", () => {
 
   it("Should show the drawer", async () => {
     render(
-      <Drawer isOpen={true} onClose={vi.fn()} header={<div>Test</div>}>
+      <Drawer isOpen={true} onClose={vi.fn()} ariaLabel="Test">
         <div>Content</div>
       </Drawer>,
     );
@@ -59,7 +59,7 @@ describe("Drawer", () => {
       <Drawer
         isOpen={true}
         onClose={onCloseMock}
-        header={<div>Test</div>}
+        ariaLabel="Test"
         detent="content"
         isDismissable
       >
@@ -74,7 +74,7 @@ describe("Drawer", () => {
     expect(modal).toBeInTheDocument();
   });
 
-  it("Should show the bottom sheet", () => {
+  it("Should show the bottom sheet", async () => {
     const onCloseMock = vi.fn();
     vi.mocked(useIsMdScreen).mockReturnValue(false);
 
@@ -82,7 +82,7 @@ describe("Drawer", () => {
       <Drawer
         isOpen={true}
         onClose={onCloseMock}
-        header={<div>Test</div>}
+        ariaLabel="Test"
         detent="content"
         isDismissable
       >
@@ -90,9 +90,11 @@ describe("Drawer", () => {
       </Drawer>,
     );
 
-    const content = screen.queryByTestId("side-sheet");
+    await waitFor(() => screen.getByText(/content/i));
 
-    expect(content).not.toBeInTheDocument();
+    const modal = screen.getByTestId("bottom-sheet");
+
+    expect(modal).toBeInTheDocument();
   });
 
   it("Should show the drawer with header and footer", async () => {
@@ -102,6 +104,7 @@ describe("Drawer", () => {
         onClose={vi.fn()}
         header={<div>Header</div>}
         footer={<div>Footer</div>}
+        ariaLabel="Test"
       >
         <div>Content</div>
       </Drawer>,
@@ -124,7 +127,7 @@ describe("Drawer", () => {
       <Drawer
         isOpen={true}
         onClose={onCloseMock}
-        header={<div>Test</div>}
+        ariaLabel="Test"
         detent="content"
         isDismissable
       >

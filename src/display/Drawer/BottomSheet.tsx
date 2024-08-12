@@ -9,19 +9,23 @@ const BottomSheet = ({
   detent,
   isDismissable,
   onClose,
+  ariaLabel,
 }: {
   isOpen: boolean;
-  header: React.ReactNode;
+  header?: React.ReactNode;
   children: React.ReactNode;
   footer?: React.ReactNode;
   detent: "full-height" | "content-height";
   isDismissable: boolean;
   onClose: () => void;
+  ariaLabel: string;
 }) => {
   return (
     <Sheet isOpen={isOpen} onClose={onClose} detent={detent}>
       <Sheet.Container>
-        <Sheet.Header>{header}</Sheet.Header>
+        <Sheet.Header aria-label={ariaLabel} data-testid="bottom-sheet">
+          {header}
+        </Sheet.Header>
         <Sheet.Content>
           {children}
           {footer}

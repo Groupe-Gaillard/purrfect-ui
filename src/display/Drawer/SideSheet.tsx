@@ -117,6 +117,7 @@ const StyledHeading = styled(Heading)`
 `;
 
 type SideSheetProps = {
+  ariaLabel: string;
   isOpen: boolean;
   openFrom: "left" | "right";
   header: React.ReactNode;
@@ -136,6 +137,7 @@ const SideSheet = ({
   detent,
   isDismissable,
   onClose,
+  ariaLabel,
 }: SideSheetProps) => {
   usePreventScroll({
     isDisabled: isOpen,
@@ -162,8 +164,10 @@ const SideSheet = ({
         openFrom={openFrom}
         detent={detent}
       >
-        <StyledDialog>
-          <StyledHeading slot="title">{header}</StyledHeading>
+        <StyledDialog aria-label={ariaLabel}>
+          {header ? (
+            <StyledHeading slot="title">{header}</StyledHeading>
+          ) : undefined}
           {children}
           {footer}
         </StyledDialog>
