@@ -17,7 +17,12 @@
     "noEmit": false,
     "noFallthroughCasesInSwitch": true,
     "jsx": "react-jsx",
-    "types": ["vite/client", "vite-plugin-svgr/client", "node", "vitest/globals"],
+    "types": [
+      "vite/client",
+      "vite-plugin-svgr/client",
+      "node",
+      "vitest/globals"
+    ],
     "incremental": true,
     "plugins": [],
     "strictNullChecks": true,
