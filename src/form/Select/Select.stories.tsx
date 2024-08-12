@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import React, { FormEvent } from "react";
+import { FormEvent } from "react";
+import React from "react";
 import Button from "src/action/Button/Button";
 import Select, { Option } from "src/form/Select/Select";
 import { sizing } from "src/guidelines/theme";
+import UploadIcon from "src/icons/Upload";
 import { Title, Title2 } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Select> = {
@@ -35,6 +37,7 @@ export const Demo: Story = {
     description: "Helper text",
     label: "Select",
     onSelectionChange: fn(),
+    leadingIcon: <UploadIcon />,
   },
   render: (args) => (
     <div>

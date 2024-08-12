@@ -9,7 +9,6 @@ import {
   ComboBox,
   FieldError,
   Group,
-  Input,
   Label,
   ListBox,
   ListBoxItem,
@@ -17,6 +16,7 @@ import {
   Text,
 } from "react-aria-components";
 import styled from "styled-components";
+import Input from "src/form/Input/Input";
 import { body1, narrow, sizing, theme } from "src/guidelines/theme";
 import ChevronDown from "src/icons/ChevronDown";
 
@@ -45,37 +45,45 @@ const StyledIsRequired = styled.span`
 
 const StyledGroup = styled(Group)`
   ${body1};
-  display: grid;
-  grid-template-columns: 1fr auto;
+  position: relative;
 `;
+
+const buttonWidth = sizing(26);
 
 const StyledInput = styled(Input)`
   ${body1};
-  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
   text-align: left;
   border-radius: ${theme.borderRadius.small};
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   border: 1px solid ${theme.color.gray200};
   background-color: ${theme.color.white};
+  padding-right: ${buttonWidth};
+
+  &[data-focused] {
+    outline: ${sizing(2)} solid ${theme.color.primary};
+  }
 
   &[data-invalid] {
     color: ${theme.color.danger};
-    border-color: ${theme.color.danger};
+    outline: ${sizing(2)} solid ${theme.color.danger};
   }
 `;
 
 const StyledButton = styled(Button)`
   ${body1};
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
   display: flex;
   justify-content: stretch;
   align-items: center;
-  width: 100%;
+  width: ${buttonWidth};
   border-radius: ${theme.borderRadius.small};
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border: 1px solid ${theme.color.gray200};
-  border-left: 0;
   background-color: ${theme.color.white};
 `;
 
@@ -91,7 +99,7 @@ const StyledFieldError = styled(FieldError)`
 const StyledPopover = styled(Popover)``;
 
 const StyledListBox = styled(ListBox)`
-  max-width: 90vw;
+  width: var(--trigger-width);
   overflow: auto;
   border-radius: ${theme.borderRadius.small};
   border: 1px solid ${theme.color.gray200};
@@ -104,13 +112,13 @@ const StyledListBox = styled(ListBox)`
     padding: ${theme.sizing(0, 8)};
   }
 
-  & > .selected {
+  & > [data-selected] {
     ${body1};
     font-weight: ${theme.typographies.fontWeight.bold};
     background-color: ${theme.color.primary100};
   }
 
-  & > .focused {
+  & > [data-focused] {
     background-color: ${theme.color.primary200};
   }
 
@@ -133,12 +141,14 @@ interface SelectProps<T extends object>
   widthSelect?: string;
   heightOptions?: string;
   placeholder?: string;
+  leadingIcon?: React.ReactNode;
 }
 
 const Select = <T extends object>({
   label,
   description,
   errorMessage,
+  leadingIcon,
   children,
   ...props
 }: SelectProps<T>) => {
@@ -148,14 +158,21 @@ const Select = <T extends object>({
         {label}
         {props.isRequired && <StyledIsRequired> *</StyledIsRequired>}
       </StyledLabel>
+
       <StyledGroup className="pui-select-group">
-        <StyledInput placeholder={props.placeholder ?? ""} />
+        <StyledInput
+          placeholder={props.placeholder ?? ""}
+          leadingIcon={leadingIcon}
+        />
         <StyledButton>
           <ChevronDown />
         </StyledButton>
       </StyledGroup>
+
       {description && <StyledText slot="description">{description}</StyledText>}
+
       <StyledFieldError>{errorMessage}</StyledFieldError>
+
       <StyledPopover>
         <StyledListBox style={{ maxHeight: props.heightOptions ?? "auto" }}>
           {children}
