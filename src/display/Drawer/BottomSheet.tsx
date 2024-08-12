@@ -11,7 +11,7 @@ const BottomSheet = ({
   onClose,
 }: {
   isOpen: boolean;
-  header?: React.ReactNode;
+  header: React.ReactNode;
   children: React.ReactNode;
   footer?: React.ReactNode;
   detent: "full-height" | "content-height";

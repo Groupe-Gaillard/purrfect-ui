@@ -6,7 +6,7 @@ import { useIsMdScreen } from "src/guidelines/theme/mediaQueries";
 export type DrawerProps = {
   openFrom?: "left" | "right";
   isOpen: boolean;
-  header?: React.ReactNode;
+  header: React.ReactNode;
   children: React.ReactNode;
   footer?: React.ReactNode;
   detent?: "full" | "content";
@@ -28,8 +28,10 @@ const Drawer = ({
 
   return isMdScreen ? (
     <SideSheet
-      openFrom={openFrom}
       isOpen={isOpen}
+      header={header}
+      footer={footer}
+      openFrom={openFrom}
       detent={`${detent}-width`}
       isDismissable={isDismissable}
       onClose={onClose}

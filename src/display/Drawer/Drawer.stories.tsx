@@ -3,7 +3,7 @@ import { fn } from "@storybook/test";
 import React, { useState } from "react";
 import { ModalProvider } from "react-aria";
 import Button from "src/action/Button/Button";
-import Drawer from "src/display/Drawer/Drawer";
+import Drawer, { DrawerProps } from "src/display/Drawer/Drawer";
 import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Drawer> = {
@@ -13,9 +13,23 @@ const meta: Meta<typeof Drawer> = {
 export default meta;
 type Story = StoryObj<typeof Drawer>;
 
+const StoryComponent = (props: DrawerProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <ModalProvider>
+      <Title>Drawer</Title>
+      <Button onPress={() => setIsOpen(true)}>Open Drawer</Button>
+      <Drawer {...props} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <div>Content</div>
+      </Drawer>
+    </ModalProvider>
+  );
+};
+
 export const Demo: Story = {
   args: {
-    isOpen: true,
+    isOpen: false,
     openFrom: "right",
     detent: "content",
     onClose: fn(),
@@ -34,24 +48,45 @@ export const Demo: Story = {
   },
 };
 
-export const PlayGround: Story = {
+export const OpenLeft: Story = {
   args: {
-    openFrom: "right",
-    detent: "content",
     isDismissable: true,
   },
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [isOpen, setIsOpen] = useState(false);
+  render: (arg) => StoryComponent({ ...arg, openFrom: "left" }),
+};
 
-    return (
-      <ModalProvider>
-        <Title>Drawer</Title>
-        <Button onPress={() => setIsOpen(true)}>Open Drawer</Button>
-        <Drawer {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <div>Content</div>
-        </Drawer>
-      </ModalProvider>
-    );
+export const OpenRight: Story = {
+  args: {
+    isDismissable: true,
   },
+  render: (arg) => StoryComponent({ ...arg, openFrom: "right" }),
+};
+
+export const DetentContent: Story = {
+  args: {
+    isDismissable: true,
+    openFrom: "right",
+  },
+  render: (arg) => StoryComponent({ ...arg, detent: "content" }),
+};
+
+export const DetentFull: Story = {
+  args: {
+    isDismissable: true,
+    openFrom: "right",
+  },
+  render: (arg) => StoryComponent({ ...arg, detent: "full" }),
+};
+
+export const WithHeaderAndFooter: Story = {
+  args: {
+    isDismissable: true,
+    openFrom: "right",
+  },
+  render: (arg) =>
+    StoryComponent({
+      ...arg,
+      header: <div>Header</div>,
+      footer: <div>Footer</div>,
+    }),
 };

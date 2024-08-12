@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { usePreventScroll } from "react-aria";
-import { Dialog, Modal, ModalOverlay } from "react-aria-components";
+import { Dialog, Heading, Modal, ModalOverlay } from "react-aria-components";
 import styled, { css } from "styled-components";
 import { theme } from "src/guidelines/theme";
 import { addAlpha } from "src/guidelines/theme/Color";
@@ -109,10 +109,17 @@ const StyledDialog = styled(Dialog)`
   flex-direction: column;
 `;
 
+const StyledHeading = styled(Heading)`
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 1rem;
+`;
+
 type SideSheetProps = {
   isOpen: boolean;
   openFrom: "left" | "right";
-  header?: React.ReactNode;
+  header: React.ReactNode;
   children: React.ReactNode;
   footer?: React.ReactNode;
   detent: "full-width" | "content-width";
@@ -145,17 +152,18 @@ const SideSheet = ({
           onClose();
         }
 
-        return false;
+        return isDismissable;
       }}
     >
       <StyledModal
+        data-testid="side-sheet"
         ref={ref}
         isOpen={isOpen}
         openFrom={openFrom}
         detent={detent}
       >
         <StyledDialog>
-          {header}
+          <StyledHeading slot="title">{header}</StyledHeading>
           {children}
           {footer}
         </StyledDialog>
