@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  Input as RAInput,
-  InputProps as RAInputProps,
+  Input as AriaInput,
+  InputProps as AriaInputProps,
 } from "react-aria-components";
 import styled, { css } from "styled-components";
 import { breakpoints } from "src/guidelines/theme";
@@ -38,7 +38,7 @@ const StyledTrailingIcon = styled.div`
 const baseMdInputPadding = sizing(3);
 const iconSizing = sizing(22);
 
-const StyledInput = styled(RAInput)<{
+const StyledInput = styled(AriaInput)<{
   $hasLeadingIcon: boolean;
   $hasTrailingIcon: boolean;
 }>`
@@ -66,7 +66,7 @@ const StyledInput = styled(RAInput)<{
   }
 `;
 
-export type InputProps = RAInputProps & {
+export type InputProps = AriaInputProps & {
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
 };

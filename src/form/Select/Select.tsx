@@ -16,9 +16,9 @@ import {
   Text,
 } from "react-aria-components";
 import styled from "styled-components";
+import Input from "src/form/Input/Input";
 import { body1, narrow, sizing, theme } from "src/guidelines/theme";
 import ChevronDown from "src/icons/ChevronDown";
-import Input from "../Input/Input";
 
 const StyledComboBox = styled(ComboBox)<{ widthSelect?: string }>`
   width: 100%;
@@ -48,7 +48,7 @@ const StyledGroup = styled(Group)`
   position: relative;
 `;
 
-const buttonWidth = "26px";
+const buttonWidth = sizing(26);
 
 const StyledInput = styled(Input)`
   ${body1};
