@@ -32,6 +32,13 @@ ci:
 pre-commit: ## Runs some checks & fixes
 	docker compose exec storybook sh -c "pnpm run format:check --write && pnpm run lint:check && pnpm run typescript:check && pnpm run test --run"
 
+LEVEL?=patch
+version-bump: ## Creates a new tag + bumps the version in package.json. Use LEVEL=patch|minor|major to adjust the bump level.
+	pnpm version $(LEVEL) && \
+	git push origin "$$(git rev-parse --abbrev-ref HEAD)" && \
+	git push origin "$$(git tag --sort=taggerdate | tail -1)"
+	@echo "Tag $$(git tag --sort=taggerdate | tail -1) pushed. You should now create a github release on it."
+
 logs: SERVICE?=
 logs: OPTS?=--follow --timestamps --tail=0
 logs:

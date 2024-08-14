@@ -40,6 +40,8 @@ export type { RadioProps } from "src/form/Radio/Radio";
 export { default as RadioGroup } from "src/form/RadioGroup/RadioGroup";
 export type { RadioGroupProps } from "src/form/RadioGroup/RadioGroup";
 
+export * from "src/form/Select/Select";
+
 export { default as Slider } from "src/form/Slider/Slider";
 export type { SliderProps } from "src/form/Slider/Slider";
 
