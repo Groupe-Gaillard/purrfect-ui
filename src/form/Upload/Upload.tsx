@@ -5,7 +5,8 @@ import {
 } from "react-aria-components";
 import styled from "styled-components";
 import Button, { ButtonProps } from "src/action/Button/Button";
-import { body1, sizing, theme } from "src/guidelines/theme";
+import { sizing, theme } from "src/guidelines/theme";
+import { body1 } from "src/guidelines/theme/typographies";
 import DeleteIcon from "src/icons/Delete";
 import FilesIcon from "src/icons/Files";
 import {

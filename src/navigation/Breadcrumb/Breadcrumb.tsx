@@ -8,7 +8,8 @@ import {
 import styled, { css } from "styled-components";
 import { Variant } from "src/action/Button/Button";
 import Link from "src/action/Link/Link";
-import { body1, theme } from "src/guidelines/theme";
+import { theme } from "src/guidelines/theme";
+import { body1 } from "src/guidelines/theme/typographies";
 
 const StyledBreadcrumbs = styled(AriaBreadCrumbs)`
   ${body1}

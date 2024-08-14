@@ -11,8 +11,8 @@ import {
   heading5,
   heading6,
   narrow,
-  sizing,
-} from "src/guidelines/theme/index";
+} from "src/guidelines/theme/typographies";
+import { sizing } from "src/utils/utils";
 
 const meta: Meta = {};
 

@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import Checkbox from "src/form/Checkbox/Checkbox";
-import { body1, sizing } from "src/guidelines/theme/index";
+import { sizing } from "src/guidelines/theme/index";
+import { body1 } from "src/guidelines/theme/typographies";
 import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Checkbox> = {

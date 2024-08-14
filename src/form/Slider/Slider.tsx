@@ -9,7 +9,8 @@ import {
   SliderTrack,
 } from "react-aria-components";
 import styled, { css } from "styled-components";
-import { body1, breakpoints, sizing, theme } from "../../guidelines/theme";
+import { body1 } from "src/guidelines/theme/typographies";
+import { breakpoints, sizing, theme } from "../../guidelines/theme";
 
 type SliderProps = AriaSliderProps &
   SliderThumbProps & {

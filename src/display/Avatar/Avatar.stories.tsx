@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import Avatar from "src/display/Avatar/Avatar";
-import { heading1 } from "src/guidelines/theme";
+import { heading1 } from "src/guidelines/theme/typographies";
 import { sizing } from "src/utils/utils";
 
 const meta: Meta<typeof Avatar> = {

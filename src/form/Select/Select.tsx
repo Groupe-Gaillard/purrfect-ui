@@ -17,7 +17,8 @@ import {
 } from "react-aria-components";
 import styled from "styled-components";
 import Input from "src/form/Input/Input";
-import { body1, narrow, sizing, theme } from "src/guidelines/theme";
+import { sizing, theme } from "src/guidelines/theme";
+import { body1, narrow } from "src/guidelines/theme/typographies";
 import ChevronDown from "src/icons/ChevronDown";
 
 const StyledComboBox = styled(ComboBox)<{ widthSelect?: string }>`

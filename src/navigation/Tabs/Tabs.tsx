@@ -10,7 +10,8 @@ import {
 } from "react-aria-components";
 import styled from "styled-components";
 import { Variant } from "src/action/Button/Button";
-import { body1, sizing, theme } from "src/guidelines/theme";
+import { sizing, theme } from "src/guidelines/theme";
+import { body1 } from "src/guidelines/theme/typographies";
 
 const StyledTabs = styled(AriaTabs)`
   display: flex;

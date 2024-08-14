@@ -7,7 +7,8 @@ import {
   Text,
 } from "react-aria-components";
 import styled from "styled-components";
-import { body1, narrow, sizing, theme } from "src/guidelines/theme";
+import { sizing, theme } from "src/guidelines/theme";
+import { body1, narrow } from "src/guidelines/theme/typographies";
 
 const StyledCheckboxGroup = styled(AriaCheckboxGroup)`
   display: flex;

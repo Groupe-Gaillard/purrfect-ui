@@ -18,7 +18,8 @@ import {
 } from "react-aria-components";
 import styled from "styled-components";
 import Button from "src/action/Button/Button";
-import { body1, narrow, sizing, theme } from "src/guidelines/theme";
+import { sizing, theme } from "src/guidelines/theme";
+import { body1, narrow } from "src/guidelines/theme/typographies";
 import Close from "src/icons/Close";
 
 const StyledDatePicker = styled(AriaDatePicker)`
