@@ -3,7 +3,8 @@ import { fn } from "@storybook/test";
 import React from "react";
 import styled from "styled-components";
 import Button, { Kind, Size, Variant } from "src/action/Button/Button";
-import { heading1, theme } from "src/guidelines/theme";
+import { theme } from "src/guidelines/theme";
+import { heading1 } from "src/guidelines/theme/typographies";
 import Default from "src/icons/Default";
 
 const meta: Meta<typeof Button> = {

@@ -2,7 +2,8 @@ import React from "react";
 import { useButton, usePress } from "react-aria";
 import styled, { css } from "styled-components";
 import { Variant } from "src/action/Button/Button";
-import { body1, theme } from "src/guidelines/theme";
+import { theme } from "src/guidelines/theme";
+import { body1 } from "src/guidelines/theme/typographies";
 import IconSVG from "src/icons/IconSVG";
 import { getContrastYIQ, sizing } from "src/utils/utils";
 

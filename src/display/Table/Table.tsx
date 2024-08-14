@@ -13,7 +13,8 @@ import TableCell from "src/display/Table/TableCell";
 import TableColumn from "src/display/Table/TableColumn";
 import TableHeader from "src/display/Table/TableHeader";
 import TableRow from "src/display/Table/TableRow";
-import { body1, theme } from "src/guidelines/theme";
+import { theme } from "src/guidelines/theme";
+import { body1 } from "src/guidelines/theme/typographies";
 import { sizing } from "src/utils/utils";
 
 interface DataColumn extends ColumnProps {

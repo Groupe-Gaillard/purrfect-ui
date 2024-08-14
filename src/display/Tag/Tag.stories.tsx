@@ -3,7 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import { Variant } from "src/action/Button/Button";
 import Tag, { TagKind, TagProps, TagSize } from "src/display/Tag/Tag";
-import { heading1, sizing, theme } from "src/guidelines/theme";
+import { sizing, theme } from "src/guidelines/theme";
+import { heading1 } from "src/guidelines/theme/typographies";
 import AddIcon from "src/icons/Add";
 import Default from "src/icons/Default";
 

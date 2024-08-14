@@ -12,7 +12,8 @@ import {
   SubmenuTrigger,
 } from "react-aria-components";
 import styled, { css } from "styled-components";
-import { body1, theme } from "src/guidelines/theme";
+import { theme } from "src/guidelines/theme";
+import { body1 } from "src/guidelines/theme/typographies";
 import Caret from "src/icons/Caret";
 import ChevronRight from "src/icons/ChevronRight";
 import IconSVG from "src/icons/IconSVG";

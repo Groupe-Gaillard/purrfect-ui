@@ -29,6 +29,9 @@ ci:
 	docker compose exec storybook pnpm lint:check && docker compose exec storybook pnpm typescript:check
 .PHONY: ci
 
+pre-commit: ## Runs some checks & fixes
+	docker compose exec storybook sh -c "pnpm run format:check --write && pnpm run lint:check && pnpm run typescript:check && pnpm run test --run"
+
 logs: SERVICE?=
 logs: OPTS?=--follow --timestamps --tail=0
 logs:
@@ -40,3 +43,7 @@ certs:
 	@mkcert -key-file ./docker/traefik/certs/key.pem -cert-file ./docker/traefik/certs/cert.pem \
 		'purrfect-ui.localhost' \
 		'purrfect-ui.traefik.localhost'
+
+help: ## Outputs this help screen
+	@grep -E '(^[a-zA-Z0-9\./_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
+.DEFAULT_GOAL := help

@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import Loader from "src/display/Loader/Loader";
-import { heading1, sizing } from "src/guidelines/theme";
+import { sizing } from "src/guidelines/theme";
+import { heading1 } from "src/guidelines/theme/typographies";
 
 const meta: Meta<typeof Loader> = {
   component: Loader,

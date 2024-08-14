@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import React from "react";
 import styled from "styled-components";
-import { heading1, sizing } from "src/guidelines/theme";
+import { sizing } from "src/guidelines/theme";
+import { heading1 } from "src/guidelines/theme/typographies";
 import Default from "src/icons/Default";
 import MenuButton from "src/navigation/Menu/MenuButton";
 

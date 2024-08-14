@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "src/action/Link/Link";
 import Accordion from "src/display/Accordion/Accordion";
-import { body1 } from "src/guidelines/theme";
+import { body1 } from "src/guidelines/theme/typographies";
 import { Title } from "src/utils/StorybookComponents/Titles";
 import { sizing } from "src/utils/utils";
 

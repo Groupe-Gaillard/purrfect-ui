@@ -3,7 +3,7 @@ import React from "react";
 import { Label, RadioGroup } from "react-aria-components";
 import styled from "styled-components";
 import Radio from "src/form/Radio/Radio";
-import { body1 } from "src/guidelines/theme";
+import { body1 } from "src/guidelines/theme/typographies";
 import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Radio> = {

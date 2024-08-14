@@ -67,14 +67,4 @@ export type { TextFieldProps } from "src/form/TextField/TextField";
 export { default as Upload } from "src/form/Upload/Upload";
 export type { UploadProps } from "src/form/Upload/Upload";
 
-export {
-  heading1,
-  heading2,
-  heading3,
-  heading4,
-  heading5,
-  heading6,
-  body1,
-  body2,
-  narrow,
-} from "src/guidelines/theme";
+export * from "src/guidelines/theme";
