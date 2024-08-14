@@ -3,7 +3,7 @@ import { fn } from "@storybook/test";
 import { FormEvent } from "react";
 import React from "react";
 import Button from "src/action/Button/Button";
-import Select, { Option } from "src/form/Select/Select";
+import { Option, Select } from "src/form/Select/Select";
 import { sizing } from "src/guidelines/theme";
 import UploadIcon from "src/icons/Upload";
 import { Title, Title2 } from "src/utils/StorybookComponents/Titles";
