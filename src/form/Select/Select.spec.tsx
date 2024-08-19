@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { describe, expect, it } from "vitest";
-import Select, { Option } from "src/form/Select/Select";
+import { Option, Select } from "src/form/Select/Select";
 
 const options = [
   { id: "cat", label: "Cat" },

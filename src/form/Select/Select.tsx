@@ -133,7 +133,7 @@ const StyledListBoxItem = styled(ListBoxItem)`
   padding-bottom: ${sizing(6)};
 `;
 
-interface SelectProps<T extends object>
+export interface SelectProps<T extends object>
   extends Omit<ComboBoxProps<T>, "children"> {
   label?: string;
   description?: string | null;
@@ -145,7 +145,7 @@ interface SelectProps<T extends object>
   leadingIcon?: React.ReactNode;
 }
 
-const Select = <T extends object>({
+export const Select = <T extends object>({
   label,
   description,
   errorMessage,
@@ -183,7 +183,7 @@ const Select = <T extends object>({
   );
 };
 
-const Option = ({ ...props }: ListBoxItemProps) => {
+export const Option = ({ ...props }: ListBoxItemProps) => {
   return (
     <StyledListBoxItem
       {...props}
@@ -193,6 +193,3 @@ const Option = ({ ...props }: ListBoxItemProps) => {
     />
   );
 };
-
-export default Select;
-export { Option };
