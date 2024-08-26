@@ -5,7 +5,9 @@ import styled from "styled-components";
 import Button, { Kind, Size, Variant } from "src/action/Button/Button";
 import { theme } from "src/guidelines/theme";
 import { heading1 } from "src/guidelines/theme/typographies";
+import AddIcon from "src/icons/Add";
 import Default from "src/icons/Default";
+import { Title as TitleCentered } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -124,5 +126,21 @@ export const ButtonList = () => {
         );
       })}
     </Container>
+  );
+};
+
+export const ButtonOnlyIcon = () => {
+  return (
+    <>
+      <TitleCentered color="primary">Button with Icon only</TitleCentered>
+      <Button
+        kind="normal"
+        variant="primary"
+        size="small"
+        isDisabled={false}
+        onPress={fn()}
+        leadingIcon={<AddIcon />}
+      />
+    </>
   );
 };
