@@ -16,6 +16,7 @@ import {
   Text,
 } from "react-aria-components";
 import styled from "styled-components";
+import Loader from "src/display/Loader/Loader";
 import Input from "src/form/Input/Input";
 import { sizing, theme } from "src/guidelines/theme";
 import { body1, narrow } from "src/guidelines/theme/typographies";
@@ -69,6 +70,13 @@ const StyledInput = styled(Input)`
     color: ${theme.color.danger};
     outline: ${sizing(2)} solid ${theme.color.danger};
   }
+`;
+
+const StyledLoader = styled(Loader)`
+  position: absolute;
+  top: ${sizing(5)};
+  right: calc(${buttonWidth} + ${sizing(5)});
+  z-index: 1;
 `;
 
 const StyledButton = styled(Button)`
@@ -143,6 +151,7 @@ export interface SelectProps<T extends object>
   heightOptions?: string;
   placeholder?: string;
   leadingIcon?: React.ReactNode;
+  isLoading?: boolean;
 }
 
 export const Select = <T extends object>({
@@ -150,6 +159,7 @@ export const Select = <T extends object>({
   description,
   errorMessage,
   leadingIcon,
+  isLoading,
   children,
   ...props
 }: SelectProps<T>) => {
@@ -165,6 +175,8 @@ export const Select = <T extends object>({
           placeholder={props.placeholder ?? ""}
           leadingIcon={leadingIcon}
         />
+        {isLoading && <StyledLoader size={16} variant="primary" />}
+
         <StyledButton>
           <ChevronDown />
         </StyledButton>
