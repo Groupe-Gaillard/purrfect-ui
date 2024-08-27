@@ -35,6 +35,7 @@ export const Demo: Story = {
   args: {
     autoFocus: true,
     isDisabled: false,
+    isLoading: false,
     isRequired: false,
     description: "Helper text",
     label: "Select",
@@ -70,6 +71,29 @@ export const Demo: Story = {
           })}
         </Select>
       </div>
+    </div>
+  ),
+};
+
+export const selectWithLoader: Story = {
+  args: {
+    autoFocus: true,
+    isLoading: true,
+    label: "Select",
+    onSelectionChange: fn(),
+  },
+  render: (args) => (
+    <div>
+      <Title>Select with loader</Title>
+      <Select {...args}>
+        {options.map((oneOption) => {
+          return (
+            <Option key={oneOption.id} id={oneOption.id}>
+              {oneOption.label}
+            </Option>
+          );
+        })}
+      </Select>
     </div>
   ),
 };
