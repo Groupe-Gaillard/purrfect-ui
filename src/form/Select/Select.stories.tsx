@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { FormEvent } from "react";
 import React from "react";
+import { Text } from "react-aria-components";
+import styled from "styled-components";
 import Button from "src/action/Button/Button";
 import { Option, Select } from "src/form/Select/Select";
 import { sizing } from "src/guidelines/theme";
@@ -255,6 +257,85 @@ export const SpecialWidthSelect: Story = {
           return (
             <Option key={oneOption.id} id={oneOption.id}>
               {oneOption.label}
+            </Option>
+          );
+        })}
+      </Select>
+    </div>
+  ),
+};
+
+const optionsWithHtmlOption = [
+  {
+    id: "confo+",
+    label: "Fauteuil confo +",
+    description: {
+      internalRef: "XDF3275EG",
+      stockInternally: 2,
+      stockCommingSoon: 25,
+      supplierRef: "SVGGTX45521WFFWD4852WXFD",
+      img: "https://picsum.photos/id/252/50/50",
+    },
+  },
+  {
+    id: "confo-",
+    label: "Fauteuil confo -",
+    description: {
+      internalRef: "LIH3275EG",
+      stockInternally: 5,
+      stockCommingSoon: 0,
+      supplierRef: "LH4898ZENBHKDF",
+      img: "https://picsum.photos/id/253/50/50",
+    },
+  },
+  { id: "kangaroo", label: "Sans fauteuil" },
+];
+
+const StyledTextDescription = styled(Text)`
+  display: flex;
+  justify-content: space-between;
+  gap: ${sizing(16)};
+`;
+
+export const DemoWithHtmlOption: Story = {
+  args: {
+    autoFocus: true,
+    isDisabled: false,
+    isRequired: false,
+    description: "Helper text",
+    label: "Select",
+    onSelectionChange: fn(),
+    items: optionsWithHtmlOption,
+  },
+  render: (args) => (
+    <div>
+      <Title>Select</Title>
+      <Select {...args}>
+        {optionsWithHtmlOption.map((oneOption) => {
+          return (
+            <Option
+              key={oneOption.id}
+              id={oneOption.id}
+              textValue={oneOption.label}
+            >
+              <Text slot="label">{oneOption.label}</Text>
+              {oneOption.description && (
+                <StyledTextDescription slot="description">
+                  <div>
+                    Réf : {oneOption.description.internalRef}
+                    <br />
+                    Stock Rousset : {oneOption.description.stockInternally}
+                  </div>
+                  <div>
+                    Réf : {oneOption.description.supplierRef}
+                    <br />
+                    Stock Rousset : {oneOption.description.stockCommingSoon}
+                  </div>
+                  <div>
+                    <img src={oneOption.description.img} />
+                  </div>
+                </StyledTextDescription>
+              )}
             </Option>
           );
         })}
