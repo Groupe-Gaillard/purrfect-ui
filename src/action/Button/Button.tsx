@@ -38,7 +38,7 @@ const buttonVariant = (variant: Variant = "primary") => {
   `;
 };
 
-export type Size = "small" | "normal" | "large";
+export type Size = "small" | "normal" | "large" | "square";
 const buttonSize = (size: Size = "normal") => {
   switch (size) {
     case "small":
@@ -110,6 +110,30 @@ const buttonSize = (size: Size = "normal") => {
           & > svg {
             height: ${sizing(32)};
             width: ${sizing(32)};
+          }
+        }
+      `;
+    case "square":
+      return css`
+        gap: ${sizing(10)};
+        height: ${sizing(30)};
+        width: ${sizing(30)};
+        border-radius: ${theme.borderRadius.default};
+        ${buttonNormal};
+
+        & > svg {
+          height: ${sizing(20)};
+          width: ${sizing(20)};
+        }
+
+        @media ${breakpoints.minWidth.md} {
+          gap: ${sizing(12)};
+          height: ${sizing(36)};
+          width: ${sizing(36)};
+
+          & > svg {
+            height: ${sizing(24)};
+            width: ${sizing(24)};
           }
         }
       `;

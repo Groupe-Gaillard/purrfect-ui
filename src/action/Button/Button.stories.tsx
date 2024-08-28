@@ -134,10 +134,8 @@ export const ButtonOnlyIcon = () => {
     <>
       <TitleCentered color="primary">Button with Icon only</TitleCentered>
       <Button
-        kind="normal"
         variant="primary"
-        size="small"
-        isDisabled={false}
+        size="square"
         onPress={fn()}
         leadingIcon={<AddIcon />}
       />
