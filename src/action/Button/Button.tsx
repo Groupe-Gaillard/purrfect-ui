@@ -38,102 +38,77 @@ const buttonVariant = (variant: Variant = "primary") => {
   `;
 };
 
-export type Size = "small" | "normal" | "large" | "square";
-const buttonSize = (size: Size = "normal") => {
+export type Size = "small" | "normal" | "large";
+const buttonSize = (size: Size = "normal", hasChildren: boolean = true) => {
   switch (size) {
     case "small":
       return css`
         gap: ${sizing(6)};
-        height: ${sizing(20)};
-        padding: 0px ${sizing(14)};
+        ${hasChildren && `padding: 0px ${sizing(14)};`}
+        ${hasChildren && `height: ${sizing(20)};`}
         border-radius: ${theme.borderRadius.default};
         ${buttonSmall};
-
         & > svg {
-          height: ${sizing(14)};
-          width: ${sizing(14)};
+          height: ${hasChildren ? sizing(14) : sizing(12)};
+          width: ${hasChildren ? sizing(14) : sizing(12)};
         }
 
         @media ${breakpoints.minWidth.md} {
           gap: ${sizing(8)};
-          height: ${sizing(24)};
-          padding: 0px ${sizing(16)};
+          ${hasChildren && `padding: 0px ${sizing(16)};`}
+          ${hasChildren && `height: ${sizing(24)};`}
 
           & > svg {
-            height: ${sizing(16)};
-            width: ${sizing(16)};
+            height: ${hasChildren ? sizing(16) : sizing(14)};
+            width: ${hasChildren ? sizing(16) : sizing(14)};
           }
         }
       `;
     case "normal":
       return css`
-        gap: ${sizing(10)};
-        height: ${sizing(30)};
-        padding: 0px ${sizing(20)};
+        ${hasChildren && `gap: ${sizing(10)};`}
+        ${hasChildren && `padding: 0px ${sizing(20)};`}
+        ${hasChildren && `height: ${sizing(30)};`}
         border-radius: ${theme.borderRadius.default};
         ${buttonNormal};
 
         & > svg {
-          height: ${sizing(20)};
-          width: ${sizing(20)};
+          height: ${hasChildren ? sizing(20) : sizing(18)};
+          width: ${hasChildren ? sizing(20) : sizing(18)};
         }
 
         @media ${breakpoints.minWidth.md} {
-          gap: ${sizing(12)};
-          height: ${sizing(36)};
-          padding: 0px ${sizing(24)};
+          ${hasChildren && `gap: ${sizing(12)};`}
+          ${hasChildren && `padding: 0px ${sizing(24)};`}
+          ${hasChildren && `height: ${sizing(36)};`}
 
           & > svg {
-            height: ${sizing(24)};
-            width: ${sizing(24)};
+            height: ${hasChildren ? sizing(24) : sizing(22)};
+            width: ${hasChildren ? sizing(24) : sizing(22)};
           }
         }
       `;
     case "large":
       return css`
-        gap: ${sizing(13)};
-        height: ${sizing(40)};
-        padding: 0px ${sizing(28)};
+        ${hasChildren && `gap: ${sizing(13)};`}
+        ${hasChildren && `padding: 0px ${sizing(28)};`}
+        ${hasChildren && `height: ${sizing(40)};`}
         border-radius: ${theme.borderRadius.large};
         ${buttonLarge};
 
         & > svg {
-          height: ${sizing(28)};
-          width: ${sizing(28)};
+          height: ${hasChildren ? sizing(28) : sizing(26)};
+          width: ${hasChildren ? sizing(28) : sizing(26)};
         }
 
         @media ${breakpoints.minWidth.md} {
-          gap: ${sizing(16)};
-          height: ${sizing(48)};
-          padding: 0px ${sizing(32)};
+          ${hasChildren && `gap: ${sizing(16)};`}
+          ${hasChildren && `padding: 0px ${sizing(32)};`}
+          ${hasChildren && `height: ${sizing(48)};`}
 
           & > svg {
-            height: ${sizing(32)};
-            width: ${sizing(32)};
-          }
-        }
-      `;
-    case "square":
-      return css`
-        gap: ${sizing(10)};
-        height: ${sizing(30)};
-        width: ${sizing(30)};
-        border-radius: ${theme.borderRadius.default};
-        ${buttonNormal};
-
-        & > svg {
-          height: ${sizing(20)};
-          width: ${sizing(20)};
-        }
-
-        @media ${breakpoints.minWidth.md} {
-          gap: ${sizing(12)};
-          height: ${sizing(36)};
-          width: ${sizing(36)};
-
-          & > svg {
-            height: ${sizing(24)};
-            width: ${sizing(24)};
+            ${hasChildren ? `height: ${sizing(32)}` : `height: ${sizing(30)}`}
+            ${hasChildren ? `width: ${sizing(32)}` : `width: ${sizing(30)}`}
           }
         }
       `;
@@ -195,6 +170,7 @@ const StyledButton = styled(AriaButton)<{
   variant?: Variant;
   size?: Size;
   radius?: Radius;
+  hasChildren?: boolean;
 }>`
   cursor: pointer;
   border: none;
@@ -204,11 +180,17 @@ const StyledButton = styled(AriaButton)<{
   justify-content: center;
   gap: ${sizing(8)};
 
-  ${({ variant, size, kind, radius }) => css`
+  ${({ variant, size, kind, radius, hasChildren }) => css`
     ${buttonVariant(variant)};
-    ${buttonSize(size)};
+    ${buttonSize(size, hasChildren)};
     ${buttonKind(kind, variant)};
     ${radiusSize(radius)};
+    ${!hasChildren &&
+    `
+      padding: 0;
+      height: auto;
+      width: auto;
+    `}
   `};
 
   &:disabled {
@@ -238,6 +220,8 @@ const Button = ({
   radius,
   ...others
 }: ButtonProps) => {
+  const hasChildren = !!children;
+
   return (
     <StyledButton
       {...others}
@@ -246,6 +230,7 @@ const Button = ({
       variant={variant}
       size={size}
       radius={radius}
+      hasChildren={hasChildren}
     >
       {leadingIcon}
       {children}
