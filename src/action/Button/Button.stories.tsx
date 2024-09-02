@@ -3,7 +3,7 @@ import { fn } from "@storybook/test";
 import React from "react";
 import styled from "styled-components";
 import Button, { Kind, Size, Variant } from "src/action/Button/Button";
-import { theme } from "src/guidelines/theme";
+import { sizing, theme } from "src/guidelines/theme";
 import { heading1 } from "src/guidelines/theme/typographies";
 import AddIcon from "src/icons/Add";
 import Default from "src/icons/Default";
@@ -27,16 +27,31 @@ export const Demo: Story = {
   },
 };
 
+export const DemoWithIcon: Story = {
+  args: {
+    ...Demo.args,
+    leadingIcon: <AddIcon />,
+    children: "",
+    size: "normal",
+  },
+  render: (args) => (
+    <>
+      <TitleCentered color="primary">Button with Icon only</TitleCentered>
+      <Button {...args} />
+    </>
+  ),
+};
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: ${sizing(16)};
 `;
 
 const Block = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: ${sizing(8)};
 `;
 
 const Title = styled.p<{ color: Variant }>`
@@ -53,7 +68,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 800px);
   justify-items: center;
-  gap: 16px;
+  gap: ${sizing(16)};
 `;
 
 export const ButtonList = () => {
@@ -126,19 +141,5 @@ export const ButtonList = () => {
         );
       })}
     </Container>
-  );
-};
-
-export const ButtonOnlyIcon = () => {
-  return (
-    <>
-      <TitleCentered color="primary">Button with Icon only</TitleCentered>
-      <Button
-        variant="primary"
-        size="large"
-        onPress={fn()}
-        leadingIcon={<AddIcon />}
-      />
-    </>
   );
 };
