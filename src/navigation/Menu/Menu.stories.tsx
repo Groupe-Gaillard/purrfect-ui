@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 import Divider from "src/display/Divider/Divider";
 import { sizing } from "src/guidelines/theme";
-import { body1, heading2 } from "src/guidelines/theme/typographies";
+import { body1 } from "src/guidelines/theme/typographies";
 import AddIcon from "src/icons/Add";
 import Close from "src/icons/Close";
 import Default from "src/icons/Default";
@@ -14,6 +14,7 @@ import SortDown from "src/icons/SortDown";
 import UploadIcon from "src/icons/Upload";
 import Menu from "src/navigation/Menu/Menu";
 import MenuButton from "src/navigation/Menu/MenuButton";
+import { Title } from "src/utils/StorybookComponents/Titles";
 
 const meta: Meta<typeof Menu> = {
   component: Menu,
@@ -22,11 +23,6 @@ const meta: Meta<typeof Menu> = {
 export default meta;
 
 type Story = StoryObj<typeof Menu>;
-
-const Title = styled.h1`
-  ${heading2};
-  margin: ${sizing(24, 0, 16)};
-`;
 
 const Text = styled.p`
   ${body1};
@@ -49,10 +45,7 @@ const MenuButtonDisplay = ({
 }) => {
   return (
     <MenuButton
-      radius="none"
       kind="normal"
-      block
-      align="left"
       textStyle="normal"
       size="small"
       leadingIcon={icon}
@@ -400,6 +393,10 @@ export const menuBase: Story = {
   render: (args) => (
     <>
       <Title>Menu</Title>
+      <Text>
+        Menu contraint en largeur avec la propriété :{" "}
+        <code>widthOpened: 300</code>
+      </Text>
       <Container>
         <Menu {...args} />
       </Container>
@@ -410,7 +407,6 @@ export const menuBase: Story = {
 export const simpleMenu: Story = {
   args: {
     menuItems: simpleMenuItems,
-    widthOpened: 300,
   },
 
   render: (args) => (
