@@ -44,8 +44,8 @@ const buttonSize = (size: Size = "normal", hasChildren: boolean = true) => {
     case "small":
       return css`
         gap: ${sizing(6)};
-        ${hasChildren && `padding: 0px ${sizing(14)};`}
-        ${hasChildren && `height: ${sizing(20)};`}
+        ${hasChildren ? `padding: 0px ${sizing(14)}` : `padding: ${sizing(2)}`};
+        ${hasChildren && `height: ${sizing(20)};`};
         border-radius: ${theme.borderRadius.default};
         ${buttonSmall};
         & > svg {
@@ -55,7 +55,9 @@ const buttonSize = (size: Size = "normal", hasChildren: boolean = true) => {
 
         @media ${breakpoints.minWidth.md} {
           gap: ${sizing(8)};
-          ${hasChildren && `padding: 0px ${sizing(16)};`}
+          ${hasChildren
+            ? `padding: 0px ${sizing(16)}`
+            : `padding: ${sizing(3)}`};
           ${hasChildren && `height: ${sizing(24)};`}
 
           & > svg {
@@ -66,9 +68,9 @@ const buttonSize = (size: Size = "normal", hasChildren: boolean = true) => {
       `;
     case "normal":
       return css`
-        ${hasChildren && `gap: ${sizing(10)};`}
-        ${hasChildren && `padding: 0px ${sizing(20)};`}
-        ${hasChildren && `height: ${sizing(30)};`}
+        ${hasChildren && `gap: ${sizing(10)};`};
+        ${hasChildren ? `padding: 0px ${sizing(20)}` : `padding: ${sizing(4)}`};
+        ${hasChildren && `height: ${sizing(30)};`};
         border-radius: ${theme.borderRadius.default};
         ${buttonNormal};
 
@@ -79,7 +81,9 @@ const buttonSize = (size: Size = "normal", hasChildren: boolean = true) => {
 
         @media ${breakpoints.minWidth.md} {
           ${hasChildren && `gap: ${sizing(12)};`}
-          ${hasChildren && `padding: 0px ${sizing(24)};`}
+          ${hasChildren
+            ? `padding: 0px ${sizing(24)}`
+            : `padding: ${sizing(5)}`};
           ${hasChildren && `height: ${sizing(36)};`}
 
           & > svg {
@@ -90,9 +94,9 @@ const buttonSize = (size: Size = "normal", hasChildren: boolean = true) => {
       `;
     case "large":
       return css`
-        ${hasChildren && `gap: ${sizing(13)};`}
-        ${hasChildren && `padding: 0px ${sizing(28)};`}
-        ${hasChildren && `height: ${sizing(40)};`}
+        ${hasChildren && `gap: ${sizing(13)};`};
+        ${hasChildren ? `padding: 0px ${sizing(28)}` : `padding: ${sizing(5)}`};
+        ${hasChildren && `height: ${sizing(40)};`};
         border-radius: ${theme.borderRadius.large};
         ${buttonLarge};
 
@@ -102,10 +106,11 @@ const buttonSize = (size: Size = "normal", hasChildren: boolean = true) => {
         }
 
         @media ${breakpoints.minWidth.md} {
-          ${hasChildren && `gap: ${sizing(16)};`}
-          ${hasChildren && `padding: 0px ${sizing(32)};`}
-          ${hasChildren && `height: ${sizing(48)};`}
-
+          ${hasChildren && `gap: ${sizing(16)};`};
+          ${hasChildren
+            ? `padding: 0px ${sizing(32)}`
+            : `padding: ${sizing(9)}`};
+          ${hasChildren && `height: ${sizing(48)};`};
           & > svg {
             ${hasChildren ? `height: ${sizing(32)}` : `height: ${sizing(30)}`}
             ${hasChildren ? `width: ${sizing(32)}` : `width: ${sizing(30)}`}
@@ -187,7 +192,6 @@ const StyledButton = styled(AriaButton)<{
     ${radiusSize(radius)};
     ${!hasChildren &&
     `
-      padding: 0;
       height: auto;
       width: auto;
     `}
