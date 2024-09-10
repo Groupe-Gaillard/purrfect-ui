@@ -66,11 +66,12 @@ type TableRowProps<T> = RowProps<T> & {
 const TableRow = <T extends object>({
   columns,
   children,
+  id,
   ...otherProps
 }: TableRowProps<T>) => {
   const { selectionBehavior, allowsDragging } = useTableOptions();
   return (
-    <StyledRow {...otherProps}>
+    <StyledRow id={id} {...otherProps}>
       {allowsDragging && (
         <TableCell
           hasBordersBetweenLine={otherProps.hasBordersBetweenLine}
