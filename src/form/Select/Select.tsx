@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type {
   ComboBoxProps,
   ListBoxItemProps,
@@ -163,6 +163,25 @@ export const Select = <T extends object>({
   children,
   ...props
 }: SelectProps<T>) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if (target.dataset.trigger === "InputComboBox") {
+        console.log("input clicked", target);
+        //? Reproduce Popover trigger by CTA
+      }
+    });
+    return () => {
+      // document.removeEventListener("click", handleButtonClick);
+    };
+  }, []);
+
+  const handleFocus = () => {
+    console.log("handleFocus");
+    setIsOpen(!isOpen);
+  };
   return (
     <StyledComboBox {...props}>
       <StyledLabel>
@@ -174,6 +193,8 @@ export const Select = <T extends object>({
         <StyledInput
           placeholder={props.placeholder ?? ""}
           leadingIcon={leadingIcon}
+          data-trigger="InputComboBox"
+          onFocus={handleFocus}
         />
         {isLoading && <StyledLoader size={16} variant="primary" />}
 
