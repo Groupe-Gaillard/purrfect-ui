@@ -86,12 +86,16 @@ const MenuButton = ({
   size,
   leadingIcon,
   trailingIcon,
-  radius,
+  radius = "none",
+  block = true,
+  align = "left",
   ...others
 }: MenuButtonProps) => {
   return (
     <StyledMenuButton
       {...others}
+      block={block}
+      align={align}
       onPress={onPress}
       kind={kind}
       variant={variant}
