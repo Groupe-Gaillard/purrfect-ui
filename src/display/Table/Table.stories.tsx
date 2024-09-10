@@ -25,24 +25,24 @@ const Text = styled.p`
 const selectionModeArray = ["none", "single", "multiple"];
 
 const dataColumns = [
-  { id: "name", name: "Name", isVisible: true },
-  { id: "type", name: "Type", isVisible: true },
-  { id: "date", name: "Date Modified", isVisible: true },
-  { id: "action", name: "Action", isVisible: true },
+  { id: "name", name: "Name" },
+  { id: "type", name: "Type" },
+  { id: "date", name: "Date Modified" },
+  { id: "action", name: "Action" },
 ];
 
 const dataColumnsResizable = [
-  { id: "name", name: "Name", isVisible: true },
-  { id: "type", name: "Type", isVisible: true, isResizable: true },
-  { id: "date", name: "Date Modified", isVisible: true, isResizable: true },
-  { id: "action", name: "Action", isVisible: true },
+  { id: "name", name: "Name" },
+  { id: "type", name: "Type", isResizable: true },
+  { id: "date", name: "Date Modified", isResizable: true },
+  { id: "action", name: "Action" },
 ];
 
 const dataColumnsNotVisible = [
-  { id: "name", name: "Name", isVisible: true },
-  { id: "type", name: "Type", isVisible: true },
-  { id: "date", name: "Date Modified", isVisible: false },
-  { id: "action", name: "Action", isVisible: true },
+  { id: "name", name: "Name" },
+  { id: "type", name: "Type" },
+  { id: "date", name: "Date Modified", isHidden: true },
+  { id: "action", name: "Action" },
 ];
 
 const dataRows = [
@@ -279,7 +279,7 @@ export const tableOneColumnIsNotVisible: Story = {
     <>
       <Title>Table with one column is not visible</Title>
       <Text>
-        In the dataColumns array the 3rd entry has &quot;isVisible: false&quot;
+        In the dataColumns array the 3rd entry has &quot;isHidden: true&quot;
       </Text>
       <Table {...args} />
     </>

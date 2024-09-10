@@ -20,7 +20,7 @@ import { sizing } from "src/utils/utils";
 interface DataColumn extends ColumnProps {
   isResizable?: boolean;
   name: string;
-  isVisible?: boolean;
+  isHidden?: boolean;
 }
 
 export interface DataRows {
@@ -142,7 +142,7 @@ const Table = <T,>(props: TableProps<T>) => {
         >
           {props.dataColumns.map(
             (column) =>
-              column.isVisible && (
+              !column.isHidden && (
                 <TableColumn
                   id={column.id}
                   key={column.id}
@@ -181,7 +181,7 @@ const Table = <T,>(props: TableProps<T>) => {
             >
               {props.dataColumns.map(
                 (column) =>
-                  column.isVisible && (
+                  !column.isHidden && (
                     <TableCell
                       key={column.id}
                       hasBordersBetweenRow={hasBordersBetweenRow}

@@ -10,10 +10,10 @@ interface Character {
 }
 
 const dataColumns = [
-  { id: "name", name: "Name", isVisible: true },
-  { id: "height", name: "Height", isVisible: true },
-  { id: "mass", name: "Mass", isVisible: true },
-  { id: "birth_year", name: "Birth Year", isVisible: true },
+  { id: "name", name: "Name" },
+  { id: "height", name: "Height" },
+  { id: "mass", name: "Mass" },
+  { id: "birth_year", name: "Birth Year" },
 ];
 
 const TableSortingForExample = () => {
