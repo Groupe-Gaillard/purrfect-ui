@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
 import Button from "src/action/Button/Button";
+import Table, { DataColumn } from "src/display/Table/Table";
+import TableDragForExample from "src/display/Table/TableDragForExample";
+import TableSortingForExample from "src/display/Table/TableSortingForExample";
 import { sizing, theme } from "src/guidelines/theme";
 import { body1 } from "src/guidelines/theme/typographies";
 import { Title } from "src/utils/StorybookComponents/Titles";
-import Table from "./Table";
-import TableDragForExample from "./TableDragForExample";
-import TableSortingForExample from "./TableSortingForExample";
 
 const meta: Meta<typeof Table> = {
   component: Table,
@@ -24,24 +24,10 @@ const Text = styled.p`
 
 const selectionModeArray = ["none", "single", "multiple"];
 
-const dataColumns = [
-  { id: "name", name: "Name" },
-  { id: "type", name: "Type" },
-  { id: "date", name: "Date Modified" },
-  { id: "action", name: "Action" },
-];
-
-const dataColumnsResizable = [
-  { id: "name", name: "Name" },
-  { id: "type", name: "Type", isResizable: true },
-  { id: "date", name: "Date Modified", isResizable: true },
-  { id: "action", name: "Action" },
-];
-
-const dataColumnsNotVisible = [
-  { id: "name", name: "Name" },
-  { id: "type", name: "Type" },
-  { id: "date", name: "Date Modified", isHidden: true },
+const dataColumns: DataColumn[] = [
+  { id: "name", name: "Name", alignment: "right" },
+  { id: "type", name: "Type", alignment: "left" },
+  { id: "date", name: "Date Modified", alignment: "center" },
   { id: "action", name: "Action" },
 ];
 
@@ -76,7 +62,53 @@ const dataRows = [
   },
 ];
 
-const dataRowsOneIsDisabled = [
+export const tableLinesDefaultSelected: Story = {
+  args: {
+    selectionMode: "multiple",
+    defaultSelectedKeys: [2, 4],
+    dataColumns: dataColumns,
+    dataRows: dataRows,
+  },
+
+  render: (args) => (
+    <>
+      <Title>Table with lines selected by default</Title>
+      <Table {...args} />
+    </>
+  ),
+};
+
+export const tableLinesNonSelectable: Story = {
+  args: {
+    selectionMode: "none",
+    dataColumns: dataColumns,
+    dataRows: dataRows,
+  },
+
+  render: (args) => (
+    <>
+      <Title>Table with lines not selectable</Title>
+      <Table {...args} />
+    </>
+  ),
+};
+
+export const tableOnlyOneLineSelectable: Story = {
+  args: {
+    selectionMode: "single",
+    dataColumns: dataColumns,
+    dataRows: dataRows,
+  },
+
+  render: (args) => (
+    <>
+      <Title>Table with only one line selectable</Title>
+      <Table {...args} />
+    </>
+  ),
+};
+
+const dataRowsOneDisabled = [
   {
     id: 1,
     name: "Games",
@@ -108,7 +140,59 @@ const dataRowsOneIsDisabled = [
   },
 ];
 
-const dataRowsOneIsColored = [
+export const tableOneLineDisabled: Story = {
+  args: {
+    selectionMode: "multiple",
+    dataColumns: dataColumns,
+    dataRows: dataRowsOneDisabled,
+  },
+
+  render: (args) => (
+    <>
+      <Title>Table with lines not selectable</Title>
+      <Table {...args} />
+    </>
+  ),
+};
+
+const dataColumnsResizable = [
+  { id: "name", name: "Name" },
+  { id: "type", name: "Type", isResizable: true },
+  { id: "date", name: "Date Modified", isResizable: true },
+  { id: "action", name: "Action" },
+];
+
+export const tableColumnResizable: Story = {
+  args: {
+    selectionMode: "multiple",
+    dataColumns: dataColumnsResizable,
+    dataRows: dataRows,
+  },
+
+  render: (args) => (
+    <>
+      <Title>Table with columns resizable</Title>
+      <Table {...args} />
+    </>
+  ),
+};
+
+export const tableEvenLinesBackgroundColored: Story = {
+  args: {
+    evenRowsBackgroundIsColored: true,
+    dataColumns: dataColumns,
+    dataRows: dataRows,
+  },
+
+  render: (args) => (
+    <>
+      <Title>Table with even lines background are colored</Title>
+      <Table {...args} />
+    </>
+  ),
+};
+
+const dataRowsOneColored = [
   {
     id: 1,
     name: "Games",
@@ -164,101 +248,10 @@ export const tableBase: Story = {
   ),
 };
 
-export const tableLinesDefaultSelected: Story = {
-  args: {
-    selectionMode: "multiple",
-    defaultSelectedKeys: [2, 4],
-    dataColumns: dataColumns,
-    dataRows: dataRows,
-  },
-
-  render: (args) => (
-    <>
-      <Title>Table with lines selected by default</Title>
-      <Table {...args} />
-    </>
-  ),
-};
-
-export const tableLinesNonSelectable: Story = {
-  args: {
-    selectionMode: "none",
-    dataColumns: dataColumns,
-    dataRows: dataRows,
-  },
-
-  render: (args) => (
-    <>
-      <Title>Table with lines not selectable</Title>
-      <Table {...args} />
-    </>
-  ),
-};
-
-export const tableOnlyOneLineSelectable: Story = {
-  args: {
-    selectionMode: "single",
-    dataColumns: dataColumns,
-    dataRows: dataRows,
-  },
-
-  render: (args) => (
-    <>
-      <Title>Table with only one line selectable</Title>
-      <Table {...args} />
-    </>
-  ),
-};
-
-export const tableOneLineDisabled: Story = {
-  args: {
-    selectionMode: "multiple",
-    dataColumns: dataColumns,
-    dataRows: dataRowsOneIsDisabled,
-  },
-
-  render: (args) => (
-    <>
-      <Title>Table with lines not selectable</Title>
-      <Table {...args} />
-    </>
-  ),
-};
-
-export const tableColumnResizable: Story = {
-  args: {
-    selectionMode: "multiple",
-    dataColumns: dataColumnsResizable,
-    dataRows: dataRows,
-  },
-
-  render: (args) => (
-    <>
-      <Title>Table with columns resizable</Title>
-      <Table {...args} />
-    </>
-  ),
-};
-
-export const tableEvenLinesBackgroundColored: Story = {
-  args: {
-    evenRowsBackgroundIsColored: true,
-    dataColumns: dataColumns,
-    dataRows: dataRows,
-  },
-
-  render: (args) => (
-    <>
-      <Title>Table with even lines background are colored</Title>
-      <Table {...args} />
-    </>
-  ),
-};
-
 export const tableOneLineBackgroundColored: Story = {
   args: {
     dataColumns: dataColumns,
-    dataRows: dataRowsOneIsColored,
+    dataRows: dataRowsOneColored,
   },
 
   render: (args) => (
@@ -268,6 +261,13 @@ export const tableOneLineBackgroundColored: Story = {
     </>
   ),
 };
+
+const dataColumnsNotVisible = [
+  { id: "name", name: "Name" },
+  { id: "type", name: "Type" },
+  { id: "date", name: "Date Modified", isHidden: true },
+  { id: "action", name: "Action" },
+];
 
 export const tableOneColumnIsNotVisible: Story = {
   args: {
@@ -302,6 +302,30 @@ export const tableWithBorders: Story = {
         In the Table you can choose if you want border line or/and border row,
         and you can choose the color
       </Text>
+      <Table {...args} />
+    </>
+  ),
+};
+
+const dataColumnsAlignment: DataColumn[] = [
+  { id: "name", name: "Align right", alignment: "right" },
+  { id: "type", name: "Align left", alignment: "left" },
+  { id: "date", name: "Align center", alignment: "center" },
+  { id: "action", name: "Default" },
+];
+
+export const tableColumnsAlignment: Story = {
+  args: {
+    selectionMode: "multiple",
+    dataColumns: dataColumnsAlignment,
+    dataRows: dataRows,
+    hasBordersBetweenRow: true,
+    borderColor: theme.color.primary200,
+  },
+
+  render: (args) => (
+    <>
+      <Title>Table with specific column alignment</Title>
       <Table {...args} />
     </>
   ),

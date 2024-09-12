@@ -48,8 +48,7 @@ export type { SliderProps } from "src/form/Slider/Slider";
 export { default as Switch } from "src/form/Switch/Switch";
 export type { SwitchProps } from "src/form/Switch/Switch";
 
-export { default as Table } from "src/display/Table/Table";
-export type { TableProps } from "src/display/Table/Table";
+export * from "src/display/Table/Table";
 
 export { default as Tabs } from "src/navigation/Tabs/Tabs";
 export type { TabsProps } from "src/navigation/Tabs/Tabs";

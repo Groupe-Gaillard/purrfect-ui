@@ -17,10 +17,12 @@ import { theme } from "src/guidelines/theme";
 import { body1 } from "src/guidelines/theme/typographies";
 import { sizing } from "src/utils/utils";
 
-interface DataColumn extends ColumnProps {
+export type Alignment = "left" | "center" | "right";
+export interface DataColumn extends ColumnProps {
   isResizable?: boolean;
   name: string;
   isHidden?: boolean;
+  alignment?: Alignment;
 }
 
 export interface DataRows {
@@ -80,9 +82,10 @@ const StyledTableBody = styled(TableBody)<{
   `}
 `;
 
-const StyledColumnContainer = styled.div`
+const StyledColumnContainer = styled.div<{ alignment?: Alignment }>`
   position: relative;
   z-index: 1;
+  text-align: ${({ alignment }) => alignment ?? "left"};
 `;
 
 const StyledColumnResizer = styled(ColumnResizer)`
@@ -153,7 +156,7 @@ const Table = <T,>(props: TableProps<T>) => {
                     props.onSortChange !== undefined ? true : false
                   }
                 >
-                  <StyledColumnContainer>
+                  <StyledColumnContainer alignment={column.alignment}>
                     {column.name}
                     {column.isResizable && (
                       <StyledColumnResizer
@@ -187,6 +190,7 @@ const Table = <T,>(props: TableProps<T>) => {
                       hasBordersBetweenRow={hasBordersBetweenRow}
                       hasBordersBetweenLine={hasBordersBetweenLine}
                       borderColor={borderColor}
+                      alignment={column.alignment}
                     >
                       {(row as Record<string, any>)[column.id ?? "name"]}
                     </TableCell>
