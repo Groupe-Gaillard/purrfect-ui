@@ -5,16 +5,16 @@ import { describe, expect, it } from "vitest";
 import Table from "./Table";
 
 const dataColumns = [
-  { id: "name", name: "Name", isVisible: true },
-  { id: "type", name: "Type", isVisible: true },
-  { id: "date", name: "Date Modified", isVisible: true },
+  { id: "name", name: "Name" },
+  { id: "type", name: "Type" },
+  { id: "date", name: "Date Modified" },
 ];
 
 const dataColumnsResizable = [
-  { id: "name", name: "Name", isVisible: true },
-  { id: "type", name: "Type", isVisible: true, isResizable: true },
-  { id: "date", name: "Date Modified", isVisible: true, isResizable: true },
-  { id: "action", name: "Action", isVisible: true },
+  { id: "name", name: "Name" },
+  { id: "type", name: "Type", isResizable: true },
+  { id: "date", name: "Date Modified", isResizable: true },
+  { id: "action", name: "Action" },
 ];
 
 const dataRows = [
