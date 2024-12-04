@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useComboBox } from "react-aria";
 import type {
   ComboBoxProps,
   ListBoxItemProps,
@@ -15,6 +16,7 @@ import {
   Popover,
   Text,
 } from "react-aria-components";
+import { useComboBoxState } from "react-stately";
 import styled from "styled-components";
 import Loader from "src/display/Loader/Loader";
 import Input from "src/form/Input/Input";
@@ -163,6 +165,26 @@ export const Select = <T extends object>({
   children,
   ...props
 }: SelectProps<T>) => {
+  const state = useComboBoxState(props);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const { inputProps } = useComboBox(
+    {
+      ...props,
+      inputRef,
+      buttonRef,
+      listBoxRef: useRef(null),
+      popoverRef: useRef(null),
+    },
+    state,
+  );
+
+  const handleInputClick = () => {
+    if (buttonRef.current) {
+      buttonRef.current.click();
+    }
+  };
+
   return (
     <StyledComboBox {...props}>
       <StyledLabel>
@@ -172,12 +194,16 @@ export const Select = <T extends object>({
 
       <StyledGroup className="pui-select-group">
         <StyledInput
+          {...inputProps}
+          ref={inputRef}
           placeholder={props.placeholder ?? ""}
           leadingIcon={leadingIcon}
+          data-trigger="InputComboBox"
+          onClick={handleInputClick}
         />
         {isLoading && <StyledLoader size={16} variant="primary" />}
 
-        <StyledButton>
+        <StyledButton ref={buttonRef}>
           <ChevronDown />
         </StyledButton>
       </StyledGroup>
